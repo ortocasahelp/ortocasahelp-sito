@@ -5,136 +5,149 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>OrtoCasa Help</title>
 <meta name="description" content="Cosa fare nell'orto questo mese e dove comprare l'attrezzatura giusta: AgriEuro, Amazon, ManoMano ed eBay.">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#2D1846">
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="stylesheet" href="fonts.css">
 <style>
   :root{
-    --carta:#FFFFFF;
-    --banco:#EDEFF1;
-    --inchiostro:#000000;
-    --grigio:#55595E;
-    --arancio:#F07F1A;
-    --giallo:#FFD43B;
-    --linea:#D9DCE0;
+    --melanzana:#2D1846;   /* testata, apertura, blocchi scuri */
+    --melanzana-2:#43285F; /* superfici sul viola */
+    --zucca:#F07F1A;       /* azioni: arancio del logo */
+    --lattuga:#C9E86A;     /* dettagli e cartellini */
+    --fondo:#F5F2F8;       /* fondo pagina */
+    --bianco:#FFFFFF;
+    --testo:#1F1230;
+    --grigio:#675C75;
+    --lilla:#D9CCE8;       /* testo secondario sul viola */
     --lato:16px;
-    --stretto:72%;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%}
-  body{background:var(--carta);color:var(--inchiostro);font-family:'Archivo',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  body{background:var(--fondo);color:var(--testo);font-family:'Bricolage Grotesque',system-ui,-apple-system,sans-serif;font-optical-sizing:auto;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
   img{display:block;max-width:100%;color:transparent;font-size:0}
   button{font:inherit;color:inherit}
-  :focus-visible{outline:3px solid var(--arancio);outline-offset:2px}
-  .contenitore{max-width:1120px;margin:0 auto;padding:0 var(--lato)}
-  .titolo-stretto{font-stretch:var(--stretto);font-weight:800;letter-spacing:-.005em;line-height:.94}
+  :focus-visible{outline:3px solid var(--lattuga);outline-offset:3px}
+  .contenitore{max-width:1140px;margin:0 auto;padding:0 var(--lato)}
+  .titolo-stretto{font-weight:800;letter-spacing:-.035em;line-height:.95}
 
-  /* ---------- Testata con ricerca ---------- */
-  .testata{position:sticky;top:0;z-index:40;background:var(--carta);border-bottom:2px solid var(--inchiostro)}
-  .testata .contenitore{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;align-items:center;padding-top:10px;padding-bottom:10px}
-  .logo{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:#1F8A3C}
-  .logo svg{width:30px;height:30px;flex:none}
-  .marchio{font-family:'Comfortaa','Trebuchet MS',sans-serif;font-weight:700;font-size:18px;white-space:nowrap}
-  .marchio .o{color:var(--arancio)}
+  /* ---------- Testata ---------- */
+  .testata{position:sticky;top:0;z-index:40;background:var(--melanzana);color:var(--bianco)}
+  .testata .contenitore{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;align-items:center;padding-top:10px;padding-bottom:12px}
+  .logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--bianco)}
+  .logo svg{width:32px;height:32px;flex:none}
+  .marchio{font-family:'Comfortaa','Trebuchet MS',sans-serif;font-weight:700;font-size:19px;white-space:nowrap}
+  .marchio .o{color:var(--zucca)}
   .ricerca{position:relative;grid-column:1/-1}
   .ricerca label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-  .ricerca input{width:100%;font:inherit;font-size:17px;background:var(--banco);border:2px solid transparent;border-radius:999px;padding:11px 18px 11px 44px;color:var(--inchiostro)}
-  .ricerca input::placeholder{color:#6B7076}
-  .ricerca input:focus{outline:none;background:var(--carta);border-color:var(--inchiostro)}
-  .ricerca .lente{position:absolute;left:16px;top:50%;width:18px;height:18px;transform:translateY(-50%);pointer-events:none}
-  .scelte{position:absolute;left:0;right:0;top:calc(100% + 8px);background:var(--carta);border:2px solid var(--inchiostro);border-radius:16px;padding:6px;box-shadow:0 14px 0 -6px var(--giallo);display:none}
+  .ricerca input{width:100%;font:inherit;font-size:17px;background:var(--bianco);border:0;border-radius:999px;padding:13px 18px 13px 46px;color:var(--testo)}
+  .ricerca input::placeholder{color:#857A92}
+  .ricerca input:focus{outline:none;box-shadow:0 0 0 3px var(--lattuga)}
+  .ricerca .lente{position:absolute;left:17px;top:50%;width:18px;height:18px;transform:translateY(-50%);pointer-events:none}
+  .scelte{position:absolute;left:0;right:0;top:calc(100% + 8px);background:var(--bianco);color:var(--testo);border-radius:22px;padding:8px;box-shadow:0 20px 50px rgba(45,24,70,.35);display:none}
   .scelte.aperte{display:block}
-  .scelte button{display:flex;align-items:baseline;justify-content:space-between;gap:12px;width:100%;text-align:left;background:none;border:0;border-radius:10px;padding:12px;cursor:pointer}
-  .scelte button:hover,.scelte button:focus-visible{background:var(--banco)}
+  .scelte button{display:flex;align-items:baseline;justify-content:space-between;gap:12px;width:100%;text-align:left;background:none;border:0;border-radius:14px;padding:13px 14px;cursor:pointer}
+  .scelte button:hover,.scelte button:focus-visible{background:var(--fondo)}
   .scelte button b{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .scelte button span{font-size:14px;color:var(--grigio);white-space:nowrap}
-  .scelte .primo{background:var(--arancio)}
+  .scelte .primo{background:var(--zucca)}
   .scelte .primo:hover,.scelte .primo:focus-visible{background:#F58E30}
-  .scelte .primo span{color:var(--inchiostro)}
+  .scelte .primo span{color:var(--testo)}
 
-  /* ---------- Lavoro del mese ---------- */
-  .mese{padding:18px 0 8px}
-  .mese .contenitore{display:grid;gap:18px}
-  .mese-foto{position:relative;aspect-ratio:4/3;border-radius:18px;overflow:hidden;background:var(--banco)}
-  .mese-foto img{width:100%;height:100%;object-fit:cover}
-  .cartellino{position:relative;display:inline-block;background:var(--giallo);color:var(--inchiostro);font-stretch:var(--stretto);font-weight:800;font-size:18px;line-height:1;padding:9px 14px 9px 28px;border-radius:4px 10px 10px 4px}
-  .cartellino::before{content:"";position:absolute;left:10px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--carta);box-shadow:inset 0 0 0 1.5px rgba(0,0,0,.25)}
-  .mese-foto .cartellino{position:absolute;left:14px;top:14px;font-size:20px;transform:rotate(-3deg)}
-  .mese h1{font-size:clamp(50px,14vw,104px)}
-  .consiglio{font-size:19px;line-height:1.45;max-width:30ch;margin-top:12px}
-  .azione{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;min-height:56px;padding:0 26px;border:0;border-radius:999px;background:var(--inchiostro);color:var(--carta);font-weight:700;font-size:17px;cursor:pointer;text-decoration:none}
-  .azione:hover{background:#2A2A2A}
-  .azione .bollo{width:10px;height:10px;border-radius:50%;background:var(--arancio)}
+  /* ---------- Apertura: il lavoro del mese ---------- */
+  .mese{background:var(--melanzana);color:var(--bianco);border-radius:0 0 36px 36px;padding:8px 0 30px;overflow:hidden}
+  .mese .contenitore{display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+  .mese-foto{position:relative;aspect-ratio:4/3;border-radius:30px;background:var(--melanzana-2)}
+  .mese-foto img{width:100%;height:100%;object-fit:cover;border-radius:30px}
+  .cartellino{display:inline-block;background:var(--lattuga);color:var(--melanzana);font-weight:800;line-height:1.05;border-radius:999px;padding:8px 16px}
+  .mese-foto .cartellino{position:absolute;right:10px;bottom:-12px;display:flex;align-items:center;justify-content:center;width:104px;height:104px;padding:10px;border-radius:50%;font-size:22px;text-align:center;letter-spacing:-.02em;transform:rotate(-10deg);box-shadow:0 10px 24px rgba(0,0,0,.25)}
+  .mese h1{font-size:clamp(46px,13vw,112px)}
+  .consiglio{font-size:19px;line-height:1.45;color:var(--lilla);max-width:32ch;margin-top:14px}
+  .azione{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;min-height:58px;padding:0 28px;border:0;border-radius:999px;background:var(--zucca);color:var(--testo);font-weight:700;font-size:18px;cursor:pointer;box-shadow:0 8px 0 -2px #B95C08}
+  .azione:hover{background:#F58E30}
+  .azione:active{transform:translateY(3px);box-shadow:0 5px 0 -2px #B95C08}
+  .azione .bollo{display:none}
 
-  .altri{margin-top:26px;border-top:2px solid var(--inchiostro)}
-  .altri h2{font-size:15px;font-weight:600;color:var(--grigio);padding:12px 0 2px}
-  .altri ul{list-style:none}
-  .altri li{border-bottom:1px solid var(--linea)}
-  .altri button{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;width:100%;text-align:left;background:none;border:0;padding:14px 0;cursor:pointer}
-  .altri b{display:block;font-size:18px;font-weight:700}
-  .altri small{display:block;font-size:15px;color:var(--grigio);margin-top:1px}
-  .altri .cerca{font-size:14px;font-weight:700;border:2px solid var(--inchiostro);border-radius:999px;padding:7px 14px;white-space:nowrap}
-  .altri button:hover .cerca{background:var(--arancio);border-color:var(--arancio)}
+  .altri{margin-top:28px}
+  .altri h2{font-size:15px;font-weight:600;color:var(--lilla);margin-bottom:10px}
+  .altri ul{list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 0 4px;scrollbar-width:none}
+  .altri ul::-webkit-scrollbar{display:none}
+  .altri li{scroll-snap-align:start}
+  .altri button{display:flex;flex-direction:column;justify-content:space-between;gap:14px;width:100%;height:100%;text-align:left;background:var(--melanzana-2);border:0;border-radius:22px;padding:16px;cursor:pointer;color:var(--bianco)}
+  .altri b{display:block;font-size:19px;font-weight:700;letter-spacing:-.01em}
+  .altri small{display:block;font-size:15px;color:var(--lilla);margin-top:2px}
+  .altri .cerca{align-self:flex-start;font-size:14px;font-weight:700;background:var(--lattuga);color:var(--melanzana);border-radius:999px;padding:7px 14px}
+  .altri button:hover .cerca{background:var(--bianco)}
 
-  /* ---------- Reparti ---------- */
-  .sezione{padding:46px 0 0}
-  .sezione h2.grande{font-size:clamp(38px,9vw,64px)}
-  .sezione .sotto{color:var(--grigio);margin-top:6px;max-width:44ch}
-  .reparti{display:grid;grid-auto-flow:column;grid-auto-columns:68%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:18px calc(var(--lato) * -1) 0;padding:0 var(--lato) 10px;scrollbar-width:none}
-  .reparti::-webkit-scrollbar{display:none}
-  .reparto{scroll-snap-align:start;position:relative;display:block;width:100%;aspect-ratio:3/4;border:0;padding:0;border-radius:18px;overflow:hidden;background:var(--banco);cursor:pointer;text-align:left}
-  .reparto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
-  .reparto:hover img{transform:scale(1.04)}
-  .reparto .cartellino{position:absolute;left:12px;bottom:12px;font-size:22px;max-width:calc(100% - 24px)}
-  .reparto .cartellino small{display:block;font-stretch:100%;font-weight:500;font-size:13px;margin-top:4px;line-height:1.2}
+  /* ---------- Sezioni ---------- */
+  .sezione{padding:44px 0 0}
+  .sezione h2.grande{font-size:clamp(38px,9.5vw,68px)}
+  .sezione .sotto{color:var(--grigio);margin-top:8px;max-width:44ch}
 
-  /* ---------- Prima di comprare ---------- */
-  .consigli{list-style:none;margin-top:18px;display:grid;gap:0}
-  .consigli li{border-top:2px solid var(--inchiostro);padding:16px 0 18px}
-  .consigli b{display:block;font-stretch:var(--stretto);font-weight:800;font-size:28px;line-height:1}
-  .consigli p{margin-top:6px;max-width:52ch}
-  .consigli button{margin-top:10px;background:none;border:0;font-weight:700;text-decoration:underline;text-decoration-color:var(--arancio);text-decoration-thickness:3px;text-underline-offset:4px;cursor:pointer;padding:4px 0}
+  /* Reparti a mosaico */
+  .reparti{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:150px;grid-auto-flow:dense;gap:10px;margin-top:20px}
+  .reparto{position:relative;display:block;width:100%;height:100%;border:0;padding:0;border-radius:26px;overflow:hidden;background:var(--lilla);cursor:pointer;text-align:left}
+  .reparto:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .reparto:nth-child(4),.reparto:nth-child(7){grid-row:span 2}
+  .reparto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+  .reparto:hover img{transform:scale(1.05)}
+  .reparto .cartellino{position:absolute;left:10px;bottom:10px;max-width:calc(100% - 20px);background:var(--bianco);color:var(--testo);font-size:16px;padding:8px 14px}
+  .reparto .cartellino small{display:none}
+  .reparto:nth-child(1) .cartellino{font-size:22px;padding:10px 18px}
+  .reparto:nth-child(1) .cartellino small{display:block;font-weight:500;font-size:14px;color:var(--grigio);margin-top:2px}
 
-  /* ---------- Negozi ---------- */
-  .negozi{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;list-style:none}
-  .negozi li{background:var(--banco);border-radius:16px;padding:16px}
-  .negozi b{display:block;font-stretch:var(--stretto);font-weight:800;font-size:26px;line-height:1}
-  .negozi span{display:block;font-size:15px;color:var(--grigio);margin-top:6px}
+  /* Prima di comprare */
+  .consigli{list-style:none;margin-top:20px;display:grid;gap:10px}
+  .consigli li{background:var(--bianco);border-radius:26px;padding:22px}
+  .consigli b{display:inline-block;font-weight:800;font-size:15px;background:var(--fondo);color:var(--melanzana);border-radius:999px;padding:5px 12px}
+  .consigli p{margin-top:12px;font-size:18px;line-height:1.45;max-width:46ch}
+  .consigli button{margin-top:14px;background:none;border:0;font-weight:700;color:var(--melanzana);text-decoration:underline;text-decoration-color:var(--zucca);text-decoration-thickness:3px;text-underline-offset:5px;cursor:pointer;padding:4px 0}
 
-  footer{margin-top:56px;background:var(--inchiostro);color:#C9CCD0;font-size:14px;line-height:1.6;padding:28px 0 calc(28px + env(safe-area-inset-bottom))}
+  /* Dove cerchiamo */
+  .blocco-negozi{background:var(--melanzana);color:var(--bianco);border-radius:30px;padding:26px 20px;margin-top:44px}
+  .blocco-negozi h2.grande{font-size:clamp(34px,8vw,56px)}
+  .blocco-negozi .sotto{color:var(--lilla)}
+  .negozi{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;list-style:none}
+  .negozi li{background:var(--melanzana-2);border-radius:20px;padding:16px}
+  .negozi b{display:block;font-weight:800;font-size:24px;letter-spacing:-.02em;color:var(--lattuga)}
+  .negozi span{display:block;font-size:15px;color:var(--lilla);margin-top:4px}
+
+  footer{margin-top:40px;color:var(--grigio);font-size:14px;line-height:1.6;padding:24px 0 calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--lilla)}
   footer p+p{margin-top:10px}
-  footer a{color:var(--carta)}
-  footer .marchio{color:var(--carta);font-size:20px;display:block;margin-bottom:12px}
+  footer a{color:var(--melanzana)}
+  footer .marchio{color:var(--melanzana);font-size:20px;display:block;margin-bottom:10px}
 
   /* ---------- Pannello negozi ---------- */
   dialog.pannello{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;margin:0}
-  dialog.pannello::backdrop{background:rgba(0,0,0,.55)}
-  .pannello-corpo{position:absolute;left:0;right:0;bottom:0;margin:0 auto;max-width:560px;background:var(--carta);border-radius:22px 22px 0 0;padding:10px var(--lato) calc(18px + env(safe-area-inset-bottom));animation:sale .26s cubic-bezier(.2,.8,.2,1)}
+  dialog.pannello::backdrop{background:rgba(31,18,48,.6)}
+  .pannello-corpo{position:absolute;left:0;right:0;bottom:0;margin:0 auto;max-width:560px;background:var(--bianco);color:var(--testo);border-radius:30px 30px 0 0;padding:10px var(--lato) calc(18px + env(safe-area-inset-bottom));animation:sale .26s cubic-bezier(.2,.8,.2,1)}
   @keyframes sale{from{transform:translateY(100%)}to{transform:none}}
-  .maniglia{width:40px;height:5px;border-radius:3px;background:var(--linea);margin:0 auto 12px}
-  .pannello-testa{display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:center}
-  .pannello-testa img{width:76px;height:76px;border-radius:12px;object-fit:cover;background:var(--banco)}
-  .pannello h3{font-stretch:var(--stretto);font-weight:800;font-size:30px;line-height:.95}
+  .maniglia{width:40px;height:5px;border-radius:3px;background:var(--lilla);margin:0 auto 14px}
+  .pannello-testa{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center}
+  .pannello-testa img{width:72px;height:72px;border-radius:20px;object-fit:cover;background:var(--lilla)}
+  .pannello h3{font-weight:800;font-size:28px;letter-spacing:-.03em;line-height:1}
   .pannello p{color:var(--grigio);font-size:15px;margin-top:4px}
-  .link-negozi{display:grid;gap:8px;margin-top:16px}
-  .link-negozi a{display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:0 18px;border-radius:14px;border:2px solid var(--inchiostro);text-decoration:none;color:var(--inchiostro);font-weight:700}
+  .link-negozi{display:grid;gap:8px;margin-top:18px}
+  .link-negozi a{display:flex;align-items:center;justify-content:space-between;min-height:58px;padding:0 20px;border-radius:999px;background:var(--fondo);text-decoration:none;color:var(--testo);font-weight:700}
   .link-negozi a span{font-weight:500;font-size:14px;color:var(--grigio)}
-  .link-negozi a:first-child{background:var(--arancio);border-color:var(--arancio)}
-  .link-negozi a:first-child span{color:var(--inchiostro)}
+  .link-negozi a:first-child{background:var(--zucca)}
+  .link-negozi a:first-child span{color:var(--testo)}
   .chiudi{margin-top:8px;width:100%;font-weight:600;color:var(--grigio);background:none;border:0;padding:12px;cursor:pointer}
 
   @media(min-width:800px){
     :root{--lato:32px}
-    .testata .contenitore{grid-template-columns:auto minmax(0,560px);justify-content:space-between}
+    .testata .contenitore{grid-template-columns:auto minmax(0,560px);justify-content:space-between;padding-bottom:10px}
     .ricerca{grid-column:auto}
-    .mese{padding-top:34px}
-    .mese .contenitore{grid-template-columns:1.05fr 1fr;align-items:center;gap:44px}
+    .mese{padding:30px 0 44px;border-radius:0 0 48px 48px}
+    .mese .contenitore{grid-template-columns:1.1fr 1fr;align-items:center;gap:52px}
     .mese-foto{order:2;aspect-ratio:4/5}
-    .reparti{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible;margin:18px 0 0;padding:0}
-    .reparto{aspect-ratio:4/3}
-    .consigli{grid-template-columns:repeat(3,1fr);gap:28px}
+    .mese-foto .cartellino{width:140px;height:140px;font-size:26px;right:-24px;bottom:22px}
+    .altri ul{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible;margin:0;padding:0}
+    .reparti{grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:14px}
+    .reparto:nth-child(4),.reparto:nth-child(7){grid-row:auto}
+    .consigli{grid-template-columns:repeat(3,1fr);gap:14px}
+    .blocco-negozi{padding:40px}
     .negozi{grid-template-columns:repeat(4,1fr)}
-    .pannello-corpo{bottom:auto;top:50%;transform:translateY(-50%);border-radius:22px;animation:none}
+    .pannello-corpo{bottom:auto;top:50%;transform:translateY(-50%);border-radius:30px;animation:none}
   }
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -143,12 +156,12 @@
 
 <header class="testata"><div class="contenitore">
   <a href="#" class="logo" aria-label="OrtoCasa Help, torna all'inizio">
-    <svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="33" r="18" stroke="#F07F1A" stroke-width="9"/><g transform="translate(28,18)"><path d="M0 3 L0 -3" stroke="#2DA14A" stroke-width="2.6" stroke-linecap="round"/><path d="M0 -2 C-1.5 -9 -7 -13 -12.5 -12.5 C-11.5 -6 -5.5 -2 0 -2 Z" fill="#2DA14A"/><path d="M0 -2 C1.5 -9 7 -13 12.5 -12.5 C11.5 -6 5.5 -2 0 -2 Z" fill="#2DA14A"/></g></svg>
+    <svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="33" r="18" stroke="#F07F1A" stroke-width="9"/><g transform="translate(28,18)"><path d="M0 3 L0 -3" stroke="#C9E86A" stroke-width="2.6" stroke-linecap="round"/><path d="M0 -2 C-1.5 -9 -7 -13 -12.5 -12.5 C-11.5 -6 -5.5 -2 0 -2 Z" fill="#C9E86A"/><path d="M0 -2 C1.5 -9 7 -13 12.5 -12.5 C11.5 -6 5.5 -2 0 -2 Z" fill="#C9E86A"/></g></svg>
     <span class="marchio"><span class="o">O</span>rtoCasa Help</span>
   </a>
   <form class="ricerca" id="modulo-ricerca" role="search" novalidate>
     <label for="cosa">Cerca un prodotto</label>
-    <svg class="lente" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" stroke="#000" stroke-width="2.2"/><path d="M13 13l5 5" stroke="#000" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <svg class="lente" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" stroke="#2D1846" stroke-width="2.2"/><path d="M13 13l5 5" stroke="#2D1846" stroke-width="2.2" stroke-linecap="round"/></svg>
     <input id="cosa" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" maxlength="80" placeholder="Cerca: motozappa, semi, tubo..." aria-controls="scelte" aria-expanded="false">
     <div class="scelte" id="scelte" role="group" aria-label="Scegli il negozio"></div>
   </form>
@@ -184,15 +197,17 @@
     </ul>
   </div></section>
 
-  <section class="sezione" aria-labelledby="titolo-negozi"><div class="contenitore">
-    <h2 class="grande titolo-stretto" id="titolo-negozi">Dove cerchiamo</h2>
-    <p class="sotto">Compri direttamente sul negozio, con i suoi prezzi, spedizioni e garanzie.</p>
-    <ul class="negozi">
-      <li><b>AgriEuro</b><span>Macchine e attrezzi per orto e giardino</span></li>
-      <li><b>Amazon</b><span>Tanta scelta, consegna veloce</span></li>
-      <li><b>ManoMano</b><span>Fai da te e giardinaggio</span></li>
-      <li><b>eBay</b><span>Usato e ricambi</span></li>
-    </ul>
+  <section aria-labelledby="titolo-negozi"><div class="contenitore">
+    <div class="blocco-negozi">
+      <h2 class="grande titolo-stretto" id="titolo-negozi">Dove cerchiamo</h2>
+      <p class="sotto">Compri direttamente sul negozio, con i suoi prezzi, spedizioni e garanzie.</p>
+      <ul class="negozi">
+        <li><b>AgriEuro</b><span>Macchine e attrezzi per orto e giardino</span></li>
+        <li><b>Amazon</b><span>Tanta scelta, consegna veloce</span></li>
+        <li><b>ManoMano</b><span>Fai da te e giardinaggio</span></li>
+        <li><b>eBay</b><span>Usato e ricambi</span></li>
+      </ul>
+    </div>
   </div></section>
 </main>
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.0.0 — 21/10/2026
+
+- Nuova palette "melanzana e zucca": viola melanzana per testata e blocchi, arancio del logo per le azioni, verde lattuga per i dettagli. Lo stile bianco e nero della 3.0.0 è stato scartato.
+- Font Bricolage Grotesque (variabile, con dimensione ottica) al posto di Archivo.
+- Apertura del mese su fondo viola con bollino del mese e lavori collegati scorrevoli.
+- Reparti a mosaico di foto grandi; consigli in schede bianche; negozi in un blocco viola.
+- Contenuti, link e calendario invariati rispetto alla 3.0.0.
+
 ## 3.0.0 — 21/10/2026
 
 - Nuovo stile negozio: fondo bianco, nero e arancio del logo, niente più verde di fondo.
