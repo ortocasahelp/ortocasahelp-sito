@@ -1,5 +1,7 @@
 # OrtoCasa Help — sito
 
+Sito online: **[OrtoCasa Help](https://lustrous-concha-651962.netlify.app/)** · Guide: [motozappa](https://lustrous-concha-651962.netlify.app/guide/motozappa/), [robot tagliaerba](https://lustrous-concha-651962.netlify.app/guide/robot-tagliaerba/), [irrigazione a goccia](https://lustrous-concha-651962.netlify.app/guide/irrigazione-a-goccia/)
+
 Sito statico di ricerca rapida per orto e giardino: l'utente scrive cosa cerca e viene portato ai risultati di AgriEuro, Amazon, ManoMano o eBay tramite link di affiliazione.
 
 ## File
@@ -42,6 +44,7 @@ File: `.github/workflows/controlli.yml`.
 
 - **Test della pagina**: a ogni proposta di modifica (pull request) e a ogni pubblicazione. Una proposta si unisce a `main` solo se i test passano.
 - **Verifica del sito online**: dopo ogni pubblicazione su `main`, ogni mattina alle 05:17 UTC e a richiesta (Actions → Controlli → Run workflow). Controlla con `tests/verifica_online.py` che la home online sia identica a `index.html`, che font, foto e pagine AgriEuro rispondano e che le ricerche nei negozi funzionino (queste ultime come avvisi). Poi ripete i test sul sito vero e scatta le schermate con le foto.
+- **IndexNow**: dopo ogni pubblicazione verificata, `strumenti/indexnow.py` segnala le pagine della sitemap a Bing e agli altri motori aderenti. La chiave è il file `<32 caratteri>.txt` nella radice (pubblica per definizione).
 - Gli esiti (`esito.txt`, `verifica-online.md`, `test-online.txt`, `schermate/*.png`) vengono salvati nel ramo **`controlli`**, sovrascritto a ogni esecuzione.
 
 ## Pubblicazione

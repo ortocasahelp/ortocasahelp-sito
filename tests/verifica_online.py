@@ -67,7 +67,8 @@ stato, tipo, corpo, _ = scarica(BASE + "/fonts.css")
 esito("fonts.css online", stato == 200 and b"@font-face" in corpo, f"HTTP {stato}")
 
 # 2b. Guide, sitemap e robots
-for percorso in ["guide/motozappa/", "guide/robot-tagliaerba/", "guide/irrigazione-a-goccia/", "guide/guida.css", "guide/guida.js", "negozi.js", "sitemap.xml", "robots.txt"]:
+chiave_indexnow = [p.name for p in RADICE.glob("*.txt") if re.fullmatch(r"[0-9a-f]{32}\.txt", p.name)]
+for percorso in chiave_indexnow + ["guide/motozappa/", "guide/robot-tagliaerba/", "guide/irrigazione-a-goccia/", "guide/guida.css", "guide/guida.js", "negozi.js", "sitemap.xml", "robots.txt"]:
     stato, _, corpo, _ = scarica(f"{BASE}/{percorso}")
     locale_file = RADICE / (percorso + "index.html" if percorso.endswith("/") else percorso)
     identico = locale_file.exists() and corpo == locale_file.read_bytes()
