@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.2.0 — 21/10/2026
+
+- Controlli automatici su GitHub Actions: test a ogni modifica, verifica del sito online dopo ogni pubblicazione e ogni mattina, schermate con le foto vere salvate nel ramo `controlli`.
+- Nuovo `tests/verifica_online.py`; `tests/test_sito.py` può provare il sito pubblicato (`SITO_URL`).
+
 ## 4.1.0 — 21/10/2026 (prima pubblicazione della nuova grafica)
 
 - Telefono: la ricerca resta fissa in alto scorrendo, il logo scorre via e lascia più spazio.

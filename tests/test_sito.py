@@ -1,11 +1,14 @@
 """Test end-to-end della home OrtoCasa Help (Playwright, Chromium headless).
 
 Uso:  python3 tests/test_sito.py [cartella-schermate] [cartella-foto-locali]
+      SITO_URL=https://... python3 tests/test_sito.py [cartella-schermate]
+      (con SITO_URL prova il sito pubblicato, con le foto vere; i negozi restano bloccati)
 Senza la seconda cartella le immagini esterne (Unsplash) vengono bloccate:
 il test verifica logica e layout, non la disponibilità di servizi terzi.
 Con la seconda cartella, le foto vengono servite da file locali <id>.jpg
 (solo per schermate realistiche).
 """
+import os
 import pathlib
 import re
 import sys
@@ -14,7 +17,9 @@ from urllib.parse import urlparse, parse_qs
 from playwright.sync_api import sync_playwright
 
 RADICE = pathlib.Path(__file__).resolve().parent.parent
-PAGINA = (RADICE / "index.html").as_uri()
+SITO_URL = os.environ.get("SITO_URL", "").rstrip("/")
+PAGINA = SITO_URL + "/" if SITO_URL else (RADICE / "index.html").as_uri()
+CONSENTITI = (SITO_URL + "/", "https://images.unsplash.com/") if SITO_URL else ()
 SCHERMATE = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else None
 FOTO_LOCALI = pathlib.Path(sys.argv[2]) if len(sys.argv) > 2 else None
 
@@ -27,12 +32,25 @@ def verifica(nome, condizione, dettaglio=""):
 
 def instrada(route):
     url = route.request.url
-    if url.startswith("file://"):
+    if url.startswith("file://") or url.startswith(CONSENTITI or ("\0",)):
         return route.continue_()
     m = re.match(r"https://images\.unsplash\.com/(photo-[0-9a-f-]+)", url)
     if FOTO_LOCALI and m and (FOTO_LOCALI / (m.group(1) + ".jpg")).exists():
         return route.fulfill(path=str(FOTO_LOCALI / (m.group(1) + ".jpg")), content_type="image/jpeg")
     return route.abort()
+
+
+def carica_foto(pg):
+    """Scorre la pagina per far partire le foto caricate in ritardo, poi torna in cima."""
+    if SITO_URL:
+        altezza = pg.evaluate("document.body.scrollHeight")
+        for y in range(0, altezza, 500):
+            pg.evaluate(f"window.scrollTo(0, {y})")
+            pg.wait_for_timeout(150)
+        pg.wait_for_load_state("networkidle")
+        pg.wait_for_function("() => [...document.images].every(i => i.complete)", timeout=20000)
+    pg.evaluate("window.scrollTo(0, 0)")
+    pg.wait_for_timeout(400)
 
 
 with sync_playwright() as p:
@@ -134,7 +152,7 @@ with sync_playwright() as p:
     verifica("3 lavori del mese", pagina.locator("#altri button").count() == 3)
     if SCHERMATE:
         SCHERMATE.mkdir(parents=True, exist_ok=True)
-        pagina.wait_for_timeout(400)
+        carica_foto(pagina)
         pagina.screenshot(path=str(SCHERMATE / "1-telefono-inizio.png"))
         pagina.screenshot(path=str(SCHERMATE / "2-telefono-intera.png"), full_page=True)
     pagina.click("#mese-azione")
@@ -189,7 +207,7 @@ with sync_playwright() as p:
     pd.goto(PAGINA)
     verifica("Desktop: nessuno scorrimento orizzontale", pd.evaluate("() => document.documentElement.scrollWidth <= window.innerWidth"))
     if SCHERMATE:
-        pd.wait_for_timeout(400)
+        carica_foto(pd)
         pd.screenshot(path=str(SCHERMATE / "4-computer.png"), full_page=True)
 
     verifica("Nessun errore JavaScript", not errori_js, "; ".join(errori_js))

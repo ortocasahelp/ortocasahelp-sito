@@ -8,7 +8,9 @@ Sito statico di ricerca rapida per orto e giardino: l'utente scrive cosa cerca e
 |---|---|
 | `index.html` | Pagina completa: stile, contenuti e script. In cima allo script c'è la **configurazione**: codici affiliato (`AFFILIATI`), foto (`F`), calendario dell'orto (`MESI`, un lavoro principale + 3 lavori per mese) e reparti (`REPARTI`). |
 | `fonts.css` | Font Bricolage Grotesque (variabile) e Comfortaa incorporati (licenza SIL OFL 1.1, da @fontsource 5.3.0). Nessuna chiamata a Google Fonts. |
-| `tests/test_sito.py` | Test automatici end-to-end (Playwright). |
+| `tests/test_sito.py` | Test automatici end-to-end (Playwright); con `SITO_URL` prova il sito pubblicato. |
+| `tests/verifica_online.py` | Verifica del sito pubblicato, delle foto e dei link ai negozi (solo libreria standard). |
+| `.github/workflows/controlli.yml` | Controlli automatici su GitHub. |
 | `CHANGELOG.md` | Storico delle versioni. |
 
 ## Inserire i codici affiliato
@@ -30,6 +32,14 @@ Basta aprire `index.html` nel browser. Test automatici:
 pip install playwright && python -m playwright install chromium
 python3 tests/test_sito.py cartella-schermate   # la cartella è facoltativa
 ```
+
+## Controlli automatici (GitHub Actions)
+
+File: `.github/workflows/controlli.yml`.
+
+- **Test della pagina**: a ogni proposta di modifica (pull request) e a ogni pubblicazione. Una proposta si unisce a `main` solo se i test passano.
+- **Verifica del sito online**: dopo ogni pubblicazione su `main`, ogni mattina alle 05:17 UTC e a richiesta (Actions → Controlli → Run workflow). Controlla con `tests/verifica_online.py` che la home online sia identica a `index.html`, che font, foto e pagine AgriEuro rispondano e che le ricerche nei negozi funzionino (queste ultime come avvisi). Poi ripete i test sul sito vero e scatta le schermate con le foto.
+- Gli esiti (`esito.txt`, `verifica-online.md`, `test-online.txt`, `schermate/*.png`) vengono salvati nel ramo **`controlli`**, sovrascritto a ogni esecuzione.
 
 ## Pubblicazione
 

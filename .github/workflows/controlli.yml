@@ -1,0 +1,89 @@
+# Controlli automatici di OrtoCasa Help.
+# - test:   a ogni proposta di modifica e a ogni pubblicazione, prova la pagina in locale (43+ verifiche).
+# - online: dopo ogni pubblicazione su main, ogni mattina e a richiesta, verifica il sito vero su Netlify,
+#           le foto e i link ai negozi, scatta le schermate con le foto vere e salva tutto nel ramo "controlli".
+name: Controlli
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 5 * * *"   # ogni giorno alle 05:17 UTC (07:17 ora italiana d'estate)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: controlli-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  SITO: https://lustrous-concha-651962.netlify.app
+
+jobs:
+  test:
+    name: Test della pagina
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installa Playwright e Chromium
+        run: |
+          pip install playwright==1.48.0
+          python -m playwright install --with-deps chromium
+      - name: Esegui i test
+        run: python tests/test_sito.py
+
+  online:
+    name: Verifica del sito online
+    if: github.event_name != 'pull_request'
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installa Playwright e Chromium
+        run: |
+          pip install playwright==1.48.0
+          python -m playwright install --with-deps chromium
+      - name: Verifica pubblicazione, foto e link
+        id: verifica
+        continue-on-error: true
+        run: |
+          mkdir -p esiti
+          python tests/verifica_online.py "$SITO" esiti/verifica-online.md
+      - name: Test e schermate sul sito vero
+        id: schermate
+        continue-on-error: true
+        run: SITO_URL="$SITO" python tests/test_sito.py esiti/schermate 2>&1 | tee esiti/test-online.txt; exit ${PIPESTATUS[0]}
+      - name: Salva gli esiti nel ramo "controlli"
+        if: always()
+        run: |
+          cd esiti
+          {
+            echo "commit: $GITHUB_SHA"
+            echo "evento: $GITHUB_EVENT_NAME"
+            echo "verifica: ${{ steps.verifica.outcome }}"
+            echo "schermate: ${{ steps.schermate.outcome }}"
+            date -u +"data: %Y-%m-%dT%H:%M:%SZ"
+          } > esito.txt
+          cat verifica-online.md >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+          git init -q -b controlli
+          git config user.name "controlli-automatici"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Esiti controlli ${GITHUB_SHA::7} ($GITHUB_EVENT_NAME)"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" controlli
+      - name: Fallisci se qualcosa non va
+        if: steps.verifica.outcome != 'success' || steps.schermate.outcome != 'success'
+        run: |
+          echo "Verifica: ${{ steps.verifica.outcome }} - Schermate: ${{ steps.schermate.outcome }}"
+          exit 1
