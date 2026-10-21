@@ -1,6 +1,6 @@
 # OrtoCasa Help — sito
 
-Sito online: **[OrtoCasa Help](https://lustrous-concha-651962.netlify.app/)** · Guide: [motozappa](https://lustrous-concha-651962.netlify.app/guide/motozappa/), [robot tagliaerba](https://lustrous-concha-651962.netlify.app/guide/robot-tagliaerba/), [irrigazione a goccia](https://lustrous-concha-651962.netlify.app/guide/irrigazione-a-goccia/)
+Sito online: **[OrtoCasa Help](https://ortocasahelp.netlify.app/)** · Guide: [motozappa](https://ortocasahelp.netlify.app/guide/motozappa/), [robot tagliaerba](https://ortocasahelp.netlify.app/guide/robot-tagliaerba/), [irrigazione a goccia](https://ortocasahelp.netlify.app/guide/irrigazione-a-goccia/)
 
 Sito statico di ricerca rapida per orto e giardino: l'utente scrive cosa cerca e viene portato ai risultati di AgriEuro, Amazon, ManoMano o eBay tramite link di affiliazione.
 

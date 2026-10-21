@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.3.2 — 21/10/2026
+
+- Nuovo indirizzo del sito: https://ortocasahelp.netlify.app (prima lustrous-concha-651962.netlify.app). Aggiornati canonical, sitemap, robots, guide, IndexNow e controlli.
+
 ## 4.3.1 — 21/10/2026
 
 - IndexNow: a ogni pubblicazione le pagine della sitemap vengono segnalate in automatico a Bing e agli altri motori aderenti, senza bisogno di account (`strumenti/indexnow.py`, chiave pubblica nella radice).
