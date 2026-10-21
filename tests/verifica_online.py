@@ -3,8 +3,8 @@
 Uso:  python3 tests/verifica_online.py https://ortocasahelp.netlify.app [report.md]
 
 Controlli:
-  1. La home online è identica a index.html del repository (attende fino a 10 minuti
-     che Netlify finisca la pubblicazione).
+  1. La home e le altre pagine online sono identiche al repository (attende fino a 10 minuti
+     che Netlify finisca di pubblicarle tutte).
   2. fonts.css è online.
   3. Ogni foto Unsplash usata dal sito risponde con un'immagine.
   4. Le pagine categoria AgriEuro esistono.
@@ -48,31 +48,47 @@ def esito(nome, ok, dettaglio="", bloccante=True):
     print(f"{simbolo:7} {nome}" + (f"  -> {dettaglio}" if dettaglio else ""), flush=True)
 
 
-# 1. Home identica al repository
+# 1. Home e pagine identiche al repository. Si attende che TUTTE coincidano, non solo la home:
+#    una modifica che non tocca index.html (es. una nuova guida) altrimenti verrebbe controllata
+#    prima che Netlify abbia finito di pubblicarla.
 locale = (RADICE / "index.html").read_bytes()
+chiave_indexnow = [p.name for p in RADICE.glob("*.txt") if re.fullmatch(r"[0-9a-f]{32}\.txt", p.name)]
+PERCORSI = chiave_indexnow + ["privacy/", "guide/motozappa/", "guide/robot-tagliaerba/", "guide/irrigazione-a-goccia/", "guide/decespugliatore/", "guide/guida.css", "guide/guida.js", "negozi.js", "sitemap.xml", "robots.txt"]
+
+
+def file_locale(percorso):
+    return RADICE / (percorso + "index.html" if percorso.endswith("/") else percorso)
+
+
+def stato_online():
+    """Scarica home e PERCORSI; restituisce {percorso: (stato HTTP, identico al repository)}."""
+    risultati = {}
+    for percorso in [""] + PERCORSI:
+        stato, _, corpo, _ = scarica(f"{BASE}/{percorso}")
+        locale_file = file_locale(percorso) if percorso else RADICE / "index.html"
+        risultati[percorso] = (stato, stato == 200 and locale_file.exists() and corpo == locale_file.read_bytes())
+    return risultati
+
+
 inizio = time.time()
 while True:
-    stato, _, corpo, _ = scarica(BASE + "/")
-    if stato == 200 and corpo == locale:
-        esito("Home online aggiornata all'ultima versione", True, f"dopo {int(time.time() - inizio)} s")
-        break
-    if time.time() - inizio > ATTESA_MAX_S:
-        motivo = f"HTTP {stato}" if stato != 200 else "contenuto diverso da index.html del repository"
-        esito("Home online aggiornata all'ultima versione", False, motivo)
+    online = stato_online()
+    if all(ok for _, ok in online.values()) or time.time() - inizio > ATTESA_MAX_S:
         break
     time.sleep(20)
+attesa = f"dopo {int(time.time() - inizio)} s"
+stato_home, home_ok = online[""]
+esito("Home online aggiornata all'ultima versione", home_ok,
+      attesa if home_ok else (f"HTTP {stato_home}" if stato_home != 200 else "contenuto diverso da index.html del repository"))
 
 # 2. Font
 stato, tipo, corpo, _ = scarica(BASE + "/fonts.css")
 esito("fonts.css online", stato == 200 and b"@font-face" in corpo, f"HTTP {stato}")
 
 # 2b. Guide, sitemap e robots
-chiave_indexnow = [p.name for p in RADICE.glob("*.txt") if re.fullmatch(r"[0-9a-f]{32}\.txt", p.name)]
-for percorso in chiave_indexnow + ["privacy/", "guide/motozappa/", "guide/robot-tagliaerba/", "guide/irrigazione-a-goccia/", "guide/decespugliatore/", "guide/guida.css", "guide/guida.js", "negozi.js", "sitemap.xml", "robots.txt"]:
-    stato, _, corpo, _ = scarica(f"{BASE}/{percorso}")
-    locale_file = RADICE / (percorso + "index.html" if percorso.endswith("/") else percorso)
-    identico = locale_file.exists() and corpo == locale_file.read_bytes()
-    esito(f"Online: {percorso}", stato == 200 and identico, f"HTTP {stato}" + ("" if identico else ", diverso dal repository"))
+for percorso in PERCORSI:
+    stato, identico = online[percorso]
+    esito(f"Online: {percorso}", identico, f"HTTP {stato}" + ("" if identico else ", diverso dal repository"))
 
 # 3. Foto
 testo = locale.decode("utf-8")
