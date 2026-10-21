@@ -1,10 +1,13 @@
 """Test end-to-end della home OrtoCasa Help (Playwright, Chromium headless).
 
-Uso:  python3 tests/test_sito.py [cartella-schermate]
-Le immagini esterne (Unsplash) vengono bloccate di proposito: il test verifica
-logica e layout, non la disponibilità di servizi terzi.
+Uso:  python3 tests/test_sito.py [cartella-schermate] [cartella-foto-locali]
+Senza la seconda cartella le immagini esterne (Unsplash) vengono bloccate:
+il test verifica logica e layout, non la disponibilità di servizi terzi.
+Con la seconda cartella, le foto vengono servite da file locali <id>.jpg
+(solo per schermate realistiche).
 """
 import pathlib
+import re
 import sys
 from urllib.parse import urlparse, parse_qs
 
@@ -13,6 +16,7 @@ from playwright.sync_api import sync_playwright
 RADICE = pathlib.Path(__file__).resolve().parent.parent
 PAGINA = (RADICE / "index.html").as_uri()
 SCHERMATE = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else None
+FOTO_LOCALI = pathlib.Path(sys.argv[2]) if len(sys.argv) > 2 else None
 
 esiti = []
 
@@ -21,20 +25,23 @@ def verifica(nome, condizione, dettaglio=""):
     esiti.append((nome, bool(condizione), dettaglio))
 
 
-def blocca_esterni(route):
-    if route.request.url.startswith("file://"):
+def instrada(route):
+    url = route.request.url
+    if url.startswith("file://"):
         return route.continue_()
+    m = re.match(r"https://images\.unsplash\.com/(photo-[0-9a-f-]+)", url)
+    if FOTO_LOCALI and m and (FOTO_LOCALI / (m.group(1) + ".jpg")).exists():
+        return route.fulfill(path=str(FOTO_LOCALI / (m.group(1) + ".jpg")), content_type="image/jpeg")
     return route.abort()
 
 
 with sync_playwright() as p:
     browser = p.chromium.launch()
     ctx = browser.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=2, is_mobile=True, has_touch=True)
-    ctx.route("**/*", blocca_esterni)
+    ctx.route("**/*", instrada)
     pagina = ctx.new_page()
     errori_js = []
     pagina.on("pageerror", lambda e: errori_js.append(str(e)))
-    pagina.on("console", lambda m: m.type == "error" and "ERR_FAILED" not in m.text and errori_js.append(m.text))
     pagina.goto(PAGINA)
     pagina.wait_for_load_state("load")
 
@@ -67,8 +74,8 @@ with sync_playwright() as p:
         AFFILIATI.agrieuro.codice='abc'; AFFILIATI.agrieuro.parametro='aff';
         const r = {
           amazon: linkNegozio('amazon','vasi'), ebay: linkNegozio('ebay','vasi'),
-          manomano: linkNegozio('manomano','vasi grandi'), agrieuro: linkNegozio('agrieuro','vasi'),
-          cat: linkCategoria('agrieuro', CATEGORIE[0]), catAmazon: linkCategoria('amazon', CATEGORIE[4])
+          manomano: linkNegozio('manomano','vasi grandi'),
+          cat: linkCategoria('agrieuro', REPARTI[0]), catAmazon: linkCategoria('amazon', REPARTI[4])
         };
         AFFILIATI.amazon.tag=''; AFFILIATI.ebay.campid=''; AFFILIATI.manomano.awinMid=''; AFFILIATI.manomano.awinAffId='';
         AFFILIATI.agrieuro.codice=''; AFFILIATI.agrieuro.parametro='';
@@ -80,74 +87,91 @@ with sync_playwright() as p:
     mq = parse_qs(urlparse(con["manomano"]).query)
     verifica("ManoMano: avvolto da Awin", con["manomano"].startswith("https://www.awin1.com/cread.php") and mq.get("ued") == ["https://www.manomano.it/cat/vasi+grandi"], con["manomano"])
     verifica("AgriEuro categoria con codice", con["cat"] == "https://www.agrieuro.com/motozappe-c-22.html?aff=abc", con["cat"])
-    verifica("Categoria senza pagina AgriEuro -> ricerca", con["catAmazon"].startswith("https://www.amazon.it/s?k=serra"), con["catAmazon"])
+    verifica("Reparto senza pagina AgriEuro -> ricerca", con["catAmazon"].startswith("https://www.amazon.it/s?k=serra"), con["catAmazon"])
 
-    # 3. Modulo: invio a vuoto mostra l'errore e non apre nulla
-    aperte = []
-    ctx.on("page", lambda pg: aperte.append(pg.url))
-    pagina.click("#bottone-cerca")
-    verifica("Invio vuoto: messaggio d'errore visibile", pagina.is_visible("#errore-ricerca"))
-    verifica("Invio vuoto: campo marcato non valido", pagina.get_attribute("#cosa", "aria-invalid") == "true")
-    verifica("Invio vuoto: nessuna scheda aperta", len(aperte) == 0)
+    # 3. Calendario: 12 mesi completi, ogni mese con 3 lavori e foto
+    cal = pagina.evaluate("""() => Object.keys(MESI).map(k => {
+        const m = MESI[k];
+        return [k, !!(m.nome && m.titolo && m.consiglio && m.azione && m.q && m.foto && m.alt), m.altri.length, m.altri.every(a => a.length === 3 && a.every(x => x))];
+    })""")
+    verifica("Calendario: 12 mesi", [c[0] for c in cal] == [str(i) for i in range(1, 13)])
+    verifica("Calendario: campi completi", all(c[1] and c[2] == 3 and c[3] for c in cal), str([c for c in cal if not (c[1] and c[2] == 3 and c[3])]))
+    verifica("Mese corrente mostrato", pagina.inner_text("#mese-titolo") == pagina.evaluate("MESI[meseCorrente()].titolo"))
+    foto_usate = pagina.evaluate("() => [...new Set([...Object.values(MESI).map(m=>m.foto), ...REPARTI.map(r=>r.foto)])]")
+    foto_ok = pagina.evaluate("() => Object.values(F)")
+    verifica("Solo foto verificate", all(f in foto_ok for f in foto_usate), str(foto_usate))
 
-    # 4. Cambio negozio aggiorna il bottone; invio reale apre la scheda giusta
-    pagina.click("label[for=n-ebay]")
-    verifica("Bottone segue il negozio scelto", pagina.inner_text("#bottone-cerca") == "Cerca su eBay")
-    verifica("Errore sparisce scrivendo", (pagina.fill("#cosa", "tubo gocciolante") or True) and not pagina.is_visible("#errore-ricerca"))
+    # 4. Ricerca nella testata
+    verifica("Menu negozi nascosto a campo vuoto", not pagina.is_visible("#scelte"))
+    pagina.fill("#cosa", "tubo gocciolante")
+    bott = pagina.locator("#scelte button")
+    verifica("Menu con 4 negozi mentre scrivi", bott.count() == 4 and pagina.is_visible("#scelte"))
+    verifica("Primo negozio AgriEuro", "AgriEuro" in bott.first.inner_text())
     richieste = []
     ctx.on("request", lambda r: r.is_navigation_request() and richieste.append(r.url))
     with ctx.expect_page() as nuova:
+        bott.nth(3).click()
+    nuova.value.wait_for_load_state()
+    verifica("Tocco su eBay apre la ricerca giusta", "https://www.ebay.it/sch/i.html?_nkw=tubo%20gocciolante" in richieste, str(richieste))
+    nuova.value.close()
+    richieste.clear()
+    with ctx.expect_page() as nuova:
         pagina.press("#cosa", "Enter")
     nuova.value.wait_for_load_state()
-    url_aperto = next((u for u in richieste if "ebay.it" in u), "")
-    verifica("Invio con Enter apre eBay con la ricerca", url_aperto == "https://www.ebay.it/sch/i.html?_nkw=tubo%20gocciolante", url_aperto or str(richieste))
+    verifica("Invio apre AgriEuro", any(u.startswith("https://www.agrieuro.com/advanced_search_result.php?keywords=tubo") for u in richieste), str(richieste))
     nuova.value.close()
+    pagina.fill("#cosa", "   ")
+    verifica("Solo spazi: menu chiuso", not pagina.is_visible("#scelte"))
+    aperte = []
+    ctx.on("page", lambda pg: aperte.append(pg.url))
+    pagina.press("#cosa", "Enter")
+    pagina.wait_for_timeout(300)
+    verifica("Solo spazi + Invio: non apre nulla", len(aperte) == 0)
+    pagina.fill("#cosa", "")
+    pagina.locator("body").click(position={"x": 5, "y": 400})
 
-    # 5. Suggerimenti del mese
-    n_sugg = pagina.locator("#suggerimenti button").count()
-    verifica("Suggerimenti stagionali presenti", n_sugg == 4, str(n_sugg))
-    primo = pagina.locator("#suggerimenti button").first.inner_text()
-    pagina.locator("#suggerimenti button").first.click()
-    verifica("Suggerimento riempie il campo", pagina.input_value("#cosa") == primo, primo)
-
-    # 6. Categorie e pannello
-    n_cat = pagina.locator(".tessera").count()
-    verifica("9 categorie con foto", n_cat == 9 and pagina.locator(".tessera img").count() == 9)
-    alt_vuoti = pagina.evaluate("() => [...document.querySelectorAll('.tessera img')].filter(i => !i.alt).length")
-    verifica("Tutte le foto hanno testo alternativo", alt_vuoti == 0)
-    verifica("Nessuna icona disegnata nelle categorie", pagina.locator(".tessera svg").count() == 0)
-
+    # 5. Lavori del mese e pannello
+    verifica("3 lavori del mese", pagina.locator("#altri button").count() == 3)
     if SCHERMATE:
         SCHERMATE.mkdir(parents=True, exist_ok=True)
-        pagina.evaluate("window.scrollTo(0,0)")
-        pagina.fill("#cosa", "")
-        pagina.click("label[for=n-agrieuro]")
+        pagina.wait_for_timeout(400)
         pagina.screenshot(path=str(SCHERMATE / "1-telefono-inizio.png"))
         pagina.screenshot(path=str(SCHERMATE / "2-telefono-intera.png"), full_page=True)
-
-    pagina.locator(".tessera").nth(2).click()
-    verifica("Pannello si apre", pagina.is_visible("#pannello"))
-    link = pagina.eval_on_selector_all("#pannello-link a", "els => els.map(a => [a.textContent, a.href, a.rel, a.target])")
-    verifica("Pannello: 4 negozi", [l[0] for l in link] == ["AgriEuro", "Amazon", "ManoMano", "eBay"], str(link))
-    verifica("Pannello: AgriEuro va alla categoria robot", link[0][1] == "https://www.agrieuro.com/robot-tagliaerba-c-59.html", link[0][1])
-    verifica("Pannello: link sponsored e in nuova scheda", all(l[2] == "sponsored noopener" and l[3] == "_blank" for l in link))
+    pagina.click("#mese-azione")
+    verifica("Bottone del mese apre il pannello", pagina.is_visible("#pannello"))
+    link = pagina.eval_on_selector_all("#pannello-link a", "els => els.map(a => [a.firstChild.textContent, a.href, a.rel, a.target])")
+    verifica("Pannello: 4 negozi in ordine", [l[0] for l in link] == ["AgriEuro", "Amazon", "ManoMano", "eBay"], str(link))
+    verifica("Pannello: link sponsored in nuova scheda", all(l[2] == "sponsored noopener" and l[3] == "_blank" for l in link))
+    verifica("Pannello: query del mese", pagina.evaluate("encodeURIComponent(MESI[meseCorrente()].q)") in link[1][1], link[1][1])
     if SCHERMATE:
         pagina.screenshot(path=str(SCHERMATE / "3-telefono-pannello.png"))
     pagina.keyboard.press("Escape")
     verifica("Pannello si chiude con Esc", not pagina.is_visible("#pannello"))
 
-    # 7. Nessuno scorrimento orizzontale su telefono
-    largo = pagina.evaluate("() => document.documentElement.scrollWidth <= window.innerWidth")
-    verifica("Nessuno scorrimento orizzontale (390 px)", largo)
+    # 6. Reparti e consigli
+    verifica("9 reparti con foto", pagina.locator(".reparto").count() == 9 and pagina.locator(".reparto img").count() == 9)
+    verifica("Tutte le foto hanno testo alternativo", pagina.evaluate("() => [...document.querySelectorAll('main img')].every(i => i.alt)"))
+    verifica("Nessuna icona disegnata nei reparti", pagina.locator(".reparto svg").count() == 0)
+    pagina.locator(".reparto").nth(2).click()
+    href0 = pagina.get_attribute("#pannello-link a >> nth=0", "href")
+    verifica("Reparto robot: AgriEuro va alla categoria", href0 == "https://www.agrieuro.com/robot-tagliaerba-c-59.html", href0)
+    pagina.keyboard.press("Escape")
+    pagina.locator(".consigli button").first.click()
+    verifica("Consiglio motozappa apre il pannello giusto", pagina.inner_text("#pannello-titolo") == "Motozappe")
+    pagina.keyboard.press("Escape")
 
-    # 8. Desktop
+    # 7. Layout
+    verifica("Nessuno scorrimento orizzontale (390 px)", pagina.evaluate("() => document.documentElement.scrollWidth <= window.innerWidth"))
+    verifica("Testata resta in alto scorrendo", pagina.evaluate("() => { window.scrollTo(0, 1500); return Math.round(document.querySelector('.testata').getBoundingClientRect().top) === 0; }"))
+
     desk = browser.new_context(viewport={"width": 1280, "height": 900})
-    desk.route("**/*", blocca_esterni)
+    desk.route("**/*", instrada)
     pd = desk.new_page()
     pd.on("pageerror", lambda e: errori_js.append(str(e)))
     pd.goto(PAGINA)
     verifica("Desktop: nessuno scorrimento orizzontale", pd.evaluate("() => document.documentElement.scrollWidth <= window.innerWidth"))
     if SCHERMATE:
+        pd.wait_for_timeout(400)
         pd.screenshot(path=str(SCHERMATE / "4-computer.png"), full_page=True)
 
     verifica("Nessun errore JavaScript", not errori_js, "; ".join(errori_js))

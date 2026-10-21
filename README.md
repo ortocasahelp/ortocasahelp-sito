@@ -6,8 +6,8 @@ Sito statico di ricerca rapida per orto e giardino: l'utente scrive cosa cerca e
 
 | File | Cosa contiene |
 |---|---|
-| `index.html` | Pagina completa: stile, contenuti e script. In cima allo script c'è la **configurazione** (codici affiliato, suggerimenti del mese, categorie). |
-| `fonts.css` | Font Sora e Comfortaa incorporati (licenza SIL OFL 1.1, da @fontsource 5.3.0). Nessuna chiamata a Google Fonts. |
+| `index.html` | Pagina completa: stile, contenuti e script. In cima allo script c'è la **configurazione**: codici affiliato (`AFFILIATI`), foto (`F`), calendario dell'orto (`MESI`, un lavoro principale + 3 lavori per mese) e reparti (`REPARTI`). |
+| `fonts.css` | Font Archivo (variabile) e Comfortaa incorporati (licenza SIL OFL 1.1, da @fontsource 5.3.0). Nessuna chiamata a Google Fonts. |
 | `tests/test_sito.py` | Test automatici end-to-end (Playwright). |
 | `CHANGELOG.md` | Storico delle versioni. |
 

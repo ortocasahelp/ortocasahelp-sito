@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.0.0 — 21/10/2026
+
+- Nuovo stile negozio: fondo bianco, nero e arancio del logo, niente più verde di fondo.
+- Titoli in Archivo stretto (stile volantino), cartellini gialli tipo vivaio su reparti e mese.
+- Ricerca sempre in alto: mentre scrivi compare il menu con i 4 negozi; Invio cerca su AgriEuro.
+- In apertura il lavoro del mese, con calendario dell'orto completo per i 12 mesi e 3 lavori collegati.
+- Nuove sezioni: "Prima di comprare" (consigli pratici) e "Dove cerchiamo" (a cosa serve ogni negozio).
+- Nuove foto Unsplash verificate: aglio (Colin Watts), fagioli (Maddi Bazzocco), carriola (Annie Spratt).
+- Test aggiornati: 39 verifiche, incluso il controllo dei 12 mesi.
+
 ## 2.0.0 — 21/10/2026
 
 - Nuova grafica in stile app: fondo verde bosco, foto reali (Unsplash) al posto delle icone disegnate.
