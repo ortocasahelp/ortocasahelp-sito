@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.5.0 — da pubblicare all'approvazione di ManoMano
+
+- ManoMano tramite Awin (inserzionista ManoMano IT 17962, publisher OrtoCasaHelp 3130993): i link verso ManoMano passano da `awin1.com/cread.php` con il link al negozio in `ued`.
+
 ## 4.4.3 — 22/10/2026
 
 - Google Search Console: file di verifica della proprietà `google323c386588effe2f.html` nella radice (da non rimuovere: serve a restare verificati). Controllato dai test locali e dalla verifica online.
