@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.1.0 — 21/10/2026 (prima pubblicazione della nuova grafica)
+
+- Telefono: la ricerca resta fissa in alto scorrendo, il logo scorre via e lascia più spazio.
+- Tocchi immediati: niente ritardo né riquadro grigio al tocco, effetto di pressione su reparti, lavori del mese e negozi.
+- Pannello negozi più rapido ad aprirsi e chiudibile trascinandolo verso il basso.
+- Tutti i pulsanti alti almeno 48 px; effetti al passaggio del mouse solo su computer.
+- Test: 43 verifiche, incluse altezza dei pulsanti e trascinamento del pannello.
+
 ## 4.0.0 — 21/10/2026
 
 - Nuova palette "melanzana e zucca": viola melanzana per testata e blocchi, arancio del logo per le azioni, verde lattuga per i dettagli. Lo stile bianco e nero della 3.0.0 è stato scartato.

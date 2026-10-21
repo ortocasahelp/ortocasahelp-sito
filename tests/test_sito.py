@@ -147,6 +147,21 @@ with sync_playwright() as p:
         pagina.screenshot(path=str(SCHERMATE / "3-telefono-pannello.png"))
     pagina.keyboard.press("Escape")
     verifica("Pannello si chiude con Esc", not pagina.is_visible("#pannello"))
+    pagina.click("#mese-azione")
+    pagina.evaluate("""() => { const c = document.querySelector('.pannello-corpo'); const r = c.getBoundingClientRect();
+        const t = (y) => new Touch({identifier: 1, target: c, clientX: r.left + 40, clientY: y});
+        c.dispatchEvent(new TouchEvent('touchstart', {touches: [t(r.top + 20)], bubbles: true}));
+        c.dispatchEvent(new TouchEvent('touchmove', {touches: [t(r.top + 160)], bubbles: true}));
+        c.dispatchEvent(new TouchEvent('touchend', {touches: [], bubbles: true})); }""")
+    verifica("Pannello si chiude trascinandolo giù", not pagina.is_visible("#pannello"))
+    pagina.click("#mese-azione")
+    pagina.evaluate("""() => { const c = document.querySelector('.pannello-corpo'); const r = c.getBoundingClientRect();
+        const t = (y) => new Touch({identifier: 1, target: c, clientX: r.left + 40, clientY: y});
+        c.dispatchEvent(new TouchEvent('touchstart', {touches: [t(r.top + 20)], bubbles: true}));
+        c.dispatchEvent(new TouchEvent('touchmove', {touches: [t(r.top + 50)], bubbles: true}));
+        c.dispatchEvent(new TouchEvent('touchend', {touches: [], bubbles: true})); }""")
+    verifica("Piccolo trascinamento non chiude", pagina.is_visible("#pannello"))
+    pagina.keyboard.press("Escape")
 
     # 6. Reparti e consigli
     verifica("9 reparti con foto", pagina.locator(".reparto").count() == 9 and pagina.locator(".reparto img").count() == 9)
@@ -162,7 +177,10 @@ with sync_playwright() as p:
 
     # 7. Layout
     verifica("Nessuno scorrimento orizzontale (390 px)", pagina.evaluate("() => document.documentElement.scrollWidth <= window.innerWidth"))
-    verifica("Testata resta in alto scorrendo", pagina.evaluate("() => { window.scrollTo(0, 1500); return Math.round(document.querySelector('.testata').getBoundingClientRect().top) === 0; }"))
+    verifica("Ricerca resta visibile in alto scorrendo", pagina.evaluate("() => { window.scrollTo(0, 1500); const r = document.querySelector('#cosa').getBoundingClientRect(); return r.top >= 0 && r.top < 20; }"))
+    verifica("Elementi toccabili alti almeno 44 px", pagina.evaluate("() => [...document.querySelectorAll('main button, .chiudi')].filter(b => b.offsetParent).every(b => b.getBoundingClientRect().height >= 44)"),
+             pagina.evaluate("() => [...document.querySelectorAll('main button')].filter(b => b.offsetParent && b.getBoundingClientRect().height < 44).map(b => b.textContent.trim()).join(', ')"))
+    verifica("Tocco senza ritardo (touch-action)", pagina.evaluate("() => getComputedStyle(document.querySelector('.reparto')).touchAction === 'manipulation'"))
 
     desk = browser.new_context(viewport={"width": 1280, "height": 900})
     desk.route("**/*", instrada)
