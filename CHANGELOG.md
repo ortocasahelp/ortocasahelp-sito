@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.4.1 — 21/10/2026
+
+- Nuova guida: decespugliatore (`/guide/decespugliatore/`), con pagina categoria AgriEuro verificata. Aggiunta a sitemap, test e verifica online.
+
 ## 4.4.0 — 21/10/2026
 
 - Pagina Privacy e cookie (`/privacy/`): titolare Stefano Ciceri, dati di navigazione Netlify, foto Unsplash, nessun cookie proprio, diritti GDPR. Collegata dal piè di pagina di home e guide e inserita nella sitemap.

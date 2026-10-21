@@ -124,6 +124,46 @@ GUIDE = [
         ],
         "nota": "Copri l'ala gocciolante con la pacciamatura: l'acqua evapora meno e le erbacce crescono meno.",
     },
+    {
+        "slug": "decespugliatore",
+        "titolo": "Come scegliere il decespugliatore per orto e giardino",
+        "titolo_breve": "Decespugliatore",
+        "descrizione": "A batteria, elettrico o a scoppio, con filo o con lama: come scegliere il decespugliatore giusto per bordi, fossi ed erba alta, e gli errori da evitare.",
+        "attacco": "Prima della potenza, guarda cosa devi tagliare: i bordi del prato, l'erba alta del fosso o i rovi in fondo all'orto.",
+        "foto": "photo-1768268004427-6fb88cbd1605",
+        "alt": "Uomo che taglia l'erba con un decespugliatore",
+        "q": "decespugliatore",
+        "agrieuro": "https://www.agrieuro.com/decespugliatori-c-3.html",
+        "azione": "Vedi i decespugliatori",
+        "in_breve": [
+            "Bordi e giardino piccolo: a batteria o elettrico, con testina a filo.",
+            "Erba alta, fossi e superfici grandi: a scoppio, con impugnatura a manubrio.",
+            "Rovi e steli legnosi: serve la lama, il filo non basta.",
+        ],
+        "sezioni": [
+            ("Quale tipo ti serve", "voci", [
+                ("Elettrico a filo", "Leggero, silenzioso, parte subito. Il cavo però limita: va bene per i bordi vicino a casa."),
+                ("A batteria", "Niente cavo e niente miscela. Controlla che l'autonomia basti per tutto il giro, o prendi una seconda batteria. Se hai già attrezzi a batteria, resta sulla stessa marca."),
+                ("A scoppio", "Il più adatto per erba alta, fossi e superfici grandi. Pesa di più, fa rumore e vuole manutenzione: filtro, candela, carburante fresco."),
+                ("A zaino", "Il motore sta sulla schiena e le braccia si stancano meno. Utile se tagli per ore, su argini e scarpate."),
+            ]),
+            ("Cosa guardare nella scheda", "punti", [
+                "Impugnatura: a manubrio per i lavori lunghi e l'erba alta, ad anello per i bordi e i punti stretti.",
+                "Cosa c'è in dotazione: testina a filo per l'erba, lama per rovi e steli legnosi.",
+                "Asta divisibile: si carica meglio in auto, e su alcuni modelli si montano altri accessori.",
+                "Peso e imbracatura: provalo in mano, con la cinghia regolata alla tua altezza.",
+                "A scoppio, due o quattro tempi: il quattro tempi non vuole la miscela, ma di solito pesa di più.",
+                "Assistenza e ricambi vicino a casa: filo, testine e lame si consumano.",
+            ]),
+            ("Errori da evitare", "punti", [
+                "Lavorare senza protezioni: visiera o occhiali, cuffie, guanti, pantaloni lunghi e scarpe chiuse. Il filo lancia sassi lontano.",
+                "Tagliare con persone o animali vicino: allontana tutti prima di partire.",
+                "Rasare il colletto di alberi e cespugli: il filo ferisce la corteccia e apre la porta alle malattie. Lì finisci a mano.",
+                "Lasciare la miscela nel serbatoio per l'inverno: a fine stagione svuotalo o fai girare il motore finché si ferma.",
+            ]),
+        ],
+        "nota": "L'erba tagliata non buttarla: falla appassire un giorno e stendila in strato sottile tra le file dell'orto. È pacciamatura gratis.",
+    },
 ]
 
 LOGO = ('<svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="33" r="18" stroke="#F07F1A" stroke-width="9"/>'

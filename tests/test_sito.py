@@ -213,7 +213,8 @@ with sync_playwright() as p:
     # 8. Pagine-guida
     GUIDE = {"motozappa": "https://www.agrieuro.com/motozappe-c-22.html",
              "robot-tagliaerba": "https://www.agrieuro.com/robot-tagliaerba-c-59.html",
-             "irrigazione-a-goccia": "https://www.agrieuro.com/irrigazione-g-14.html"}
+             "irrigazione-a-goccia": "https://www.agrieuro.com/irrigazione-g-14.html",
+             "decespugliatore": "https://www.agrieuro.com/decespugliatori-c-3.html"}
     pg = ctx.new_page()
     pg.on("pageerror", lambda e: errori_js.append(str(e)))
     for slug, cat in GUIDE.items():
@@ -228,7 +229,7 @@ with sync_playwright() as p:
         verifica(f"Guida {slug}: titolo e descrizione", pg.title().endswith("| OrtoCasa Help") and len(pg.get_attribute('meta[name=description]', 'content') or '') > 60)
         verifica(f"Guida {slug}: nessuno scorrimento orizzontale", pg.evaluate("() => document.documentElement.scrollWidth <= window.innerWidth"))
         verifica(f"Guida {slug}: link toccabili alti almeno 44 px", pg.evaluate("() => [...document.querySelectorAll('.dove a, .altre a, .barra-acquisto a')].every(a => a.getBoundingClientRect().height >= 44)"))
-        verifica(f"Guida {slug}: link alle altre guide funzionano", pg.evaluate("() => [...document.querySelectorAll('.altre a')].length === 2"))
+        verifica(f"Guida {slug}: link alle altre guide funzionano", pg.evaluate("() => [...document.querySelectorAll('.altre a')].length") == len(GUIDE) - 1)
         if SCHERMATE and slug == "motozappa":
             carica_foto(pg)
             pg.screenshot(path=str(SCHERMATE / "5-guida-telefono.png"), full_page=True)
