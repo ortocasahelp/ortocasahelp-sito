@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.2.1 — 21/10/2026
+
+- Corretta la ricerca AgriEuro: il vecchio indirizzo dava errore 404 (trovato dalla verifica online). Ora usa `/search/<parole>`.
+- Riquadro Decespugliatori: inquadratura della foto spostata sul soggetto.
+
 ## 4.2.0 — 21/10/2026
 
 - Controlli automatici su GitHub Actions: test a ogni modifica, verifica del sito online dopo ogni pubblicazione e ogni mattina, schermate con le foto vere salvate nel ramo `controlli`.
