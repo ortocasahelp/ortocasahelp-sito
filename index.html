@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>OrtoCasa Help</title>
 <meta name="description" content="Cosa fare nell'orto questo mese e dove comprare l'attrezzatura giusta: AgriEuro, Amazon, ManoMano ed eBay.">
+<link rel="canonical" href="https://lustrous-concha-651962.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OrtoCasa Help">
+<meta property="og:description" content="Il lavoro dell'orto di questo mese e dove comprare l'attrezzatura giusta.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1621460248083-6271cc4437a8?auto=format&amp;fit=crop&amp;w=1200&amp;q=70">
+<meta property="og:locale" content="it_IT">
 <meta name="theme-color" content="#2D1846">
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="stylesheet" href="fonts.css">
@@ -108,6 +114,8 @@
   .consigli p{margin-top:12px;font-size:18px;line-height:1.45;max-width:46ch}
   .consigli button{display:inline-flex;align-items:center;min-height:48px;margin-top:8px;background:none;border:0;font-weight:700;color:var(--melanzana);text-decoration:underline;text-decoration-color:var(--zucca);text-decoration-thickness:3px;text-underline-offset:5px;cursor:pointer;padding:0}
   .consigli button:active{color:var(--zucca)}
+  .consigli .guida{display:inline-flex;align-items:center;min-height:48px;margin:8px 0 0 18px;padding:0 16px;border-radius:999px;background:var(--fondo);color:var(--melanzana);font-weight:700;text-decoration:none}
+  .consigli .guida:active{background:var(--lilla)}
 
   /* Dove cerchiamo */
   .blocco-negozi{background:var(--melanzana);color:var(--bianco);border-radius:30px;padding:26px 20px;margin-top:44px}
@@ -212,9 +220,9 @@
     <h2 class="grande titolo-stretto" id="titolo-consigli">Prima di comprare</h2>
     <p class="sotto">Tre errori che vedo fare spesso.</p>
     <ul class="consigli">
-      <li><b>Motozappa</b><p>Per un orto di casa con terra già lavorata basta una elettrica o una piccola a scoppio. Le grandi servono su terreni duri o per rompere il prato.</p><button type="button" data-q="motozappa" data-titolo="Motozappe" data-agrieuro="https://www.agrieuro.com/motozappe-c-22.html">Vedi le motozappe</button></li>
-      <li><b>Robot tagliaerba</b><p>Prendilo con una superficie massima più grande del tuo prato: lavora meno ore e dura di più. E guarda la pendenza che regge.</p><button type="button" data-q="robot tagliaerba" data-titolo="Robot tagliaerba" data-agrieuro="https://www.agrieuro.com/robot-tagliaerba-c-59.html">Vedi i robot</button></li>
-      <li><b>Irrigazione</b><p>Goccia, non spruzzo. Bagni la terra e non le foglie: meno acqua sprecata e meno malattie. Aggiungi un programmatore e non ci pensi più.</p><button type="button" data-q="kit irrigazione a goccia" data-titolo="Irrigazione" data-agrieuro="https://www.agrieuro.com/irrigazione-g-14.html">Vedi l'irrigazione</button></li>
+      <li><b>Motozappa</b><p>Per un orto di casa con terra già lavorata basta una elettrica o una piccola a scoppio. Le grandi servono su terreni duri o per rompere il prato.</p><button type="button" data-q="motozappa" data-titolo="Motozappe" data-agrieuro="https://www.agrieuro.com/motozappe-c-22.html">Vedi le motozappe</button><a class="guida" href="guide/motozappa/">Leggi la guida</a></li>
+      <li><b>Robot tagliaerba</b><p>Prendilo con una superficie massima più grande del tuo prato: lavora meno ore e dura di più. E guarda la pendenza che regge.</p><button type="button" data-q="robot tagliaerba" data-titolo="Robot tagliaerba" data-agrieuro="https://www.agrieuro.com/robot-tagliaerba-c-59.html">Vedi i robot</button><a class="guida" href="guide/robot-tagliaerba/">Leggi la guida</a></li>
+      <li><b>Irrigazione</b><p>Goccia, non spruzzo. Bagni la terra e non le foglie: meno acqua sprecata e meno malattie. Aggiungi un programmatore e non ci pensi più.</p><button type="button" data-q="kit irrigazione a goccia" data-titolo="Irrigazione" data-agrieuro="https://www.agrieuro.com/irrigazione-g-14.html">Vedi l'irrigazione</button><a class="guida" href="guide/irrigazione-a-goccia/">Leggi la guida</a></li>
     </ul>
   </div></section>
 
@@ -252,19 +260,8 @@
   </div>
 </dialog>
 
+<script src="negozi.js"></script>
 <script>
-/* =====================================================================
-   CONFIGURAZIONE — unico punto da modificare.
-   Lascia "" finché il programma non ti dà il codice: il link funziona
-   lo stesso, solo senza tracciamento.
-   ===================================================================== */
-var AFFILIATI = {
-  agrieuro: { nome: "AgriEuro", nota: "Specialista orto e giardino", codice: "", parametro: "" },
-  amazon:   { nome: "Amazon",   nota: "Consegna veloce",             tag: "" },
-  manomano: { nome: "ManoMano", nota: "Fai da te e giardino",        awinMid: "", awinAffId: "" },
-  ebay:     { nome: "eBay",     nota: "Usato e ricambi",             campid: "" }
-};
-var ORDINE_NEGOZI = ["agrieuro", "amazon", "manomano", "ebay"];
 
 /* Foto Unsplash verificate (licenza Unsplash, uso commerciale gratuito). */
 var F = {
@@ -273,10 +270,6 @@ var F = {
   robot:"photo-1741326757602-186060c5d5b5", decesp:"photo-1768268004427-6fb88cbd1605", serra:"photo-1516253593875-bd7ba052fbc5",
   germogli:"photo-1466692476868-aef1dfb1e735", forbici:"photo-1523301551780-cd17359a95d0", vasi:"photo-1620293106076-ad27d651efe3",
   raccolto:"photo-1624668430039-0175a0fbf006"
-};
-var AE = {
-  motozappe:"https://www.agrieuro.com/motozappe-c-22.html", irrigazione:"https://www.agrieuro.com/irrigazione-g-14.html",
-  robot:"https://www.agrieuro.com/robot-tagliaerba-c-59.html", decespugliatori:"https://www.agrieuro.com/decespugliatori-c-3.html"
 };
 
 /* Calendario dell'orto (pianura del Nord Italia). 1 = gennaio. */
@@ -319,50 +312,6 @@ var REPARTI = [
   {nome:"Vasi", testo:"Terracotta e fioriere", q:"vasi terracotta", foto:F.vasi, alt:"Vasi in terracotta con piante verdi"}
 ];
 
-/* ---------- Costruzione dei link (funzioni pure, testate) ---------- */
-function pulisci(testo){
-  return String(testo == null ? "" : testo).replace(/\s+/g, " ").trim().slice(0, 80);
-}
-function linkNegozio(negozio, testo){
-  var q = pulisci(testo);
-  if (!q) return null;
-  var e = encodeURIComponent(q);
-  var url;
-  switch (negozio) {
-    case "agrieuro":
-      // Formato verificato sulle pagine di ricerca indicizzate di AgriEuro (es. /search/zappa).
-      url = "https://www.agrieuro.com/search/" + e;
-      if (AFFILIATI.agrieuro.codice && AFFILIATI.agrieuro.parametro)
-        url += "?" + AFFILIATI.agrieuro.parametro + "=" + encodeURIComponent(AFFILIATI.agrieuro.codice);
-      return url;
-    case "amazon":
-      url = "https://www.amazon.it/s?k=" + e;
-      if (AFFILIATI.amazon.tag) url += "&tag=" + encodeURIComponent(AFFILIATI.amazon.tag);
-      return url;
-    case "manomano":
-      url = "https://www.manomano.it/cat/" + q.split(" ").map(encodeURIComponent).join("+");
-      if (AFFILIATI.manomano.awinMid && AFFILIATI.manomano.awinAffId)
-        url = "https://www.awin1.com/cread.php?awinmid=" + encodeURIComponent(AFFILIATI.manomano.awinMid) +
-              "&awinaffid=" + encodeURIComponent(AFFILIATI.manomano.awinAffId) + "&ued=" + encodeURIComponent(url);
-      return url;
-    case "ebay":
-      url = "https://www.ebay.it/sch/i.html?_nkw=" + e;
-      if (AFFILIATI.ebay.campid)
-        url += "&mkevt=1&mkcid=1&mkrid=724-53478-19255-0&campid=" + encodeURIComponent(AFFILIATI.ebay.campid) + "&toolid=10001";
-      return url;
-    default:
-      return null;
-  }
-}
-function linkCategoria(negozio, cat){
-  if (negozio === "agrieuro" && cat.agrieuro) {
-    var u = cat.agrieuro;
-    if (AFFILIATI.agrieuro.codice && AFFILIATI.agrieuro.parametro)
-      u += "?" + AFFILIATI.agrieuro.parametro + "=" + encodeURIComponent(AFFILIATI.agrieuro.codice);
-    return u;
-  }
-  return linkNegozio(negozio, cat.q);
-}
 function foto(id, w){ return "https://images.unsplash.com/" + id + "?auto=format&fit=crop&w=" + w + "&q=70"; }
 function meseCorrente(data){ return (data || new Date()).getMonth() + 1; }
 

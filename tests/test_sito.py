@@ -210,6 +210,31 @@ with sync_playwright() as p:
         carica_foto(pd)
         pd.screenshot(path=str(SCHERMATE / "4-computer.png"), full_page=True)
 
+    # 8. Pagine-guida
+    GUIDE = {"motozappa": "https://www.agrieuro.com/motozappe-c-22.html",
+             "robot-tagliaerba": "https://www.agrieuro.com/robot-tagliaerba-c-59.html",
+             "irrigazione-a-goccia": "https://www.agrieuro.com/irrigazione-g-14.html"}
+    pg = ctx.new_page()
+    pg.on("pageerror", lambda e: errori_js.append(str(e)))
+    for slug, cat in GUIDE.items():
+        url_g = f"{SITO_URL}/guide/{slug}/" if SITO_URL else (RADICE / "guide" / slug / "index.html").as_uri()
+        pg.goto(url_g)
+        pg.wait_for_load_state("load")
+        link = pg.eval_on_selector_all(".dove a", "els => els.map(a => [a.firstChild.textContent, a.href, a.rel, a.target])")
+        verifica(f"Guida {slug}: 4 negozi in ordine", [l[0] for l in link] == ["AgriEuro", "Amazon", "ManoMano", "eBay"], str(link))
+        verifica(f"Guida {slug}: AgriEuro alla categoria", link and link[0][1] == cat, link[0][1] if link else "")
+        verifica(f"Guida {slug}: link sponsored", all(l[2] == "sponsored noopener" and l[3] == "_blank" for l in link))
+        verifica(f"Guida {slug}: barra in basso verso AgriEuro", pg.get_attribute("#barra-agrieuro", "href") == cat)
+        verifica(f"Guida {slug}: titolo e descrizione", pg.title().endswith("| OrtoCasa Help") and len(pg.get_attribute('meta[name=description]', 'content') or '') > 60)
+        verifica(f"Guida {slug}: nessuno scorrimento orizzontale", pg.evaluate("() => document.documentElement.scrollWidth <= window.innerWidth"))
+        verifica(f"Guida {slug}: link toccabili alti almeno 44 px", pg.evaluate("() => [...document.querySelectorAll('.dove a, .altre a, .barra-acquisto a')].every(a => a.getBoundingClientRect().height >= 44)"))
+        verifica(f"Guida {slug}: link alle altre guide funzionano", pg.evaluate("() => [...document.querySelectorAll('.altre a')].length === 2"))
+        if SCHERMATE and slug == "motozappa":
+            carica_foto(pg)
+            pg.screenshot(path=str(SCHERMATE / "5-guida-telefono.png"), full_page=True)
+    pg.close()
+    verifica("Home: 3 link alle guide", pagina.locator(".consigli a.guida").count() == 3)
+
     verifica("Nessun errore JavaScript", not errori_js, "; ".join(errori_js))
     browser.close()
 

@@ -7,6 +7,9 @@ Sito statico di ricerca rapida per orto e giardino: l'utente scrive cosa cerca e
 | File | Cosa contiene |
 |---|---|
 | `index.html` | Pagina completa: stile, contenuti e script. In cima allo script c'è la **configurazione**: codici affiliato (`AFFILIATI`), foto (`F`), calendario dell'orto (`MESI`, un lavoro principale + 3 lavori per mese) e reparti (`REPARTI`). |
+| `negozi.js` | Codici affiliato (`AFFILIATI`) e costruzione dei link ai negozi, condiviso da home e guide. **Qui si inseriscono i codici.** |
+| `guide/` | Pagine-guida (`guide/<nome>/index.html`), stile `guida.css`, pulsanti `guida.js`. Non modificarle a mano: si rigenerano. |
+| `strumenti/genera_guide.py` | Testi delle guide; rilanciarlo rigenera guide, `sitemap.xml` e `robots.txt`. |
 | `fonts.css` | Font Bricolage Grotesque (variabile) e Comfortaa incorporati (licenza SIL OFL 1.1, da @fontsource 5.3.0). Nessuna chiamata a Google Fonts. |
 | `tests/test_sito.py` | Test automatici end-to-end (Playwright); con `SITO_URL` prova il sito pubblicato. |
 | `tests/verifica_online.py` | Verifica del sito pubblicato, delle foto e dei link ai negozi (solo libreria standard). |
@@ -15,7 +18,7 @@ Sito statico di ricerca rapida per orto e giardino: l'utente scrive cosa cerca e
 
 ## Inserire i codici affiliato
 
-Nel blocco `AFFILIATI` in `index.html`:
+Nel blocco `AFFILIATI` in `negozi.js`:
 
 - **Amazon**: `tag` (es. `ortocasa-21`)
 - **eBay Partner Network**: `campid` (ID campagna; i parametri Italia `mkrid=724-53478-19255-0` sono già impostati)
