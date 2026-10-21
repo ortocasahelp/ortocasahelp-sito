@@ -77,7 +77,11 @@ with sync_playwright() as p:
     })""")
     verifica("AgriEuro: ricerca senza codice", casi["agrieuro"] == "https://www.agrieuro.com/search/motozappa%20elettrica", casi["agrieuro"])
     verifica("Amazon: nessun tag finto", casi["amazon"] == "https://www.amazon.it/s?k=motozappa%20elettrica", casi["amazon"])
-    verifica("ManoMano: formato /cat/a+b", casi["manomano"] == "https://www.manomano.it/cat/motozappa+elettrica", casi["manomano"])
+    mm = casi["manomano"]
+    mm_dest = parse_qs(urlparse(mm).query).get("ued", [""])[0] if mm.startswith("https://www.awin1.com/") else mm
+    verifica("ManoMano: formato /cat/a+b", mm_dest == "https://www.manomano.it/cat/motozappa+elettrica", mm)
+    verifica("ManoMano: codici Awin reali (ManoMano IT 17962, publisher 3130993)",
+             parse_qs(urlparse(mm).query).get("awinmid") == ["17962"] and parse_qs(urlparse(mm).query).get("awinaffid") == ["3130993"], mm)
     verifica("eBay: ricerca senza parametri EPN", casi["ebay"] == "https://www.ebay.it/sch/i.html?_nkw=motozappa%20elettrica", casi["ebay"])
     verifica("Testo vuoto -> nessun link", casi["vuoto"] is None and casi["nullo"] is None)
     verifica("Negozio sconosciuto -> nessun link", casi["ignoto"] is None)
