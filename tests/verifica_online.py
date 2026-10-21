@@ -66,9 +66,17 @@ while True:
 stato, tipo, corpo, _ = scarica(BASE + "/fonts.css")
 esito("fonts.css online", stato == 200 and b"@font-face" in corpo, f"HTTP {stato}")
 
+# 2b. Guide, sitemap e robots
+for percorso in ["guide/motozappa/", "guide/robot-tagliaerba/", "guide/irrigazione-a-goccia/", "guide/guida.css", "guide/guida.js", "negozi.js", "sitemap.xml", "robots.txt"]:
+    stato, _, corpo, _ = scarica(f"{BASE}/{percorso}")
+    locale_file = RADICE / (percorso + "index.html" if percorso.endswith("/") else percorso)
+    identico = locale_file.exists() and corpo == locale_file.read_bytes()
+    esito(f"Online: {percorso}", stato == 200 and identico, f"HTTP {stato}" + ("" if identico else ", diverso dal repository"))
+
 # 3. Foto
 testo = locale.decode("utf-8")
-foto = sorted(set(re.findall(r'"(photo-[0-9]+-[0-9a-f]+)"', testo)))
+testo_guide = "".join(p.read_text(encoding="utf-8") for p in (RADICE / "guide").glob("*/index.html"))
+foto = sorted(set(re.findall(r'"(photo-[0-9]+-[0-9a-f]+)"', testo) + re.findall(r'/(photo-[0-9]+-[0-9a-f]+)\?', testo_guide)))
 for f in foto:
     stato, tipo, _, _ = scarica(f"https://images.unsplash.com/{f}?auto=format&fit=crop&w=200&q=50")
     esito(f"Foto {f}", stato == 200 and tipo.startswith("image/"), f"HTTP {stato} {tipo}")

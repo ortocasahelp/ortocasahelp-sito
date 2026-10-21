@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.3.0 — 21/10/2026
+
+- Tre pagine-guida per Google: motozappa, robot tagliaerba, irrigazione a goccia, con barra fissa "Vedi su AgriEuro" e link ai 4 negozi.
+- Guide generate da `strumenti/genera_guide.py` (testi in un unico punto), che scrive anche `sitemap.xml` e `robots.txt`.
+- Negozi e link affiliati spostati in `negozi.js`, condiviso da home e guide.
+- Home: link "Leggi la guida" nei consigli, meta tag per la condivisione (Open Graph) e indirizzo canonico.
+- Test: 68 verifiche; la verifica online controlla anche guide, sitemap e robots.
+
 ## 4.2.1 — 21/10/2026
 
 - Corretta la ricerca AgriEuro: il vecchio indirizzo dava errore 404 (trovato dalla verifica online). Ora usa `/search/<parole>`.

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lustrous-concha-651962.netlify.app/sitemap.xml
