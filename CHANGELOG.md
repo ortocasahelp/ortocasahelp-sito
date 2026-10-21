@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.4.0 — 21/10/2026
+
+- Pagina Privacy e cookie (`/privacy/`): titolare Stefano Ciceri, dati di navigazione Netlify, foto Unsplash, nessun cookie proprio, diritti GDPR. Collegata dal piè di pagina di home e guide e inserita nella sitemap.
+
 ## 4.3.2 — 21/10/2026
 
 - Nuovo indirizzo del sito: https://ortocasahelp.netlify.app (prima lustrous-concha-651962.netlify.app). Aggiornati canonical, sitemap, robots, guide, IndexNow e controlli.

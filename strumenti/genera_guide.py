@@ -212,7 +212,7 @@ def pagina(g, altre):
 <div class="barra-acquisto"><a class="primario" id="barra-agrieuro" href="#dove">Vedi su AgriEuro</a><a class="secondario" href="#dove">Altri negozi</a></div>
 <footer><div class="contenitore">
   <p>OrtoCasa Help partecipa a programmi di affiliazione: se acquisti dopo aver cliccato un nostro link, il negozio ci riconosce una commissione, senza costi aggiuntivi per te. In qualità di Affiliato Amazon, OrtoCasa Help riceve un guadagno dagli acquisti idonei.</p>
-  <p>Foto da <a href="https://unsplash.com/?utm_source=ortocasahelp&amp;utm_medium=referral" rel="noopener" target="_blank">Unsplash</a>. © 2026 OrtoCasa Help</p>
+  <p>Foto da <a href="https://unsplash.com/?utm_source=ortocasahelp&amp;utm_medium=referral" rel="noopener" target="_blank">Unsplash</a>. © 2026 OrtoCasa Help · <a href="../../privacy/">Privacy e cookie</a></p>
 </div></footer>
 <script src="../../negozi.js"></script>
 <script src="../guida.js"></script>
@@ -228,7 +228,7 @@ def main():
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(pagina(g, altre), encoding="utf-8")
         print("scritta", dest.relative_to(RADICE))
-    urls = [f"{SITO}/"] + [f"{SITO}/guide/{g['slug']}/" for g in GUIDE]
+    urls = [f"{SITO}/"] + [f"{SITO}/guide/{g['slug']}/" for g in GUIDE] + [f"{SITO}/privacy/"]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     sitemap += [f"  <url><loc>{u}</loc><lastmod>{AGGIORNATA}</lastmod></url>" for u in urls]
     sitemap.append("</urlset>")

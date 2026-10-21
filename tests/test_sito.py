@@ -234,6 +234,13 @@ with sync_playwright() as p:
             pg.screenshot(path=str(SCHERMATE / "5-guida-telefono.png"), full_page=True)
     pg.close()
     verifica("Home: 3 link alle guide", pagina.locator(".consigli a.guida").count() == 3)
+    verifica("Home: link alla privacy", pagina.locator('footer a[href="privacy/"]').count() == 1)
+    pp = ctx.new_page()
+    pp.on("pageerror", lambda e: errori_js.append(str(e)))
+    pp.goto(f"{SITO_URL}/privacy/" if SITO_URL else (RADICE / "privacy" / "index.html").as_uri())
+    verifica("Privacy: titolare e contatto presenti", "Stefano Ciceri" in pp.inner_text("main") and "stefano.ciceri@gmail.com" in pp.inner_text("main"))
+    verifica("Privacy: nessuno scorrimento orizzontale", pp.evaluate("() => document.documentElement.scrollWidth <= window.innerWidth"))
+    pp.close()
 
     verifica("Nessun errore JavaScript", not errori_js, "; ".join(errori_js))
     browser.close()
