@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.4.2 — 21/10/2026
+
+- Verifica online: attende che Netlify abbia pubblicato tutte le pagine controllate (guide, sitemap, script), non solo la home. Prima una modifica che non toccava `index.html` veniva controllata a pubblicazione non finita e dava falsi errori (successo con la 4.4.1).
+
 ## 4.4.1 — 21/10/2026
 
 - Nuova guida: decespugliatore (`/guide/decespugliatore/`), con pagina categoria AgriEuro verificata. Aggiunta a sitemap, test e verifica online.
