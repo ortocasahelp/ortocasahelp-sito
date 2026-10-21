@@ -8,7 +8,7 @@ import json
 import pathlib
 
 RADICE = pathlib.Path(__file__).resolve().parent.parent
-SITO = "https://lustrous-concha-651962.netlify.app"
+SITO = "https://ortocasahelp.netlify.app"
 AGGIORNATA = "2026-10-21"
 
 GUIDE = [

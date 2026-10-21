@@ -1,6 +1,6 @@
 """Verifica del sito pubblicato e dei collegamenti esterni (solo libreria standard).
 
-Uso:  python3 tests/verifica_online.py https://lustrous-concha-651962.netlify.app [report.md]
+Uso:  python3 tests/verifica_online.py https://ortocasahelp.netlify.app [report.md]
 
 Controlli:
   1. La home online è identica a index.html del repository (attende fino a 10 minuti
@@ -19,7 +19,7 @@ import urllib.error
 import urllib.request
 
 RADICE = pathlib.Path(__file__).resolve().parent.parent
-BASE = sys.argv[1].rstrip("/") if len(sys.argv) > 1 else "https://lustrous-concha-651962.netlify.app"
+BASE = sys.argv[1].rstrip("/") if len(sys.argv) > 1 else "https://ortocasahelp.netlify.app"
 REPORT = pathlib.Path(sys.argv[2]) if len(sys.argv) > 2 else None
 ATTESA_MAX_S = 600
 UA = "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Mobile Safari/537.36 OrtoCasaHelp-controlli"
