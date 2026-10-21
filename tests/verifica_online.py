@@ -80,7 +80,8 @@ for url in sorted(set(re.findall(r'"(https://www\.agrieuro\.com/[a-z0-9-]+-[cg]-
 
 # 5. Ricerche nei negozi (avvisi)
 ricerche = {
-    "AgriEuro": "https://www.agrieuro.com/advanced_search_result.php?keywords=motozappa",
+    "AgriEuro": "https://www.agrieuro.com/search/motozappa",
+    "AgriEuro (due parole)": "https://www.agrieuro.com/search/motozappa%20elettrica",
     "Amazon": "https://www.amazon.it/s?k=motozappa",
     "ManoMano": "https://www.manomano.it/cat/motozappa",
     "eBay": "https://www.ebay.it/sch/i.html?_nkw=motozappa",

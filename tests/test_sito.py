@@ -75,7 +75,7 @@ with sync_playwright() as p:
         speciali: linkNegozio('amazon','semi & "fave" <b>#1'),
         lungo:    linkNegozio('ebay','a'.repeat(200)),
     })""")
-    verifica("AgriEuro: ricerca senza codice", casi["agrieuro"] == "https://www.agrieuro.com/advanced_search_result.php?keywords=motozappa%20elettrica", casi["agrieuro"])
+    verifica("AgriEuro: ricerca senza codice", casi["agrieuro"] == "https://www.agrieuro.com/search/motozappa%20elettrica", casi["agrieuro"])
     verifica("Amazon: nessun tag finto", casi["amazon"] == "https://www.amazon.it/s?k=motozappa%20elettrica", casi["amazon"])
     verifica("ManoMano: formato /cat/a+b", casi["manomano"] == "https://www.manomano.it/cat/motozappa+elettrica", casi["manomano"])
     verifica("eBay: ricerca senza parametri EPN", casi["ebay"] == "https://www.ebay.it/sch/i.html?_nkw=motozappa%20elettrica", casi["ebay"])
@@ -136,7 +136,7 @@ with sync_playwright() as p:
     with ctx.expect_page() as nuova:
         pagina.press("#cosa", "Enter")
     nuova.value.wait_for_load_state()
-    verifica("Invio apre AgriEuro", any(u.startswith("https://www.agrieuro.com/advanced_search_result.php?keywords=tubo") for u in richieste), str(richieste))
+    verifica("Invio apre AgriEuro", any(u.startswith("https://www.agrieuro.com/search/tubo") for u in richieste), str(richieste))
     nuova.value.close()
     pagina.fill("#cosa", "   ")
     verifica("Solo spazi: menu chiuso", not pagina.is_visible("#scelte"))
