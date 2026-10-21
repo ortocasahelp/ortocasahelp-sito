@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>OrtoCasa Help</title>
+<meta name="description" content="Cosa fare nell'orto questo mese e dove comprare l'attrezzatura giusta: AgriEuro, Amazon, ManoMano ed eBay.">
+<meta name="theme-color" content="#2D1846">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="fonts.css">
+<style>
+  :root{
+    --melanzana:#2D1846;   /* testata, apertura, blocchi scuri */
+    --melanzana-2:#43285F; /* superfici sul viola */
+    --zucca:#F07F1A;       /* azioni: arancio del logo */
+    --lattuga:#C9E86A;     /* dettagli e cartellini */
+    --fondo:#F5F2F8;       /* fondo pagina */
+    --bianco:#FFFFFF;
+    --testo:#1F1230;
+    --grigio:#675C75;
+    --lilla:#D9CCE8;       /* testo secondario sul viola */
+    --lato:16px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--fondo);color:var(--testo);font-family:'Bricolage Grotesque',system-ui,-apple-system,sans-serif;font-optical-sizing:auto;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%;color:transparent;font-size:0}
+  button{font:inherit;color:inherit}
+  a,button,input,summary{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+  button,a{-webkit-user-select:none;user-select:none}
+  :focus-visible{outline:3px solid var(--lattuga);outline-offset:3px}
+  .contenitore{max-width:1140px;margin:0 auto;padding:0 var(--lato)}
+  .titolo-stretto{font-weight:800;letter-spacing:-.035em;line-height:.95}
+
+  /* ---------- Testata ---------- */
+  .testata{position:sticky;top:-46px;z-index:40;background:var(--melanzana);color:var(--bianco)}
+  .testata .contenitore{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;align-items:center;padding-top:10px;padding-bottom:10px}
+  .logo{height:32px}
+  .logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--bianco)}
+  .logo svg{width:32px;height:32px;flex:none}
+  .marchio{font-family:'Comfortaa','Trebuchet MS',sans-serif;font-weight:700;font-size:19px;white-space:nowrap}
+  .marchio .o{color:var(--zucca)}
+  .ricerca{position:relative;grid-column:1/-1}
+  .ricerca label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .ricerca input{width:100%;font:inherit;font-size:17px;background:var(--bianco);border:0;border-radius:999px;padding:13px 18px 13px 46px;color:var(--testo)}
+  .ricerca input::placeholder{color:#857A92}
+  .ricerca input:focus{outline:none;box-shadow:0 0 0 3px var(--lattuga)}
+  .ricerca .lente{position:absolute;left:17px;top:50%;width:18px;height:18px;transform:translateY(-50%);pointer-events:none}
+  .scelte{position:absolute;left:0;right:0;top:calc(100% + 8px);background:var(--bianco);color:var(--testo);border-radius:22px;padding:8px;box-shadow:0 20px 50px rgba(45,24,70,.35);display:none}
+  .scelte.aperte{display:block}
+  .scelte button{display:flex;align-items:baseline;justify-content:space-between;gap:12px;width:100%;text-align:left;background:none;border:0;border-radius:14px;padding:13px 14px;cursor:pointer}
+  .scelte button:active{background:var(--fondo)}
+  .scelte button:focus-visible{background:var(--fondo)}
+  .scelte button b{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .scelte button span{font-size:14px;color:var(--grigio);white-space:nowrap}
+  .scelte .primo{background:var(--zucca)}
+  .scelte .primo:active,.scelte .primo:focus-visible{background:#F58E30}
+  .scelte .primo span{color:var(--testo)}
+
+  /* ---------- Apertura: il lavoro del mese ---------- */
+  .mese{background:var(--melanzana);color:var(--bianco);border-radius:0 0 36px 36px;padding:8px 0 30px;overflow:hidden}
+  .mese .contenitore{display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+  .mese-foto{position:relative;aspect-ratio:4/3;border-radius:30px;background:var(--melanzana-2)}
+  .mese-foto img{width:100%;height:100%;object-fit:cover;border-radius:30px}
+  .cartellino{display:inline-block;background:var(--lattuga);color:var(--melanzana);font-weight:800;line-height:1.05;border-radius:999px;padding:8px 16px}
+  .mese-foto .cartellino{position:absolute;right:10px;bottom:-12px;display:flex;align-items:center;justify-content:center;width:104px;height:104px;padding:10px;border-radius:50%;font-size:22px;text-align:center;letter-spacing:-.02em;transform:rotate(-10deg);box-shadow:0 10px 24px rgba(0,0,0,.25)}
+  .mese h1{font-size:clamp(46px,13vw,112px)}
+  .consiglio{font-size:19px;line-height:1.45;color:var(--lilla);max-width:32ch;margin-top:14px}
+  .azione{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;min-height:58px;padding:0 28px;border:0;border-radius:999px;background:var(--zucca);color:var(--testo);font-weight:700;font-size:18px;cursor:pointer;box-shadow:0 8px 0 -2px #B95C08}
+  .azione:active{transform:translateY(3px);box-shadow:0 5px 0 -2px #B95C08}
+  .azione .bollo{display:none}
+
+  .altri{margin-top:28px}
+  .altri h2{font-size:15px;font-weight:600;color:var(--lilla);margin-bottom:10px}
+  .altri ul{list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding:0 0 4px;scrollbar-width:none}
+  .altri ul::-webkit-scrollbar{display:none}
+  .altri li{scroll-snap-align:start}
+  .altri button{display:flex;flex-direction:column;justify-content:space-between;gap:14px;width:100%;height:100%;text-align:left;background:var(--melanzana-2);border:0;border-radius:22px;padding:16px;cursor:pointer;color:var(--bianco)}
+  .altri b{display:block;font-size:19px;font-weight:700;letter-spacing:-.01em}
+  .altri small{display:block;font-size:15px;color:var(--lilla);margin-top:2px}
+  .altri .cerca{align-self:flex-start;font-size:14px;font-weight:700;background:var(--lattuga);color:var(--melanzana);border-radius:999px;padding:7px 14px}
+  .altri button{transition:transform .12s ease}
+  .altri button:active{transform:scale(.97)}
+  .altri button:active .cerca{background:var(--bianco)}
+
+  /* ---------- Sezioni ---------- */
+  .sezione{padding:44px 0 0}
+  .sezione h2.grande{font-size:clamp(38px,9.5vw,68px)}
+  .sezione .sotto{color:var(--grigio);margin-top:8px;max-width:44ch}
+
+  /* Reparti a mosaico */
+  .reparti{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:150px;grid-auto-flow:dense;gap:10px;margin-top:20px}
+  .reparto{position:relative;display:block;width:100%;height:100%;border:0;padding:0;border-radius:26px;overflow:hidden;background:var(--lilla);cursor:pointer;text-align:left}
+  .reparto:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .reparto:nth-child(4),.reparto:nth-child(7){grid-row:span 2}
+  .reparto{transition:transform .12s ease}
+  .reparto:active{transform:scale(.97)}
+  .reparto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+  .reparto .cartellino{position:absolute;left:10px;bottom:10px;max-width:calc(100% - 20px);background:var(--bianco);color:var(--testo);font-size:16px;padding:8px 14px}
+  .reparto .cartellino small{display:none}
+  .reparto:nth-child(1) .cartellino{font-size:22px;padding:10px 18px}
+  .reparto:nth-child(1) .cartellino small{display:block;font-weight:500;font-size:14px;color:var(--grigio);margin-top:2px}
+
+  /* Prima di comprare */
+  .consigli{list-style:none;margin-top:20px;display:grid;gap:10px}
+  .consigli li{background:var(--bianco);border-radius:26px;padding:22px}
+  .consigli b{display:inline-block;font-weight:800;font-size:15px;background:var(--fondo);color:var(--melanzana);border-radius:999px;padding:5px 12px}
+  .consigli p{margin-top:12px;font-size:18px;line-height:1.45;max-width:46ch}
+  .consigli button{display:inline-flex;align-items:center;min-height:48px;margin-top:8px;background:none;border:0;font-weight:700;color:var(--melanzana);text-decoration:underline;text-decoration-color:var(--zucca);text-decoration-thickness:3px;text-underline-offset:5px;cursor:pointer;padding:0}
+  .consigli button:active{color:var(--zucca)}
+
+  /* Dove cerchiamo */
+  .blocco-negozi{background:var(--melanzana);color:var(--bianco);border-radius:30px;padding:26px 20px;margin-top:44px}
+  .blocco-negozi h2.grande{font-size:clamp(34px,8vw,56px)}
+  .blocco-negozi .sotto{color:var(--lilla)}
+  .negozi{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;list-style:none}
+  .negozi li{background:var(--melanzana-2);border-radius:20px;padding:16px}
+  .negozi b{display:block;font-weight:800;font-size:24px;letter-spacing:-.02em;color:var(--lattuga)}
+  .negozi span{display:block;font-size:15px;color:var(--lilla);margin-top:4px}
+
+  footer{margin-top:40px;color:var(--grigio);font-size:14px;line-height:1.6;padding:24px 0 calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--lilla)}
+  footer p+p{margin-top:10px}
+  footer a{color:var(--melanzana)}
+  footer .marchio{color:var(--melanzana);font-size:20px;display:block;margin-bottom:10px}
+
+  /* ---------- Pannello negozi ---------- */
+  dialog.pannello{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;margin:0}
+  dialog.pannello::backdrop{background:rgba(31,18,48,.6)}
+  .pannello-corpo{position:absolute;left:0;right:0;bottom:0;margin:0 auto;max-width:560px;background:var(--bianco);color:var(--testo);border-radius:30px 30px 0 0;padding:6px var(--lato) calc(18px + env(safe-area-inset-bottom));animation:sale .18s cubic-bezier(.2,.8,.2,1);touch-action:pan-x}
+  .pannello-corpo.trascina{transition:none}
+  .pannello-corpo.rilascia{transition:transform .18s ease}
+  @keyframes sale{from{transform:translateY(100%)}to{transform:none}}
+  .maniglia{width:44px;height:5px;border-radius:3px;background:var(--lilla);margin:6px auto 16px;box-shadow:0 0 0 14px transparent}
+  .pannello-testa{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center}
+  .pannello-testa img{width:72px;height:72px;border-radius:20px;object-fit:cover;background:var(--lilla)}
+  .pannello h3{font-weight:800;font-size:28px;letter-spacing:-.03em;line-height:1}
+  .pannello p{color:var(--grigio);font-size:15px;margin-top:4px}
+  .link-negozi{display:grid;gap:8px;margin-top:18px}
+  .link-negozi a{display:flex;align-items:center;justify-content:space-between;min-height:58px;padding:0 20px;border-radius:999px;background:var(--fondo);text-decoration:none;color:var(--testo);font-weight:700}
+  .link-negozi a span{font-weight:500;font-size:14px;color:var(--grigio)}
+  .link-negozi a:active{background:var(--lilla)}
+  .link-negozi a:first-child{background:var(--zucca)}
+  .link-negozi a:first-child:active{background:#F58E30}
+  .link-negozi a:first-child span{color:var(--testo)}
+  .chiudi{margin-top:6px;width:100%;min-height:48px;font-weight:600;color:var(--grigio);background:none;border:0;cursor:pointer}
+
+  @media(min-width:800px){
+    :root{--lato:32px}
+    .testata{top:0}
+    .testata .contenitore{grid-template-columns:auto minmax(0,560px);justify-content:space-between;padding-bottom:10px}
+    .ricerca{grid-column:auto}
+    .mese{padding:30px 0 44px;border-radius:0 0 48px 48px}
+    .mese .contenitore{grid-template-columns:1.1fr 1fr;align-items:center;gap:52px}
+    .mese-foto{order:2;aspect-ratio:4/5}
+    .mese-foto .cartellino{width:140px;height:140px;font-size:26px;right:-24px;bottom:22px}
+    .altri ul{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible;margin:0;padding:0}
+    .reparti{grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:14px}
+    .reparto:nth-child(4),.reparto:nth-child(7){grid-row:auto}
+    .consigli{grid-template-columns:repeat(3,1fr);gap:14px}
+    .blocco-negozi{padding:40px}
+    .negozi{grid-template-columns:repeat(4,1fr)}
+    .pannello-corpo{bottom:auto;top:50%;transform:translateY(-50%);border-radius:30px;animation:none}
+  }
+  @media(hover:hover){
+    .scelte button:hover{background:var(--fondo)}
+    .scelte .primo:hover{background:#F58E30}
+    .azione:hover{background:#F58E30}
+    .altri button:hover .cerca{background:var(--bianco)}
+    .reparto:hover img{transform:scale(1.05)}
+    .link-negozi a:hover{background:var(--lilla)}
+    .link-negozi a:first-child:hover{background:#F58E30}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="testata"><div class="contenitore">
+  <a href="#" class="logo" aria-label="OrtoCasa Help, torna all'inizio">
+    <svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="33" r="18" stroke="#F07F1A" stroke-width="9"/><g transform="translate(28,18)"><path d="M0 3 L0 -3" stroke="#C9E86A" stroke-width="2.6" stroke-linecap="round"/><path d="M0 -2 C-1.5 -9 -7 -13 -12.5 -12.5 C-11.5 -6 -5.5 -2 0 -2 Z" fill="#C9E86A"/><path d="M0 -2 C1.5 -9 7 -13 12.5 -12.5 C11.5 -6 5.5 -2 0 -2 Z" fill="#C9E86A"/></g></svg>
+    <span class="marchio"><span class="o">O</span>rtoCasa Help</span>
+  </a>
+  <form class="ricerca" id="modulo-ricerca" role="search" novalidate>
+    <label for="cosa">Cerca un prodotto</label>
+    <svg class="lente" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" stroke="#2D1846" stroke-width="2.2"/><path d="M13 13l5 5" stroke="#2D1846" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <input id="cosa" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" maxlength="80" placeholder="Cerca: motozappa, semi, tubo..." aria-controls="scelte" aria-expanded="false">
+    <div class="scelte" id="scelte" role="group" aria-label="Scegli il negozio"></div>
+  </form>
+</div></header>
+
+<main>
+  <section class="mese" aria-labelledby="mese-titolo"><div class="contenitore">
+    <div class="mese-foto"><img id="mese-img" alt="" fetchpriority="high"><span class="cartellino" id="mese-nome"></span></div>
+    <div>
+      <h1 class="titolo-stretto" id="mese-titolo"></h1>
+      <p class="consiglio" id="mese-consiglio"></p>
+      <button class="azione" type="button" id="mese-azione"><span class="bollo" aria-hidden="true"></span><span id="mese-azione-testo"></span></button>
+      <div class="altri">
+        <h2 id="altri-titolo"></h2>
+        <ul id="altri"></ul>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sezione" aria-labelledby="titolo-reparti"><div class="contenitore">
+    <h2 class="grande titolo-stretto" id="titolo-reparti">Reparti</h2>
+    <p class="sotto">Scegli il reparto, poi il negozio.</p>
+    <div class="reparti" id="reparti"></div>
+  </div></section>
+
+  <section class="sezione" aria-labelledby="titolo-consigli"><div class="contenitore">
+    <h2 class="grande titolo-stretto" id="titolo-consigli">Prima di comprare</h2>
+    <p class="sotto">Tre errori che vedo fare spesso.</p>
+    <ul class="consigli">
+      <li><b>Motozappa</b><p>Per un orto di casa con terra già lavorata basta una elettrica o una piccola a scoppio. Le grandi servono su terreni duri o per rompere il prato.</p><button type="button" data-q="motozappa" data-titolo="Motozappe" data-agrieuro="https://www.agrieuro.com/motozappe-c-22.html">Vedi le motozappe</button></li>
+      <li><b>Robot tagliaerba</b><p>Prendilo con una superficie massima più grande del tuo prato: lavora meno ore e dura di più. E guarda la pendenza che regge.</p><button type="button" data-q="robot tagliaerba" data-titolo="Robot tagliaerba" data-agrieuro="https://www.agrieuro.com/robot-tagliaerba-c-59.html">Vedi i robot</button></li>
+      <li><b>Irrigazione</b><p>Goccia, non spruzzo. Bagni la terra e non le foglie: meno acqua sprecata e meno malattie. Aggiungi un programmatore e non ci pensi più.</p><button type="button" data-q="kit irrigazione a goccia" data-titolo="Irrigazione" data-agrieuro="https://www.agrieuro.com/irrigazione-g-14.html">Vedi l'irrigazione</button></li>
+    </ul>
+  </div></section>
+
+  <section aria-labelledby="titolo-negozi"><div class="contenitore">
+    <div class="blocco-negozi">
+      <h2 class="grande titolo-stretto" id="titolo-negozi">Dove cerchiamo</h2>
+      <p class="sotto">Compri direttamente sul negozio, con i suoi prezzi, spedizioni e garanzie.</p>
+      <ul class="negozi">
+        <li><b>AgriEuro</b><span>Macchine e attrezzi per orto e giardino</span></li>
+        <li><b>Amazon</b><span>Tanta scelta, consegna veloce</span></li>
+        <li><b>ManoMano</b><span>Fai da te e giardinaggio</span></li>
+        <li><b>eBay</b><span>Usato e ricambi</span></li>
+      </ul>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="contenitore">
+  <span class="marchio"><span class="o" style="color:#F07F1A">O</span>rtoCasa Help</span>
+  <p>Consigli di un perito agrario per chi coltiva l'orto di casa.</p>
+  <p>OrtoCasa Help partecipa a programmi di affiliazione: se acquisti dopo aver cliccato un nostro link, il negozio ci riconosce una commissione, senza costi aggiuntivi per te. In qualità di Affiliato Amazon, OrtoCasa Help riceve un guadagno dagli acquisti idonei.</p>
+  <p>Foto da <a href="https://unsplash.com/?utm_source=ortocasahelp&amp;utm_medium=referral" rel="noopener" target="_blank">Unsplash</a>: Colin Watts, Maddi Bazzocco, Annie Spratt, Jonathan Kemper, Avinash Kumar, Marc Pell, Yarbo Global, Takashi Sakamoto, zanda photography, Markus Spiske, Eco Warrior Princess, Nathalie Klippert, Zoe Richardson.</p>
+  <p>© 2026 OrtoCasa Help</p>
+</div></footer>
+
+<dialog class="pannello" id="pannello" aria-labelledby="pannello-titolo">
+  <div class="pannello-corpo">
+    <div class="maniglia" aria-hidden="true"></div>
+    <div class="pannello-testa">
+      <img id="pannello-img" alt="">
+      <div><h3 id="pannello-titolo"></h3><p>Scegli dove guardare.</p></div>
+    </div>
+    <div class="link-negozi" id="pannello-link"></div>
+    <button class="chiudi" type="button" id="pannello-chiudi">Chiudi</button>
+  </div>
+</dialog>
+
+<script>
+/* =====================================================================
+   CONFIGURAZIONE — unico punto da modificare.
+   Lascia "" finché il programma non ti dà il codice: il link funziona
+   lo stesso, solo senza tracciamento.
+   ===================================================================== */
+var AFFILIATI = {
+  agrieuro: { nome: "AgriEuro", nota: "Specialista orto e giardino", codice: "", parametro: "" },
+  amazon:   { nome: "Amazon",   nota: "Consegna veloce",             tag: "" },
+  manomano: { nome: "ManoMano", nota: "Fai da te e giardino",        awinMid: "", awinAffId: "" },
+  ebay:     { nome: "eBay",     nota: "Usato e ricambi",             campid: "" }
+};
+var ORDINE_NEGOZI = ["agrieuro", "amazon", "manomano", "ebay"];
+
+/* Foto Unsplash verificate (licenza Unsplash, uso commerciale gratuito). */
+var F = {
+  aglio:"photo-1685130064064-b77382b0dbe2", fagioli:"photo-1542990253-a781e04c0082", carriola:"photo-1621272156568-7306716648df",
+  aiuola:"photo-1621460248083-6271cc4437a8", terra:"photo-1613036582025-ba1d4ccb3226", goccia:"photo-1748432171507-c1d62fe2e859",
+  robot:"photo-1741326757602-186060c5d5b5", decesp:"photo-1768268004427-6fb88cbd1605", serra:"photo-1516253593875-bd7ba052fbc5",
+  germogli:"photo-1466692476868-aef1dfb1e735", forbici:"photo-1523301551780-cd17359a95d0", vasi:"photo-1620293106076-ad27d651efe3",
+  raccolto:"photo-1624668430039-0175a0fbf006"
+};
+var AE = {
+  motozappe:"https://www.agrieuro.com/motozappe-c-22.html", irrigazione:"https://www.agrieuro.com/irrigazione-g-14.html",
+  robot:"https://www.agrieuro.com/robot-tagliaerba-c-59.html", decespugliatori:"https://www.agrieuro.com/decespugliatori-c-3.html"
+};
+
+/* Calendario dell'orto (pianura del Nord Italia). 1 = gennaio. */
+var MESI = {
+  1:{nome:"Gennaio", titolo:"Si sistemano gli attrezzi.", consiglio:"Affila le forbici e fai il tagliando alla motozappa adesso, non a marzo quando serve.", azione:"Trova forbici da potatura", q:"forbici da potatura", foto:F.forbici, alt:"Forbici da potatura e guanti",
+     altri:[["Potatura del frutteto","Nelle giornate senza gelo","svettatoio"],["Semenzaio riscaldato","Per peperoni e melanzane a fine mese","semenzaio riscaldato"],["Semi per la stagione","Scegli con calma","semi orto"]]},
+  2:{nome:"Febbraio", titolo:"Si semina al caldo.", consiglio:"Peperoni, melanzane e pomodori in semenzaio, tra 20 e 25 °C e vicino alla luce.", azione:"Trova un semenzaio", q:"semenzaio riscaldato", foto:F.germogli, alt:"Germogli appena spuntati",
+     altri:[["Terriccio da semina","Fine e leggero, non quello da vaso","terriccio da semina"],["Semi di pomodoro","Da seminare entro il mese","semi pomodoro"],["Potatura della vite","Prima che si muovano le gemme","forbici da potatura"]]},
+  3:{nome:"Marzo", titolo:"Si prepara il terreno.", consiglio:"Lavora quando la terra non si attacca alla vanga. Se è bagnata la compatti e te la porti dietro tutto l'anno.", azione:"Trova una motozappa", q:"motozappa", foto:F.terra, alt:"Terreno scuro appena lavorato", agrieuro:AE.motozappe,
+     altri:[["Concime organico","Letame pellettato prima di lavorare","letame pellettato"],["Patate da semina","Tuberi certificati, non quelli da cucina","patate da semina"],["Telo pacciamante","Meno erba, meno acqua","telo pacciamante"]]},
+  4:{nome:"Aprile", titolo:"Si trapianta.", consiglio:"Pomodori fuori solo quando di notte si sta sopra i 10 °C. Prima, aspettano in serra.", azione:"Trova tutori per pomodori", q:"tutori per pomodori", foto:F.aiuola, alt:"Mani che mettono a dimora piantine in un'aiuola rialzata",
+     altri:[["Rete antinsetto","Sopra cavoli e insalate","rete antinsetto"],["Irrigazione a goccia","Montala adesso, a terra libera","kit irrigazione a goccia"],["Semi di zucchine","Semina diretta a fine mese","semi zucchine"]]},
+  5:{nome:"Maggio", titolo:"Si porta l'acqua.", consiglio:"Ala gocciolante sotto la pacciamatura: meno acqua, foglie asciutte, meno malattie.", azione:"Trova un kit a goccia", q:"kit irrigazione a goccia", foto:F.goccia, alt:"Aiuola con impianto di irrigazione", agrieuro:AE.irrigazione,
+     altri:[["Programmatore","Bagna all'alba anche quando non ci sei","programmatore irrigazione"],["Legacci per piante","Lega i pomodori man mano che crescono","legacci per piante"],["Tutori","Per fagioli rampicanti e cetrioli","tutori orto"]]},
+  6:{nome:"Giugno", titolo:"Si taglia l'erba ai bordi.", consiglio:"Tieni bassi i bordi dell'orto: meno rifugi per le lumache, che di notte entrano nelle insalate.", azione:"Trova un decespugliatore", q:"decespugliatore", foto:F.decesp, alt:"Uomo che taglia l'erba con un decespugliatore", agrieuro:AE.decespugliatori,
+     altri:[["Rete ombreggiante","Per insalate e semenzai al sole","rete ombreggiante"],["Programmatore","Con il caldo serve tutti i giorni","programmatore irrigazione"],["Trappole per lumache","Senza veleni","trappola lumache"]]},
+  7:{nome:"Luglio", titolo:"Si raccoglie ogni giorno.", consiglio:"Zucchine piccole e spesso: se lasci crescere le grandi, la pianta smette di produrre.", azione:"Trova cassette da raccolta", q:"cassette raccolta ortaggi", foto:F.raccolto, alt:"Cesta di legno piena di pomodori e verdure",
+     altri:[["Tubo gocciolante","Il caldo non perdona chi bagna a mano","tubo gocciolante"],["Rete ombreggiante","Sopra le insalate di luglio","rete ombreggiante"],["Semi di finocchio","Semina adesso per l'autunno","semi finocchio"]]},
+  8:{nome:"Agosto", titolo:"Si semina l'orto d'inverno.", consiglio:"Cavoli, radicchi e finocchi in semenzaio adesso: a settembre vanno nell'orto.", azione:"Trova semi di cavolo", q:"semi cavolo", foto:F.germogli, alt:"Germogli appena spuntati",
+     altri:[["Semi di radicchio","Per la raccolta d'inverno","semi radicchio"],["Cassette da raccolta","Pomodori e peperoni ogni giorno","cassette raccolta ortaggi"],["Programmatore","Per le settimane di ferie","programmatore irrigazione"]]},
+  9:{nome:"Settembre", titolo:"Si rinnova il prato.", consiglio:"Semina il prato adesso: terra ancora calda e piogge in arrivo. In primavera parte prima.", azione:"Trova semi per prato", q:"semi prato", foto:F.robot, alt:"Robot tagliaerba al lavoro su un prato",
+     altri:[["Robot tagliaerba","Chi lo compra non torna indietro","robot tagliaerba"],["Semi di spinacio","Semina fino a ottobre","semi spinacio"],["Cipolle da piantare","Bulbilli di cipolla bianca","bulbilli cipolla"]]},
+  10:{nome:"Ottobre", titolo:"Si pianta l'aglio.", consiglio:"Spicchi grossi, punta in su, a 3–5 cm sotto terra e a 10–15 cm uno dall'altro. Prima che geli.", azione:"Trova aglio da piantare", q:"aglio da piantare", foto:F.aglio, alt:"Cesto di teste d'aglio",
+     altri:[["Semi di fave","Semina adesso, raccogli in primavera","semi fave"],["Tessuto non tessuto","Pronto per la prima brina","tessuto non tessuto"],["Biotrituratore","Potature e foglie diventano pacciamatura","biotrituratore"]]},
+  11:{nome:"Novembre", titolo:"Si copre.", consiglio:"Tessuto non tessuto su insalate e spinaci: guadagni qualche grado senza costruire una serra.", azione:"Trova tessuto non tessuto", q:"tessuto non tessuto", foto:F.serra, alt:"Annaffiatoio verde dentro una serra",
+     altri:[["Mini serra","Per le insalate d'inverno","mini serra"],["Soffiatore foglie","Prato pulito prima delle piogge","soffiatore foglie"],["Letame pellettato","Si sparge adesso, lavora l'inverno","letame pellettato"]]},
+  12:{nome:"Dicembre", titolo:"Si prepara la prossima stagione.", consiglio:"Scegli i semi adesso, con calma. A febbraio si ha fretta e si compra quello che c'è.", azione:"Trova semi per l'orto", q:"semi orto", foto:F.fagioli, alt:"Fagioli secchi di varietà diverse",
+     altri:[["Mini serra","Per partire prima in primavera","mini serra"],["Forbici da potatura","Un buon regalo per chi ha l'orto","forbici da potatura"],["Carriola","Quella vecchia ha la ruota a terra?","carriola"]]}
+};
+
+var REPARTI = [
+  {nome:"Motozappe", testo:"Lavorare la terra", q:"motozappa", foto:F.terra, alt:"Terreno scuro appena lavorato", agrieuro:AE.motozappe},
+  {nome:"Irrigazione", testo:"Goccia e programmatori", q:"irrigazione a goccia", foto:F.goccia, alt:"Aiuola con impianto di irrigazione", agrieuro:AE.irrigazione},
+  {nome:"Robot tagliaerba", testo:"Il prato va da solo", q:"robot tagliaerba", foto:F.robot, alt:"Robot tagliaerba al lavoro su un prato", agrieuro:AE.robot},
+  {nome:"Decespugliatori", testo:"Bordi ed erba alta", q:"decespugliatore", foto:F.decesp, alt:"Uomo che taglia l'erba con un decespugliatore", agrieuro:AE.decespugliatori},
+  {nome:"Serre", testo:"Anticipa la stagione", q:"serra da giardino", foto:F.serra, alt:"Annaffiatoio verde dentro una serra"},
+  {nome:"Sementi", testo:"Orto e prato", q:"semi orto", foto:F.fagioli, alt:"Fagioli secchi di varietà diverse"},
+  {nome:"Attrezzi a mano", testo:"Forbici, zappe, guanti", q:"attrezzi da giardino", foto:F.forbici, alt:"Forbici da potatura e guanti"},
+  {nome:"Carriole", testo:"Trasporto e lavori pesanti", q:"carriola giardino", foto:F.carriola, alt:"Carriola in un giardino fiorito"},
+  {nome:"Vasi", testo:"Terracotta e fioriere", q:"vasi terracotta", foto:F.vasi, alt:"Vasi in terracotta con piante verdi"}
+];
+
+/* ---------- Costruzione dei link (funzioni pure, testate) ---------- */
+function pulisci(testo){
+  return String(testo == null ? "" : testo).replace(/\s+/g, " ").trim().slice(0, 80);
+}
+function linkNegozio(negozio, testo){
+  var q = pulisci(testo);
+  if (!q) return null;
+  var e = encodeURIComponent(q);
+  var url;
+  switch (negozio) {
+    case "agrieuro":
+      // Formato di ricerca da confermare quando arriva l'approvazione AgriEuro.
+      url = "https://www.agrieuro.com/advanced_search_result.php?keywords=" + e;
+      if (AFFILIATI.agrieuro.codice && AFFILIATI.agrieuro.parametro)
+        url += "&" + AFFILIATI.agrieuro.parametro + "=" + encodeURIComponent(AFFILIATI.agrieuro.codice);
+      return url;
+    case "amazon":
+      url = "https://www.amazon.it/s?k=" + e;
+      if (AFFILIATI.amazon.tag) url += "&tag=" + encodeURIComponent(AFFILIATI.amazon.tag);
+      return url;
+    case "manomano":
+      url = "https://www.manomano.it/cat/" + q.split(" ").map(encodeURIComponent).join("+");
+      if (AFFILIATI.manomano.awinMid && AFFILIATI.manomano.awinAffId)
+        url = "https://www.awin1.com/cread.php?awinmid=" + encodeURIComponent(AFFILIATI.manomano.awinMid) +
+              "&awinaffid=" + encodeURIComponent(AFFILIATI.manomano.awinAffId) + "&ued=" + encodeURIComponent(url);
+      return url;
+    case "ebay":
+      url = "https://www.ebay.it/sch/i.html?_nkw=" + e;
+      if (AFFILIATI.ebay.campid)
+        url += "&mkevt=1&mkcid=1&mkrid=724-53478-19255-0&campid=" + encodeURIComponent(AFFILIATI.ebay.campid) + "&toolid=10001";
+      return url;
+    default:
+      return null;
+  }
+}
+function linkCategoria(negozio, cat){
+  if (negozio === "agrieuro" && cat.agrieuro) {
+    var u = cat.agrieuro;
+    if (AFFILIATI.agrieuro.codice && AFFILIATI.agrieuro.parametro)
+      u += "?" + AFFILIATI.agrieuro.parametro + "=" + encodeURIComponent(AFFILIATI.agrieuro.codice);
+    return u;
+  }
+  return linkNegozio(negozio, cat.q);
+}
+function foto(id, w){ return "https://images.unsplash.com/" + id + "?auto=format&fit=crop&w=" + w + "&q=70"; }
+function meseCorrente(data){ return (data || new Date()).getMonth() + 1; }
+
+/* ---------- Interfaccia ---------- */
+(function(){
+  function el(tag, cls, testo){ var n = document.createElement(tag); if (cls) n.className = cls; if (testo != null) n.textContent = testo; return n; }
+  function apriLink(url){ if (url) window.open(url, "_blank", "noopener"); }
+
+  /* Ricerca: scrivi e scegli il negozio dal menu; Invio = AgriEuro */
+  var modulo = document.getElementById("modulo-ricerca");
+  var campo = document.getElementById("cosa");
+  var scelte = document.getElementById("scelte");
+  function disegnaScelte(){
+    var q = pulisci(campo.value);
+    scelte.textContent = "";
+    if (!q) { scelte.classList.remove("aperte"); campo.setAttribute("aria-expanded","false"); return; }
+    ORDINE_NEGOZI.forEach(function(n, i){
+      var b = el("button", i === 0 ? "primo" : "");
+      b.type = "button"; b.dataset.negozio = n;
+      b.appendChild(el("b", "", "Cerca “" + q + "”"));
+      b.appendChild(el("span", "", "su " + AFFILIATI[n].nome));
+      b.addEventListener("click", function(){ apriLink(linkNegozio(n, campo.value)); });
+      scelte.appendChild(b);
+    });
+    scelte.classList.add("aperte"); campo.setAttribute("aria-expanded","true");
+  }
+  campo.addEventListener("input", disegnaScelte);
+  campo.addEventListener("focus", disegnaScelte);
+  modulo.addEventListener("submit", function(ev){ ev.preventDefault(); apriLink(linkNegozio("agrieuro", campo.value)); });
+  document.addEventListener("click", function(ev){ if (!modulo.contains(ev.target)) { scelte.classList.remove("aperte"); campo.setAttribute("aria-expanded","false"); } });
+  modulo.addEventListener("keydown", function(ev){ if (ev.key === "Escape") { scelte.classList.remove("aperte"); campo.setAttribute("aria-expanded","false"); } });
+
+  /* Pannello negozi */
+  var pannello = document.getElementById("pannello");
+  function apriPannello(voce){
+    var img = document.getElementById("pannello-img");
+    img.src = voce.foto ? foto(voce.foto, 200) : ""; img.alt = voce.alt || "";
+    img.style.display = voce.foto ? "" : "none";
+    document.getElementById("pannello-titolo").textContent = voce.nome;
+    var box = document.getElementById("pannello-link");
+    box.textContent = "";
+    ORDINE_NEGOZI.forEach(function(n){
+      var a = el("a", "", AFFILIATI[n].nome);
+      a.appendChild(el("span", "", AFFILIATI[n].nota));
+      a.href = linkCategoria(n, voce); a.target = "_blank"; a.rel = "sponsored noopener";
+      box.appendChild(a);
+    });
+    if (typeof pannello.showModal === "function") pannello.showModal(); else pannello.setAttribute("open","");
+  }
+  function chiudi(){ if (pannello.close) pannello.close(); else pannello.removeAttribute("open"); }
+  document.getElementById("pannello-chiudi").addEventListener("click", chiudi);
+  /* Trascina giù il pannello per chiuderlo */
+  var corpo = pannello.querySelector(".pannello-corpo");
+  var inizioY = null, deltaY = 0;
+  corpo.addEventListener("touchstart", function(ev){
+    if (ev.target.closest("a")) return;
+    inizioY = ev.touches[0].clientY; deltaY = 0;
+    corpo.classList.add("trascina"); corpo.classList.remove("rilascia");
+  }, {passive:true});
+  corpo.addEventListener("touchmove", function(ev){
+    if (inizioY === null) return;
+    deltaY = Math.max(0, ev.touches[0].clientY - inizioY);
+    corpo.style.transform = "translateY(" + deltaY + "px)";
+  }, {passive:true});
+  corpo.addEventListener("touchend", function(){
+    if (inizioY === null) return;
+    corpo.classList.remove("trascina"); corpo.classList.add("rilascia");
+    if (deltaY > 90) { chiudi(); }
+    corpo.style.transform = "";
+    inizioY = null;
+  });
+  pannello.addEventListener("close", function(){ corpo.style.transform = ""; corpo.classList.remove("trascina","rilascia"); });
+  pannello.addEventListener("click", function(ev){ if (ev.target === pannello) chiudi(); });
+  window.apriPannello = apriPannello;
+
+  /* Lavoro del mese */
+  var m = MESI[meseCorrente()];
+  var img = document.getElementById("mese-img");
+  img.src = foto(m.foto, 900);
+  img.srcset = foto(m.foto, 600) + " 600w, " + foto(m.foto, 900) + " 900w, " + foto(m.foto, 1400) + " 1400w";
+  img.sizes = "(min-width: 800px) 50vw, 100vw";
+  img.alt = m.alt;
+  document.getElementById("mese-nome").textContent = m.nome;
+  document.getElementById("mese-titolo").textContent = m.titolo;
+  document.getElementById("mese-consiglio").textContent = m.consiglio;
+  document.getElementById("mese-azione-testo").textContent = m.azione;
+  document.getElementById("mese-azione").addEventListener("click", function(){
+    var nome = m.azione.replace(/^Trova /, "");
+    apriPannello({nome: nome.charAt(0).toUpperCase() + nome.slice(1), q: m.q, foto: m.foto, alt: m.alt, agrieuro: m.agrieuro});
+  });
+  document.getElementById("altri-titolo").textContent = "Sempre a " + m.nome.toLowerCase();
+  var lista = document.getElementById("altri");
+  m.altri.forEach(function(a){
+    var li = el("li"); var b = el("button"); b.type = "button";
+    var t = el("div"); t.appendChild(el("b", "", a[0])); t.appendChild(el("small", "", a[1]));
+    b.appendChild(t); b.appendChild(el("span", "cerca", "Cerca"));
+    b.addEventListener("click", function(){ apriPannello({nome: a[0], q: a[2]}); });
+    li.appendChild(b); lista.appendChild(li);
+  });
+
+  /* Reparti */
+  var reparti = document.getElementById("reparti");
+  REPARTI.forEach(function(r){
+    var b = el("button", "reparto"); b.type = "button";
+    var i = el("img"); i.src = foto(r.foto, 600); i.alt = r.alt; i.loading = "lazy"; i.decoding = "async";
+    var c = el("span", "cartellino", r.nome); c.appendChild(el("small", "", r.testo));
+    b.appendChild(i); b.appendChild(c);
+    b.addEventListener("click", function(){ apriPannello(r); });
+    reparti.appendChild(b);
+  });
+
+  /* Consigli "Prima di comprare" */
+  document.querySelectorAll(".consigli button").forEach(function(b){
+    b.addEventListener("click", function(){ apriPannello({nome: b.dataset.titolo, q: b.dataset.q, agrieuro: b.dataset.agrieuro}); });
+  });
+})();
+</script>
+</body>
+</html>
