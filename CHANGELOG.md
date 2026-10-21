@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.3.1 — 21/10/2026
+
+- IndexNow: a ogni pubblicazione le pagine della sitemap vengono segnalate in automatico a Bing e agli altri motori aderenti, senza bisogno di account (`strumenti/indexnow.py`, chiave pubblica nella radice).
+
 ## 4.3.0 — 21/10/2026
 
 - Tre pagine-guida per Google: motozappa, robot tagliaerba, irrigazione a goccia, con barra fissa "Vedi su AgriEuro" e link ai 4 negozi.

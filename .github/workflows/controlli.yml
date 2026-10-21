@@ -60,6 +60,10 @@ jobs:
         run: |
           mkdir -p esiti
           python tests/verifica_online.py "$SITO" esiti/verifica-online.md
+      - name: Segnala le pagine ai motori di ricerca (IndexNow)
+        if: github.event_name == 'push' && steps.verifica.outcome == 'success'
+        continue-on-error: true
+        run: python strumenti/indexnow.py "$SITO" esiti/verifica-online.md
       - name: Test e schermate sul sito vero
         id: schermate
         continue-on-error: true
