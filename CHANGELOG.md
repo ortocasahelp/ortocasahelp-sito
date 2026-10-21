@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.4.4 — 22/10/2026
+
+- Pinterest: meta tag `p:domain_verify` nella home per verificare il sito sull'account aziendale OrtoCasa Help (da non rimuovere).
+
 ## 4.4.3 — 22/10/2026
 
 - Google Search Console: file di verifica della proprietà `google323c386588effe2f.html` nella radice (da non rimuovere: serve a restare verificati). Controllato dai test locali e dalla verifica online.

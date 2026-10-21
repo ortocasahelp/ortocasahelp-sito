@@ -247,6 +247,8 @@ with sync_playwright() as p:
     verifica("Search Console: file di verifica Google presente e corretto",
              len(file_google) == 1 and file_google[0].read_text() == f"google-site-verification: {file_google[0].name}")
 
+    verifica("Pinterest: meta di verifica del sito nella home",
+             '<meta name="p:domain_verify" content="e9e477748b1f5af1ca9f16f6c86bf180"/>' in (RADICE / "index.html").read_text(encoding="utf-8"))
     verifica("Nessun errore JavaScript", not errori_js, "; ".join(errori_js))
     browser.close()
 
