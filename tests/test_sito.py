@@ -243,6 +243,10 @@ with sync_playwright() as p:
     verifica("Privacy: nessuno scorrimento orizzontale", pp.evaluate("() => document.documentElement.scrollWidth <= window.innerWidth"))
     pp.close()
 
+    file_google = sorted(RADICE.glob("google*.html"))
+    verifica("Search Console: file di verifica Google presente e corretto",
+             len(file_google) == 1 and file_google[0].read_text() == f"google-site-verification: {file_google[0].name}")
+
     verifica("Nessun errore JavaScript", not errori_js, "; ".join(errori_js))
     browser.close()
 

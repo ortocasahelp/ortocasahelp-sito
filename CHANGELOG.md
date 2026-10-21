@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.4.3 — 22/10/2026
+
+- Google Search Console: file di verifica della proprietà `google323c386588effe2f.html` nella radice (da non rimuovere: serve a restare verificati). Controllato dai test locali e dalla verifica online.
+
 ## 4.4.2 — 21/10/2026
 
 - Verifica online: attende che Netlify abbia pubblicato tutte le pagine controllate (guide, sitemap, script), non solo la home. Prima una modifica che non toccava `index.html` veniva controllata a pubblicazione non finita e dava falsi errori (successo con la 4.4.1).
