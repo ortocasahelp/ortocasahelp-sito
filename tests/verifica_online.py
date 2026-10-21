@@ -53,7 +53,8 @@ def esito(nome, ok, dettaglio="", bloccante=True):
 #    prima che Netlify abbia finito di pubblicarla.
 locale = (RADICE / "index.html").read_bytes()
 chiave_indexnow = [p.name for p in RADICE.glob("*.txt") if re.fullmatch(r"[0-9a-f]{32}\.txt", p.name)]
-PERCORSI = chiave_indexnow + ["privacy/", "guide/motozappa/", "guide/robot-tagliaerba/", "guide/irrigazione-a-goccia/", "guide/decespugliatore/", "guide/guida.css", "guide/guida.js", "negozi.js", "sitemap.xml", "robots.txt"]
+verifica_google = [p.name for p in RADICE.glob("google*.html")]
+PERCORSI = chiave_indexnow + verifica_google + ["privacy/", "guide/motozappa/", "guide/robot-tagliaerba/", "guide/irrigazione-a-goccia/", "guide/decespugliatore/", "guide/guida.css", "guide/guida.js", "negozi.js", "sitemap.xml", "robots.txt"]
 
 
 def file_locale(percorso):
