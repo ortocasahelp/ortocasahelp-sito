@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.6.0 — 22/10/2026
+
+- Visibilità su Google: nuova pagina indice `/guide/` con tutte le guide (foto, titolo, riassunto, dati strutturati CollectionPage + ItemList), generata da `strumenti/genera_guide.py`.
+- Nuova pagina `/chi-siamo/`: chi scrive, come nascono le guide, come si mantiene il sito (affiliazioni dichiarate), contatto. Dati strutturati AboutPage.
+- Guide: briciole con link all'indice e dati strutturati BreadcrumbList insieme ad Article; data di aggiornamento 22/10/2026.
+- Home: dati strutturati WebSite + Organization (con il profilo Pinterest), pulsante "Tutte le guide" (prima la home collegava solo 3 guide su 5).
+- Piè di pagina di home, guide, indice, chi siamo e privacy: link a Tutte le guide, Chi siamo, Privacy.
+- Sitemap con `/guide/` e `/chi-siamo/`; test: 111 verifiche (indice, chi siamo, dati strutturati, ogni indirizzo della sitemap ha la sua pagina); la verifica online controlla anche le due pagine nuove.
+
 ## 4.4.6 — 22/10/2026
 
 - Nuova guida: biotrituratore (`/guide/biotrituratore/`), con pagina categoria AgriEuro verificata e foto di legno triturato (Declan Chidlow, Unsplash). Aggiunta a sitemap, test e verifica online; crediti aggiornati.

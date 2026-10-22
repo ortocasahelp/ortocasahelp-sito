@@ -8,6 +8,7 @@ il test verifica logica e layout, non la disponibilità di servizi terzi.
 Con la seconda cartella, le foto vengono servite da file locali <id>.jpg
 (solo per schermate realistiche).
 """
+import json
 import os
 import pathlib
 import re
@@ -234,8 +235,35 @@ with sync_playwright() as p:
         if SCHERMATE and slug == "motozappa":
             carica_foto(pg)
             pg.screenshot(path=str(SCHERMATE / "5-guida-telefono.png"), full_page=True)
+        dati = json.loads(pg.inner_text('script[type="application/ld+json"]'))
+        tipi = [n["@type"] for n in dati.get("@graph", [])]
+        verifica(f"Guida {slug}: dati strutturati Article + BreadcrumbList", tipi == ["Article", "BreadcrumbList"], str(tipi))
+        verifica(f"Guida {slug}: briciole con link all'indice", pg.eval_on_selector(".briciole a >> nth=1", "a => a.href").endswith("/guide/"))
+    # 8b. Indice delle guide
+    url_i = f"{SITO_URL}/guide/" if SITO_URL else (RADICE / "guide" / "index.html").as_uri()
+    pg.goto(url_i)
+    pg.wait_for_load_state("load")
+    hrefs = pg.eval_on_selector_all(".elenco-guide a", "els => els.map(a => a.href)")
+    verifica("Indice guide: tutte le guide elencate", len(hrefs) == len(GUIDE) and all(any(f"/guide/{s}/" in h for h in hrefs) for s in GUIDE), str(hrefs))
+    verifica("Indice guide: foto con testo alternativo", pg.evaluate("() => [...document.querySelectorAll('.elenco-guide img')].every(i => i.alt)"))
+    dati_i = json.loads(pg.inner_text('script[type="application/ld+json"]'))
+    verifica("Indice guide: ItemList con tutte le guide", len(dati_i["@graph"][0]["mainEntity"]["itemListElement"]) == len(GUIDE))
+    verifica("Indice guide: nessuno scorrimento orizzontale", pg.evaluate("() => document.documentElement.scrollWidth <= window.innerWidth"))
+    if SCHERMATE:
+        carica_foto(pg)
+        pg.screenshot(path=str(SCHERMATE / "6-indice-guide.png"), full_page=True)
+    # 8c. Chi siamo
+    pg.goto(f"{SITO_URL}/chi-siamo/" if SITO_URL else (RADICE / "chi-siamo" / "index.html").as_uri())
+    pg.wait_for_load_state("load")
+    testo_cs = pg.inner_text("main")
+    verifica("Chi siamo: affiliazioni dichiarate e contatto", "affiliazione" in testo_cs and "stefano.ciceri@gmail.com" in testo_cs)
+    verifica("Chi siamo: dati strutturati validi", json.loads(pg.inner_text('script[type="application/ld+json"]'))["@graph"][0]["@type"] == "AboutPage")
+    verifica("Chi siamo: nessuno scorrimento orizzontale", pg.evaluate("() => document.documentElement.scrollWidth <= window.innerWidth"))
     pg.close()
     verifica("Home: 3 link alle guide", pagina.locator(".consigli a.guida").count() == 3)
+    verifica("Home: link a tutte le guide", pagina.locator('.tutte-guide a[href="guide/"]').count() == 1)
+    verifica("Home: piè di pagina con guide e chi siamo", pagina.locator('footer a[href="guide/"]').count() == 1 and pagina.locator('footer a[href="chi-siamo/"]').count() == 1)
+    verifica("Home: dati strutturati WebSite", json.loads(pagina.inner_text('script[type="application/ld+json"]'))["@graph"][0]["@type"] == "WebSite")
     verifica("Home: link alla privacy", pagina.locator('footer a[href="privacy/"]').count() == 1)
     pp = ctx.new_page()
     pp.on("pageerror", lambda e: errori_js.append(str(e)))
@@ -243,6 +271,11 @@ with sync_playwright() as p:
     verifica("Privacy: titolare e contatto presenti", "Stefano Ciceri" in pp.inner_text("main") and "stefano.ciceri@gmail.com" in pp.inner_text("main"))
     verifica("Privacy: nessuno scorrimento orizzontale", pp.evaluate("() => document.documentElement.scrollWidth <= window.innerWidth"))
     pp.close()
+
+    indirizzi = re.findall(r"<loc>https://ortocasahelp\.netlify\.app/(.*?)</loc>", (RADICE / "sitemap.xml").read_text(encoding="utf-8"))
+    mancanti = [u for u in indirizzi if not (RADICE / u / "index.html").exists()]
+    verifica("Sitemap: ogni indirizzo ha la sua pagina", indirizzi and not mancanti, str(mancanti))
+    verifica("Sitemap: indice guide e chi siamo presenti", "guide/" in indirizzi and "chi-siamo/" in indirizzi)
 
     file_google = sorted(RADICE.glob("google*.html"))
     verifica("Search Console: file di verifica Google presente e corretto",
