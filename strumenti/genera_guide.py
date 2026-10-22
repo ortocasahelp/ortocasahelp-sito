@@ -9,7 +9,7 @@ import pathlib
 
 RADICE = pathlib.Path(__file__).resolve().parent.parent
 SITO = "https://ortocasahelp.netlify.app"
-AGGIORNATA = "2026-10-21"
+AGGIORNATA = "2026-10-26"
 
 GUIDE = [
     {
@@ -259,6 +259,21 @@ LOGO = ('<svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28"
         '<path d="M0 -2 C1.5 -9 7 -13 12.5 -12.5 C11.5 -6 5.5 -2 0 -2 Z" fill="#C9E86A"/></g></svg>')
 
 
+ORGANIZZAZIONE = {"@type": "Organization", "name": "OrtoCasa Help", "url": f"{SITO}/"}
+
+
+def briciole_dati(passi):
+    """BreadcrumbList schema.org da una lista di (nome, url)."""
+    return {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i, "name": nome, "item": u} for i, (nome, u) in enumerate(passi, start=1)]}
+
+
+def piede_link(base):
+    """Link di servizio nel piè di pagina; base è il percorso relativo alla radice del sito."""
+    return (f'<a href="{base}guide/">Tutte le guide</a> · <a href="{base}chi-siamo/">Chi siamo</a> · '
+            f'<a href="{base}privacy/">Privacy e cookie</a>')
+
+
 def e(t):
     return html.escape(t, quote=True)
 
@@ -286,11 +301,12 @@ def sezione(titolo, tipo, voci):
 
 def pagina(g, altre):
     url = f"{SITO}/guide/{g['slug']}/"
-    dati = {
-        "@context": "https://schema.org", "@type": "Article", "headline": g["titolo"], "description": g["descrizione"],
-        "image": foto(g["foto"], 1200), "dateModified": AGGIORNATA, "inLanguage": "it-IT", "mainEntityOfPage": url,
-        "author": {"@type": "Organization", "name": "OrtoCasa Help"}, "publisher": {"@type": "Organization", "name": "OrtoCasa Help"},
-    }
+    dati = {"@context": "https://schema.org", "@graph": [
+        {"@type": "Article", "headline": g["titolo"], "description": g["descrizione"],
+         "image": foto(g["foto"], 1200), "dateModified": AGGIORNATA, "inLanguage": "it-IT", "mainEntityOfPage": url,
+         "author": ORGANIZZAZIONE, "publisher": ORGANIZZAZIONE},
+        briciole_dati([("Home", f"{SITO}/"), ("Guide", f"{SITO}/guide/"), (g["titolo_breve"], url)]),
+    ]}
     corpo = "".join(sezione(*s) for s in g["sezioni"])
     nota = f'<p class="nota">{e(g["nota"])}</p>' if g.get("nota") else ""
     link_altre = "".join(f'<li><a href="../{a["slug"]}/">{e(a["titolo_breve"])}</a></li>' for a in altre)
@@ -321,7 +337,7 @@ def pagina(g, altre):
 <main>
   <article>
     <div class="apertura"><div class="contenitore">
-      <p class="briciole"><a href="../../">Home</a> / Guide</p>
+      <p class="briciole"><a href="../../">Home</a> / <a href="../">Guide</a></p>
       <h1>{e(g["titolo"])}</h1>
       <p class="attacco">{e(g["attacco"])}</p>
       <img class="foto" src="{foto(g["foto"], 900)}" srcset="{foto(g["foto"], 600)} 600w, {foto(g["foto"], 900)} 900w, {foto(g["foto"], 1400)} 1400w" sizes="(min-width: 800px) 720px, 100vw" alt="{e(g["alt"])}" fetchpriority="high">
@@ -339,10 +355,71 @@ def pagina(g, altre):
 <div class="barra-acquisto"><a class="primario" id="barra-agrieuro" href="#dove">Vedi su AgriEuro</a><a class="secondario" href="#dove">Altri negozi</a></div>
 <footer><div class="contenitore">
   <p>OrtoCasa Help partecipa a programmi di affiliazione: se acquisti dopo aver cliccato un nostro link, il negozio ci riconosce una commissione, senza costi aggiuntivi per te. In qualità di Affiliato Amazon, OrtoCasa Help riceve un guadagno dagli acquisti idonei.</p>
-  <p>Foto da <a href="https://unsplash.com/?utm_source=ortocasahelp&amp;utm_medium=referral" rel="noopener" target="_blank">Unsplash</a>. © 2026 OrtoCasa Help · <a href="../../privacy/">Privacy e cookie</a></p>
+  <p>Foto da <a href="https://unsplash.com/?utm_source=ortocasahelp&amp;utm_medium=referral" rel="noopener" target="_blank">Unsplash</a>. © 2026 OrtoCasa Help · {piede_link("../../")}</p>
 </div></footer>
 <script src="../../negozi.js"></script>
 <script src="../guida.js"></script>
+</body>
+</html>
+"""
+
+
+def pagina_indice(guide):
+    url = f"{SITO}/guide/"
+    titolo = "Guide per l'orto e il giardino"
+    descrizione = ("Le guide di OrtoCasa Help, scritte da un perito agrario: come scegliere motozappa, robot tagliaerba, "
+                   "irrigazione a goccia, decespugliatore, biotrituratore e gli altri attrezzi per l'orto di casa.")
+    dati = {"@context": "https://schema.org", "@graph": [
+        {"@type": "CollectionPage", "name": titolo, "description": descrizione, "url": url, "inLanguage": "it-IT",
+         "publisher": ORGANIZZAZIONE,
+         "mainEntity": {"@type": "ItemList", "itemListElement": [
+             {"@type": "ListItem", "position": i, "url": f"{SITO}/guide/{g['slug']}/", "name": g["titolo"]}
+             for i, g in enumerate(guide, start=1)]}},
+        briciole_dati([("Home", f"{SITO}/"), ("Guide", url)]),
+    ]}
+    schede = "".join(
+        f'<li><a href="{g["slug"]}/"><img src="{foto(g["foto"], 600)}" alt="{e(g["alt"])}" loading="lazy" width="600" height="375">'
+        f'<span class="nome">{e(g["titolo"])}</span><span class="riassunto">{e(g["descrizione"])}</span></a></li>'
+        for g in guide)
+    return f"""<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>{e(titolo)} | OrtoCasa Help</title>
+<meta name="description" content="{e(descrizione)}">
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{e(titolo)}">
+<meta property="og:description" content="{e(descrizione)}">
+<meta property="og:image" content="{foto(guide[0]["foto"], 1200)}">
+<meta property="og:url" content="{url}">
+<meta property="og:locale" content="it_IT">
+<meta name="theme-color" content="#2D1846">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="guida.css">
+<script type="application/ld+json">{json.dumps(dati, ensure_ascii=False)}</script>
+</head>
+<body class="senza-barra">
+<header class="testata"><div class="contenitore">
+  <a href="../" class="logo" aria-label="OrtoCasa Help, torna alla home">{LOGO}<span class="marchio"><span class="o">O</span>rtoCasa Help</span></a>
+</div></header>
+<main>
+  <div class="apertura"><div class="contenitore">
+    <p class="briciole"><a href="../">Home</a> / Guide</p>
+    <h1>{e(titolo)}</h1>
+    <p class="attacco">Come scegliere l'attrezzo giusto per il tuo orto, spiegato da un perito agrario. Niente classifiche pagate.</p>
+  </div></div>
+  <div class="contenitore testo">
+    <ul class="elenco-guide">{schede}</ul>
+    <p class="firma">Aggiornate il {AGGIORNATA[8:10]}/{AGGIORNATA[5:7]}/{AGGIORNATA[:4]}. <a href="../chi-siamo/">Chi scrive le guide</a></p>
+  </div>
+</main>
+<footer><div class="contenitore">
+  <p>OrtoCasa Help partecipa a programmi di affiliazione: se acquisti dopo aver cliccato un nostro link, il negozio ci riconosce una commissione, senza costi aggiuntivi per te. In qualità di Affiliato Amazon, OrtoCasa Help riceve un guadagno dagli acquisti idonei.</p>
+  <p>Foto da <a href="https://unsplash.com/?utm_source=ortocasahelp&amp;utm_medium=referral" rel="noopener" target="_blank">Unsplash</a>. © 2026 OrtoCasa Help · {piede_link("../")}</p>
+</div></footer>
 </body>
 </html>
 """
@@ -355,7 +432,10 @@ def main():
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(pagina(g, altre), encoding="utf-8")
         print("scritta", dest.relative_to(RADICE))
-    urls = [f"{SITO}/"] + [f"{SITO}/guide/{g['slug']}/" for g in GUIDE] + [f"{SITO}/privacy/"]
+    (RADICE / "guide" / "index.html").write_text(pagina_indice(GUIDE), encoding="utf-8")
+    print("scritta guide/index.html")
+    urls = ([f"{SITO}/", f"{SITO}/guide/"] + [f"{SITO}/guide/{g['slug']}/" for g in GUIDE]
+            + [f"{SITO}/chi-siamo/", f"{SITO}/privacy/"])
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     sitemap += [f"  <url><loc>{u}</loc><lastmod>{AGGIORNATA}</lastmod></url>" for u in urls]
     sitemap.append("</urlset>")
