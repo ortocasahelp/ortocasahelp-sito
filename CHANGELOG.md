@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.4.6 — 22/10/2026
+
+- Nuova guida: biotrituratore (`/guide/biotrituratore/`), con pagina categoria AgriEuro verificata e foto di legno triturato (Declan Chidlow, Unsplash). Aggiunta a sitemap, test e verifica online; crediti aggiornati.
+
 ## 4.4.5 — 22/10/2026
 
 - Motozappe: nuova foto con una motozappa vera (Iftekhar Sourav, Unsplash) al posto della foto di sola terra, in home e nella guida. Crediti aggiornati.
