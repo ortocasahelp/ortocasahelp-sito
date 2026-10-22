@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.4.5 — 22/10/2026
+
+- Motozappe: nuova foto con una motozappa vera (Iftekhar Sourav, Unsplash) al posto della foto di sola terra, in home e nella guida. Crediti aggiornati.
+
 ## 4.4.4 — 22/10/2026
 
 - Pinterest: meta tag `p:domain_verify` nella home per verificare il sito sull'account aziendale OrtoCasa Help (da non rimuovere).
