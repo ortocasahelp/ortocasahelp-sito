@@ -164,6 +164,46 @@ GUIDE = [
         ],
         "nota": "L'erba tagliata non buttarla: falla appassire un giorno e stendila in strato sottile tra le file dell'orto. È pacciamatura gratis.",
     },
+    {
+        "slug": "biotrituratore",
+        "titolo": "Come scegliere il biotrituratore per orto e giardino",
+        "titolo_breve": "Biotrituratore",
+        "descrizione": "A lame o a rullo, elettrico o a scoppio: come scegliere il biotrituratore per potature e foglie, cosa guardare nella scheda e gli errori da evitare.",
+        "attacco": "Prima della potenza, guarda cosa devi triturare: i rametti verdi della siepe, le potature legnose del frutteto o le foglie e gli scarti dell'orto.",
+        "foto": "photo-1726379781464-98ba39da2c0f",
+        "alt": "Foglia rossa su un mucchio di legno triturato",
+        "q": "biotrituratore",
+        "agrieuro": "https://www.agrieuro.com/biotrituratori-c-42.html",
+        "azione": "Vedi i biotrituratori",
+        "in_breve": [
+            "Rametti sottili, foglie e scarti verdi: elettrico a lame.",
+            "Potature legnose di siepe e frutteto: elettrico a rullo, più lento ma più silenzioso.",
+            "Tante potature, rami più grossi o lontano dalla presa: a scoppio.",
+        ],
+        "sezioni": [
+            ("Quale tipo ti serve", "voci", [
+                ("Elettrico a lame", "Le lame girano veloci e sminuzzano fine. Va bene per rametti, foglie e scarti verdi. Fa parecchio rumore e con i rami fibrosi tende a intasarsi."),
+                ("Elettrico a rullo", "Un rullo dentato schiaccia e spezza il legno piano piano, e si tira dentro i rami da solo. È più silenzioso e regge meglio le potature legnose. Il trito esce più grosso."),
+                ("A scoppio", "Niente cavo e più forza: serve per potature abbondanti e lavori lontano da casa. Pesa di più, fa rumore e vuole la manutenzione del motore."),
+            ]),
+            ("Cosa guardare nella scheda", "punti", [
+                "Diametro massimo dei rami: sceglilo sui rami che poti di solito, non sul ramo grosso che capita una volta l'anno.",
+                "Bocca di carico: larga per le frasche. Alcuni modelli hanno una seconda apertura per foglie e scarti morbidi.",
+                "Contenitore di raccolta: chiuso e capiente, così il trito non lo raccogli da terra.",
+                "Ruote e peso: lo sposterai spesso tra la catasta delle potature e l'orto.",
+                "Inversione del rullo, sui modelli a rullo: sblocca il ramo quando si inceppa.",
+                "Assistenza e ricambi vicino a casa: lame e rulli si consumano.",
+            ]),
+            ("Errori da evitare", "punti", [
+                "Spingere i rami con le mani dentro la bocca: usa il pressino in dotazione. E sempre occhiali, guanti e cuffie.",
+                "Lasciare seccare le potature per mesi: il legno secco è duro e consuma le lame. Tritura poco dopo la potatura.",
+                "Far entrare sassi, terra o il filo di ferro delle legature: rovinano lame e rullo.",
+                "Triturare piante malate e spargerle nell'orto: quelle vanno nel verde, non nella pacciamatura.",
+                "Usare una prolunga lunga e sottile: il motore perde forza e si scalda. Serve un cavo adatto alla potenza.",
+            ]),
+        ],
+        "nota": "Il trito di potature è ottima pacciamatura per vialetti, siepi e piante perenni. Nell'orto non interrarlo fresco, perché toglie azoto agli ortaggi: mettilo nel compost o lascialo in superficie.",
+    },
 ]
 
 LOGO = ('<svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="33" r="18" stroke="#F07F1A" stroke-width="9"/>'
