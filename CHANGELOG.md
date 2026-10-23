@@ -1,7 +1,8 @@
 # Changelog
 
-## 4.6.0 — 22/10/2026
+## 4.6.0 — 22-23/10/2026
 
+- Nuove guide: microgreens in casa (`/guide/microgreens/`: semi, substrato, vaschette, luce, passo per passo) e aromatiche in casa d'inverno (`/guide/aromatiche-in-casa/`). Foto Unsplash di Artelle Creative ed Emma Miller. Titolo della sezione negozi personalizzabile per guida (`dove_titolo`).
 - Visibilità su Google: nuova pagina indice `/guide/` con tutte le guide (foto, titolo, riassunto, dati strutturati CollectionPage + ItemList), generata da `strumenti/genera_guide.py`.
 - Nuova pagina `/chi-siamo/`: chi scrive, come nascono le guide, come si mantiene il sito (affiliazioni dichiarate), contatto. Dati strutturati AboutPage.
 - Guide: briciole con link all'indice e dati strutturati BreadcrumbList insieme ad Article; data di aggiornamento 22/10/2026.

@@ -216,7 +216,9 @@ with sync_playwright() as p:
              "robot-tagliaerba": "https://www.agrieuro.com/robot-tagliaerba-c-59.html",
              "irrigazione-a-goccia": "https://www.agrieuro.com/irrigazione-g-14.html",
              "decespugliatore": "https://www.agrieuro.com/decespugliatori-c-3.html",
-             "biotrituratore": "https://www.agrieuro.com/biotrituratori-c-42.html"}
+             "biotrituratore": "https://www.agrieuro.com/biotrituratori-c-42.html",
+             "microgreens": "https://www.agrieuro.com/search/semi%20microgreens",
+             "aromatiche-in-casa": "https://www.agrieuro.com/search/kit%20erbe%20aromatiche"}
     pg = ctx.new_page()
     pg.on("pageerror", lambda e: errori_js.append(str(e)))
     for slug, cat in GUIDE.items():
