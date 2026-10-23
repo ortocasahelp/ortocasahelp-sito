@@ -276,6 +276,9 @@ with sync_playwright() as p:
     mancanti = [u for u in indirizzi if not (RADICE / u / "index.html").exists()]
     verifica("Sitemap: ogni indirizzo ha la sua pagina", indirizzi and not mancanti, str(mancanti))
     verifica("Sitemap: indice guide e chi siamo presenti", "guide/" in indirizzi and "chi-siamo/" in indirizzi)
+    import xml.etree.ElementTree as ET
+    voci_feed = ET.parse(RADICE / "feed.xml").getroot().findall("./channel/item")
+    verifica("Feed RSS: una voce con foto per ogni guida", len(voci_feed) == len(GUIDE) and all(v.find("enclosure") is not None for v in voci_feed))
 
     file_google = sorted(RADICE.glob("google*.html"))
     verifica("Search Console: file di verifica Google presente e corretto",
