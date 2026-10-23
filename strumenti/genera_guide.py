@@ -3,13 +3,15 @@
 Uso:  python3 strumenti/genera_guide.py
 Modifica i testi in GUIDE qui sotto e rilancia: rigenera guide/<slug>/index.html e sitemap.xml.
 """
+import datetime
+import email.utils
 import html
 import json
 import pathlib
 
 RADICE = pathlib.Path(__file__).resolve().parent.parent
 SITO = "https://ortocasahelp.netlify.app"
-AGGIORNATA = "2026-10-21"
+AGGIORNATA = "2026-10-22"
 
 GUIDE = [
     {
@@ -204,12 +206,122 @@ GUIDE = [
         ],
         "nota": "Il trito di potature è ottima pacciamatura per vialetti, siepi e piante perenni. Nell'orto non interrarlo fresco, perché toglie azoto agli ortaggi: mettilo nel compost o lascialo in superficie.",
     },
+    {
+        "slug": "microgreens",
+        "titolo": "Microgreens in casa: come coltivarli passo per passo",
+        "titolo_breve": "Microgreens",
+        "descrizione": "Microortaggi in casa in 7-14 giorni: quali semi usare, terriccio o fibra di cocco, vaschette, luce e annaffiatura. Passo per passo, con gli errori da evitare.",
+        "attacco": "Bastano una vaschetta, un po' di substrato e una finestra luminosa: in una o due settimane tagli il primo raccolto.",
+        "foto": "photo-1648128774225-b7cf04eb94c6",
+        "alt": "Vaschette di microgreens verdi appena cresciuti",
+        "q": "semi microgreens",
+        "agrieuro": "",
+        "dove_titolo": "Dove comprare semi, substrato e vaschette",
+        "azione": "Vedi semi e kit",
+        "in_breve": [
+            "Per iniziare: ravanello, senape, rucola e crescione, i più facili e veloci.",
+            "Usa semi non trattati, venduti per germogli o microgreens.",
+            "Si raccolgono tra 7 e 14 giorni, quando le prime foglioline sono aperte.",
+        ],
+        "sezioni": [
+            ("Quali semi scegliere", "voci", [
+                ("Ravanello", "Germina in 1-2 giorni ed è pronto in 7-10. Sapore piccante, steli spesso rosati."),
+                ("Senape, rucola e crescione", "Veloci e saporiti, ottimi per iniziare. Il seme è piccolo: non va coperto."),
+                ("Broccolo e cavolo rosso", "Sapore delicato, pronti in circa 10-12 giorni."),
+                ("Pisello e girasole", "Semi grossi: vanno messi a bagno 8-12 ore prima della semina. Danno germogli croccanti in 10-14 giorni."),
+                ("Basilico e coriandolo", "Più lenti, due o tre settimane, ma molto profumati: da provare quando hai preso la mano."),
+            ]),
+            ("Cosa serve", "voci", [
+                ("Semi", "Non conciati, cioè senza trattamenti: sulla confezione c'è scritto per germogli o per microgreens. I semi da orto normali spesso sono trattati e non vanno mangiati da germogli."),
+                ("Substrato", "Terriccio fine da semina, fibra di cocco oppure tappetini di canapa o juta. Si usa una volta sola, poi va nel compost."),
+                ("Vaschette", "Due vaschette una dentro l'altra: sopra quella con i fori, sotto quella piena che raccoglie l'acqua e serve ad annaffiare dal basso."),
+                ("Acqua e luce", "Uno spruzzino per i primi giorni. Poi una finestra luminosa, oppure d'inverno una lampada LED per piante accesa 12-16 ore al giorno."),
+            ]),
+            ("Passo per passo", "sequenza", [
+                ("Prepara il substrato", "Stendi 2-3 cm di terriccio, oppure un tappetino, livella e bagna bene."),
+                ("Semina fitto", "Distribuisci i semi in modo uniforme, quasi a toccarsi. Premili appena; non coprirli, o al massimo con un velo di terriccio."),
+                ("Buio e peso per 2-4 giorni", "Copri con un'altra vaschetta e un piccolo peso sopra: i semi germinano insieme e radicano bene."),
+                ("Luce", "Quando i germogli sollevano il coperchio, scopri e metti alla luce."),
+                ("Acqua dal basso", "Versa l'acqua nella vaschetta sotto, non sulle foglie. Il substrato deve restare umido, mai fradicio."),
+                ("Raccolta", "Taglia con forbici pulite appena sopra il substrato quando le prime foglie sono aperte. Sciacqua e consuma subito, o tieni in frigo 3-5 giorni."),
+            ]),
+            ("Errori da evitare", "punti", [
+                "Seminare troppo rado: i germogli crescono storti e sprechi spazio.",
+                "Bagnare dall'alto tutti i giorni: foglie bagnate e poca aria fanno marcire.",
+                "Scambiare i peli delle radici per muffa: la peluria bianca e uniforme sulle radici è normale; la muffa è grigia, a ragnatela, e ha cattivo odore.",
+                "Poca luce: i germogli si allungano, diventano pallidi e si piegano.",
+                "Riusare lo stesso substrato: si butta nel compost e si riparte da capo.",
+            ]),
+        ],
+        "nota": "Un ciclo dura una o due settimane: seminando una vaschetta ogni 5-7 giorni hai microgreens freschi tutto l'anno, anche d'inverno.",
+    },
+    {
+        "slug": "aromatiche-in-casa",
+        "titolo": "Aromatiche in casa d'inverno: quali coltivare e come",
+        "titolo_breve": "Aromatiche in casa",
+        "descrizione": "Prezzemolo, erba cipollina, menta, timo, rosmarino e basilico in casa d'inverno: quali scegliere, dove metterle, quanta luce e acqua servono, gli errori da evitare.",
+        "attacco": "Con una finestra luminosa, i vasi giusti e poca acqua hai erbe fresche anche a gennaio. Il segreto è la luce.",
+        "foto": "photo-1723475170878-8b5f75ce249c",
+        "alt": "Pianta di basilico su un tavolo di legno",
+        "q": "kit erbe aromatiche",
+        "agrieuro": "",
+        "dove_titolo": "Dove comprare semi, piante e lampade",
+        "azione": "Vedi semi e kit",
+        "in_breve": [
+            "Le più facili in casa d'inverno: prezzemolo, erba cipollina, menta e timo.",
+            "Rosmarino e salvia vogliono la finestra più luminosa e una stanza fresca.",
+            "Il basilico d'inverno cresce solo con il caldo e una lampada LED.",
+        ],
+        "sezioni": [
+            ("Quali aromatiche scegliere", "voci", [
+                ("Prezzemolo", "Si accontenta della luce di una finestra. Taglia gli steli esterni e lascia crescere il centro."),
+                ("Erba cipollina", "Facilissima: si taglia a 3-4 cm dalla base e ricaccia."),
+                ("Menta", "Cresce in fretta e invade: tienila in un vaso tutto suo."),
+                ("Timo e origano", "Vogliono sole e poca acqua: annaffia solo quando la terra è asciutta in superficie."),
+                ("Rosmarino e salvia", "In casa soffrono l'aria calda e secca dei termosifoni: mettili alla finestra più luminosa in una stanza fresca. Dove l'inverno è mite, stanno meglio fuori, al riparo."),
+                ("Basilico", "È una pianta estiva: d'inverno in casa vuole almeno 15-18 °C e una lampada LED. Dura qualche mese, poi si riparte dalla semina."),
+            ]),
+            ("Dove metterle", "punti", [
+                "Davanti alla finestra più luminosa, meglio esposta a sud o a ovest.",
+                "Lontano da termosifoni e stufe: l'aria calda e secca le rovina in pochi giorni.",
+                "Se la luce non basta, una lampada LED per piante a 20-30 cm, accesa 12-14 ore al giorno.",
+                "Gira i vasi ogni settimana, così crescono dritte.",
+            ]),
+            ("Vasi, terriccio e acqua", "punti", [
+                "Vasi con il foro di drenaggio e il sottovaso: l'acqua ferma fa marcire le radici.",
+                "Terriccio universale di buona qualità; per rosmarino, timo e salvia aggiungi un terzo di sabbia o perlite.",
+                "D'inverno si annaffia poco: tocca la terra con un dito e bagna solo se è asciutta.",
+                "Niente concime fino a primavera: con poca luce la pianta non lo usa.",
+            ]),
+            ("Errori da evitare", "punti", [
+                "Lasciare la piantina del supermercato nel suo vasetto: dentro ci sono tante piante fitte in poca terra. Dividila in 2-3 vasi più grandi.",
+                "Annaffiare tutti i giorni per sicurezza.",
+                "Tagliare più di un terzo della pianta alla volta.",
+            ]),
+        ],
+        "nota": "Vuoi qualcosa di pronto in pochi giorni? Sullo stesso davanzale puoi coltivare i microgreens di rucola, senape o basilico: si tagliano in una-due settimane.",
+    },
 ]
 
 LOGO = ('<svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="33" r="18" stroke="#F07F1A" stroke-width="9"/>'
         '<g transform="translate(28,18)"><path d="M0 3 L0 -3" stroke="#C9E86A" stroke-width="2.6" stroke-linecap="round"/>'
         '<path d="M0 -2 C-1.5 -9 -7 -13 -12.5 -12.5 C-11.5 -6 -5.5 -2 0 -2 Z" fill="#C9E86A"/>'
         '<path d="M0 -2 C1.5 -9 7 -13 12.5 -12.5 C11.5 -6 5.5 -2 0 -2 Z" fill="#C9E86A"/></g></svg>')
+
+
+ORGANIZZAZIONE = {"@type": "Organization", "name": "OrtoCasa Help", "url": f"{SITO}/"}
+
+
+def briciole_dati(passi):
+    """BreadcrumbList schema.org da una lista di (nome, url)."""
+    return {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i, "name": nome, "item": u} for i, (nome, u) in enumerate(passi, start=1)]}
+
+
+def piede_link(base):
+    """Link di servizio nel piè di pagina; base è il percorso relativo alla radice del sito."""
+    return (f'<a href="{base}guide/">Tutte le guide</a> · <a href="{base}chi-siamo/">Chi siamo</a> · '
+            f'<a href="{base}privacy/">Privacy e cookie</a>')
 
 
 def e(t):
@@ -239,11 +351,12 @@ def sezione(titolo, tipo, voci):
 
 def pagina(g, altre):
     url = f"{SITO}/guide/{g['slug']}/"
-    dati = {
-        "@context": "https://schema.org", "@type": "Article", "headline": g["titolo"], "description": g["descrizione"],
-        "image": foto(g["foto"], 1200), "dateModified": AGGIORNATA, "inLanguage": "it-IT", "mainEntityOfPage": url,
-        "author": {"@type": "Organization", "name": "OrtoCasa Help"}, "publisher": {"@type": "Organization", "name": "OrtoCasa Help"},
-    }
+    dati = {"@context": "https://schema.org", "@graph": [
+        {"@type": "Article", "headline": g["titolo"], "description": g["descrizione"],
+         "image": foto(g["foto"], 1200), "dateModified": AGGIORNATA, "inLanguage": "it-IT", "mainEntityOfPage": url,
+         "author": ORGANIZZAZIONE, "publisher": ORGANIZZAZIONE},
+        briciole_dati([("Home", f"{SITO}/"), ("Guide", f"{SITO}/guide/"), (g["titolo_breve"], url)]),
+    ]}
     corpo = "".join(sezione(*s) for s in g["sezioni"])
     nota = f'<p class="nota">{e(g["nota"])}</p>' if g.get("nota") else ""
     link_altre = "".join(f'<li><a href="../{a["slug"]}/">{e(a["titolo_breve"])}</a></li>' for a in altre)
@@ -265,6 +378,7 @@ def pagina(g, altre):
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="stylesheet" href="../../fonts.css">
 <link rel="stylesheet" href="../guida.css">
+<link rel="alternate" type="application/rss+xml" title="Guide di OrtoCasa Help" href="{SITO}/feed.xml">
 <script type="application/ld+json">{json.dumps(dati, ensure_ascii=False)}</script>
 </head>
 <body>
@@ -274,7 +388,7 @@ def pagina(g, altre):
 <main>
   <article>
     <div class="apertura"><div class="contenitore">
-      <p class="briciole"><a href="../../">Home</a> / Guide</p>
+      <p class="briciole"><a href="../../">Home</a> / <a href="../">Guide</a></p>
       <h1>{e(g["titolo"])}</h1>
       <p class="attacco">{e(g["attacco"])}</p>
       <img class="foto" src="{foto(g["foto"], 900)}" srcset="{foto(g["foto"], 600)} 600w, {foto(g["foto"], 900)} 900w, {foto(g["foto"], 1400)} 1400w" sizes="(min-width: 800px) 720px, 100vw" alt="{e(g["alt"])}" fetchpriority="high">
@@ -283,7 +397,7 @@ def pagina(g, altre):
       <section class="in-breve"><h2>In breve</h2><ul>{"".join(f"<li>{e(v)}</li>" for v in g["in_breve"])}</ul></section>
       {corpo}
       {nota}
-      <section class="parte" id="dove"><h2>Dove comprarla</h2><p class="sotto">Si apre la pagina del negozio, con i suoi prezzi, spedizioni e garanzie.</p>{blocco_negozi(g)}</section>
+      <section class="parte" id="dove"><h2>{e(g.get("dove_titolo", "Dove comprarla"))}</h2><p class="sotto">Si apre la pagina del negozio, con i suoi prezzi, spedizioni e garanzie.</p>{blocco_negozi(g)}</section>
       <section class="parte altre"><h2>Altre guide</h2><ul>{link_altre}</ul></section>
       <p class="firma">Guida di OrtoCasa Help, a cura di un perito agrario. Aggiornata il {AGGIORNATA[8:10]}/{AGGIORNATA[5:7]}/{AGGIORNATA[:4]}.</p>
     </div>
@@ -292,13 +406,96 @@ def pagina(g, altre):
 <div class="barra-acquisto"><a class="primario" id="barra-agrieuro" href="#dove">Vedi su AgriEuro</a><a class="secondario" href="#dove">Altri negozi</a></div>
 <footer><div class="contenitore">
   <p>OrtoCasa Help partecipa a programmi di affiliazione: se acquisti dopo aver cliccato un nostro link, il negozio ci riconosce una commissione, senza costi aggiuntivi per te. In qualità di Affiliato Amazon, OrtoCasa Help riceve un guadagno dagli acquisti idonei.</p>
-  <p>Foto da <a href="https://unsplash.com/?utm_source=ortocasahelp&amp;utm_medium=referral" rel="noopener" target="_blank">Unsplash</a>. © 2026 OrtoCasa Help · <a href="../../privacy/">Privacy e cookie</a></p>
+  <p>Foto da <a href="https://unsplash.com/?utm_source=ortocasahelp&amp;utm_medium=referral" rel="noopener" target="_blank">Unsplash</a>. © 2026 OrtoCasa Help · {piede_link("../../")}</p>
 </div></footer>
 <script src="../../negozi.js"></script>
 <script src="../guida.js"></script>
 </body>
 </html>
 """
+
+
+def pagina_indice(guide):
+    url = f"{SITO}/guide/"
+    titolo = "Guide per l'orto e il giardino"
+    descrizione = ("Le guide di OrtoCasa Help, scritte da un perito agrario: come scegliere motozappa, robot tagliaerba, "
+                   "irrigazione a goccia, decespugliatore, biotrituratore e gli altri attrezzi per l'orto di casa.")
+    dati = {"@context": "https://schema.org", "@graph": [
+        {"@type": "CollectionPage", "name": titolo, "description": descrizione, "url": url, "inLanguage": "it-IT",
+         "publisher": ORGANIZZAZIONE,
+         "mainEntity": {"@type": "ItemList", "itemListElement": [
+             {"@type": "ListItem", "position": i, "url": f"{SITO}/guide/{g['slug']}/", "name": g["titolo"]}
+             for i, g in enumerate(guide, start=1)]}},
+        briciole_dati([("Home", f"{SITO}/"), ("Guide", url)]),
+    ]}
+    schede = "".join(
+        f'<li><a href="{g["slug"]}/"><img src="{foto(g["foto"], 600)}" alt="{e(g["alt"])}" loading="lazy" width="600" height="375">'
+        f'<span class="nome">{e(g["titolo"])}</span><span class="riassunto">{e(g["descrizione"])}</span></a></li>'
+        for g in guide)
+    return f"""<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>{e(titolo)} | OrtoCasa Help</title>
+<meta name="description" content="{e(descrizione)}">
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{e(titolo)}">
+<meta property="og:description" content="{e(descrizione)}">
+<meta property="og:image" content="{foto(guide[0]["foto"], 1200)}">
+<meta property="og:url" content="{url}">
+<meta property="og:locale" content="it_IT">
+<meta name="theme-color" content="#2D1846">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="guida.css">
+<link rel="alternate" type="application/rss+xml" title="Guide di OrtoCasa Help" href="{SITO}/feed.xml">
+<script type="application/ld+json">{json.dumps(dati, ensure_ascii=False)}</script>
+</head>
+<body class="senza-barra">
+<header class="testata"><div class="contenitore">
+  <a href="../" class="logo" aria-label="OrtoCasa Help, torna alla home">{LOGO}<span class="marchio"><span class="o">O</span>rtoCasa Help</span></a>
+</div></header>
+<main>
+  <div class="apertura"><div class="contenitore">
+    <p class="briciole"><a href="../">Home</a> / Guide</p>
+    <h1>{e(titolo)}</h1>
+    <p class="attacco">Come scegliere l'attrezzo giusto per il tuo orto, spiegato da un perito agrario. Niente classifiche pagate.</p>
+  </div></div>
+  <div class="contenitore testo">
+    <ul class="elenco-guide">{schede}</ul>
+    <p class="firma">Aggiornate il {AGGIORNATA[8:10]}/{AGGIORNATA[5:7]}/{AGGIORNATA[:4]}. <a href="../chi-siamo/">Chi scrive le guide</a></p>
+  </div>
+</main>
+<footer><div class="contenitore">
+  <p>OrtoCasa Help partecipa a programmi di affiliazione: se acquisti dopo aver cliccato un nostro link, il negozio ci riconosce una commissione, senza costi aggiuntivi per te. In qualità di Affiliato Amazon, OrtoCasa Help riceve un guadagno dagli acquisti idonei.</p>
+  <p>Foto da <a href="https://unsplash.com/?utm_source=ortocasahelp&amp;utm_medium=referral" rel="noopener" target="_blank">Unsplash</a>. © 2026 OrtoCasa Help · {piede_link("../")}</p>
+</div></footer>
+</body>
+</html>
+"""
+
+
+def feed_rss(guide):
+    """Feed RSS delle guide: Pinterest lo legge e crea un pin per ogni guida (auto-pubblicazione)."""
+    data = email.utils.format_datetime(datetime.datetime.fromisoformat(AGGIORNATA + "T08:00:00+02:00"))
+    voci = []
+    for g in guide:
+        url = f"{SITO}/guide/{g['slug']}/"
+        img = foto(g["foto"], 1000) + "&fm=jpg"
+        voci.append(
+            f"<item><title>{e(g['titolo'])}</title><link>{url}</link><guid isPermaLink=\"true\">{url}</guid>"
+            f"<pubDate>{data}</pubDate><description>{e(g['descrizione'])}</description>"
+            f'<enclosure url="{e(img)}" type="image/jpeg" length="0"/>'
+            f'<media:content url="{e(img)}" medium="image" type="image/jpeg"/></item>')
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom"><channel>'
+            f"<title>OrtoCasa Help: guide per l'orto e il giardino</title><link>{SITO}/guide/</link>"
+            f'<atom:link href="{SITO}/feed.xml" rel="self" type="application/rss+xml"/>'
+            "<description>Guide di un perito agrario per scegliere gli attrezzi dell'orto di casa.</description>"
+            f"<language>it-it</language><lastBuildDate>{data}</lastBuildDate>"
+            + "".join(voci) + "</channel></rss>\n")
 
 
 def main():
@@ -308,7 +505,12 @@ def main():
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(pagina(g, altre), encoding="utf-8")
         print("scritta", dest.relative_to(RADICE))
-    urls = [f"{SITO}/"] + [f"{SITO}/guide/{g['slug']}/" for g in GUIDE] + [f"{SITO}/privacy/"]
+    (RADICE / "guide" / "index.html").write_text(pagina_indice(GUIDE), encoding="utf-8")
+    print("scritta guide/index.html")
+    (RADICE / "feed.xml").write_text(feed_rss(GUIDE), encoding="utf-8")
+    print("scritta feed.xml")
+    urls = ([f"{SITO}/", f"{SITO}/guide/"] + [f"{SITO}/guide/{g['slug']}/" for g in GUIDE]
+            + [f"{SITO}/chi-siamo/", f"{SITO}/privacy/"])
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     sitemap += [f"  <url><loc>{u}</loc><lastmod>{AGGIORNATA}</lastmod></url>" for u in urls]
     sitemap.append("</urlset>")
