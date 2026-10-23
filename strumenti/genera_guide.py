@@ -3,6 +3,8 @@
 Uso:  python3 strumenti/genera_guide.py
 Modifica i testi in GUIDE qui sotto e rilancia: rigenera guide/<slug>/index.html e sitemap.xml.
 """
+import datetime
+import email.utils
 import html
 import json
 import pathlib
@@ -328,6 +330,7 @@ def pagina(g, altre):
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="stylesheet" href="../../fonts.css">
 <link rel="stylesheet" href="../guida.css">
+<link rel="alternate" type="application/rss+xml" title="Guide di OrtoCasa Help" href="{SITO}/feed.xml">
 <script type="application/ld+json">{json.dumps(dati, ensure_ascii=False)}</script>
 </head>
 <body>
@@ -399,6 +402,7 @@ def pagina_indice(guide):
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="stylesheet" href="../fonts.css">
 <link rel="stylesheet" href="guida.css">
+<link rel="alternate" type="application/rss+xml" title="Guide di OrtoCasa Help" href="{SITO}/feed.xml">
 <script type="application/ld+json">{json.dumps(dati, ensure_ascii=False)}</script>
 </head>
 <body class="senza-barra">
@@ -425,6 +429,27 @@ def pagina_indice(guide):
 """
 
 
+def feed_rss(guide):
+    """Feed RSS delle guide: Pinterest lo legge e crea un pin per ogni guida (auto-pubblicazione)."""
+    data = email.utils.format_datetime(datetime.datetime.fromisoformat(AGGIORNATA + "T08:00:00+02:00"))
+    voci = []
+    for g in guide:
+        url = f"{SITO}/guide/{g['slug']}/"
+        img = foto(g["foto"], 1000) + "&fm=jpg"
+        voci.append(
+            f"<item><title>{e(g['titolo'])}</title><link>{url}</link><guid isPermaLink=\"true\">{url}</guid>"
+            f"<pubDate>{data}</pubDate><description>{e(g['descrizione'])}</description>"
+            f'<enclosure url="{e(img)}" type="image/jpeg" length="0"/>'
+            f'<media:content url="{e(img)}" medium="image" type="image/jpeg"/></item>')
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom"><channel>'
+            f"<title>OrtoCasa Help: guide per l'orto e il giardino</title><link>{SITO}/guide/</link>"
+            f'<atom:link href="{SITO}/feed.xml" rel="self" type="application/rss+xml"/>'
+            "<description>Guide di un perito agrario per scegliere gli attrezzi dell'orto di casa.</description>"
+            f"<language>it-it</language><lastBuildDate>{data}</lastBuildDate>"
+            + "".join(voci) + "</channel></rss>\n")
+
+
 def main():
     for g in GUIDE:
         altre = [a for a in GUIDE if a["slug"] != g["slug"]]
@@ -434,6 +459,8 @@ def main():
         print("scritta", dest.relative_to(RADICE))
     (RADICE / "guide" / "index.html").write_text(pagina_indice(GUIDE), encoding="utf-8")
     print("scritta guide/index.html")
+    (RADICE / "feed.xml").write_text(feed_rss(GUIDE), encoding="utf-8")
+    print("scritta feed.xml")
     urls = ([f"{SITO}/", f"{SITO}/guide/"] + [f"{SITO}/guide/{g['slug']}/" for g in GUIDE]
             + [f"{SITO}/chi-siamo/", f"{SITO}/privacy/"])
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
