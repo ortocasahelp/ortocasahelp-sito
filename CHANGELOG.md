@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.4.7 — 23/10/2026
+
+- eBay Partner Network attivo: i link eBay di home e guide portano il codice della campagna OrtoCasaHelp (campid `5339228940`, parametri EPN Italia). Test aggiornati: i casi "senza codici" azzerano il campid solo durante la prova.
+
 ## 4.4.6 — 22/10/2026
 
 - Nuova guida: biotrituratore (`/guide/biotrituratore/`), con pagina categoria AgriEuro verificata e foto di legno triturato (Declan Chidlow, Unsplash). Aggiunta a sitemap, test e verifica online; crediti aggiornati.

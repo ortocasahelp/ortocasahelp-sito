@@ -64,7 +64,12 @@ with sync_playwright() as p:
     pagina.wait_for_load_state("load")
 
     # 1. Funzione pura linkNegozio, senza codici affiliato
-    casi = pagina.evaluate("""() => ({
+    campid_reale = pagina.evaluate("() => AFFILIATI.ebay.campid")
+    verifica("eBay: campid della campagna EPN impostato", campid_reale == "5339228940", campid_reale)
+    reale = pagina.evaluate("() => linkNegozio('ebay','motozappa')")
+    rq = parse_qs(urlparse(reale).query)
+    verifica("eBay: link reale con campid e parametri Italia", reale.startswith("https://www.ebay.it/sch/i.html?_nkw=motozappa&") and rq.get("campid") == ["5339228940"] and rq.get("mkrid") == ["724-53478-19255-0"] and rq.get("toolid") == ["10001"], reale)
+    casi = pagina.evaluate("""() => { const salvato = AFFILIATI.ebay.campid; AFFILIATI.ebay.campid = ''; const r = ({
         agrieuro: linkNegozio('agrieuro','motozappa elettrica'),
         amazon:   linkNegozio('amazon','motozappa elettrica'),
         manomano: linkNegozio('manomano','motozappa elettrica'),
@@ -74,7 +79,7 @@ with sync_playwright() as p:
         ignoto:   linkNegozio('leroy','x'),
         speciali: linkNegozio('amazon','semi & "fave" <b>#1'),
         lungo:    linkNegozio('ebay','a'.repeat(200)),
-    })""")
+    }); AFFILIATI.ebay.campid = salvato; return r; }""")
     verifica("AgriEuro: ricerca senza codice", casi["agrieuro"] == "https://www.agrieuro.com/search/motozappa%20elettrica", casi["agrieuro"])
     verifica("Amazon: nessun tag finto", casi["amazon"] == "https://www.amazon.it/s?k=motozappa%20elettrica", casi["amazon"])
     verifica("ManoMano: formato /cat/a+b", casi["manomano"] == "https://www.manomano.it/cat/motozappa+elettrica", casi["manomano"])
@@ -87,6 +92,7 @@ with sync_playwright() as p:
 
     # 2. Con codici affiliato impostati
     con = pagina.evaluate("""() => {
+        const salvatoEbay = AFFILIATI.ebay.campid;
         AFFILIATI.amazon.tag='prova-21'; AFFILIATI.ebay.campid='5338000000';
         AFFILIATI.manomano.awinMid='1234'; AFFILIATI.manomano.awinAffId='999';
         AFFILIATI.agrieuro.codice='abc'; AFFILIATI.agrieuro.parametro='aff';
@@ -95,7 +101,7 @@ with sync_playwright() as p:
           manomano: linkNegozio('manomano','vasi grandi'),
           cat: linkCategoria('agrieuro', REPARTI[0]), catAmazon: linkCategoria('amazon', REPARTI[4])
         };
-        AFFILIATI.amazon.tag=''; AFFILIATI.ebay.campid=''; AFFILIATI.manomano.awinMid=''; AFFILIATI.manomano.awinAffId='';
+        AFFILIATI.amazon.tag=''; AFFILIATI.ebay.campid=salvatoEbay; AFFILIATI.manomano.awinMid=''; AFFILIATI.manomano.awinAffId='';
         AFFILIATI.agrieuro.codice=''; AFFILIATI.agrieuro.parametro='';
         return r;
     }""")
@@ -130,7 +136,7 @@ with sync_playwright() as p:
     with ctx.expect_page() as nuova:
         bott.nth(3).click()
     nuova.value.wait_for_load_state()
-    verifica("Tocco su eBay apre la ricerca giusta", "https://www.ebay.it/sch/i.html?_nkw=tubo%20gocciolante" in richieste, str(richieste))
+    verifica("Tocco su eBay apre la ricerca giusta, con campid", any(u.startswith("https://www.ebay.it/sch/i.html?_nkw=tubo%20gocciolante&") and parse_qs(urlparse(u).query).get("campid") == ["5339228940"] for u in richieste), str(richieste))
     nuova.value.close()
     richieste.clear()
     with ctx.expect_page() as nuova:
