@@ -1,0 +1,93 @@
+OK   eBay: campid della campagna EPN impostato
+OK   eBay: link reale con campid e parametri Italia
+OK   AgriEuro: ricerca senza codice
+OK   Amazon: nessun tag finto
+OK   ManoMano: formato /cat/a+b
+OK   eBay: ricerca senza parametri EPN
+OK   Testo vuoto -> nessun link
+OK   Negozio sconosciuto -> nessun link
+OK   Caratteri speciali codificati
+OK   Testo troncato a 80 caratteri
+OK   Amazon: tag aggiunto
+OK   eBay: parametri EPN Italia
+OK   ManoMano: avvolto da Awin
+OK   AgriEuro categoria con codice
+OK   Reparto senza pagina AgriEuro -> ricerca
+OK   Calendario: 12 mesi
+OK   Calendario: campi completi
+OK   Mese corrente mostrato
+OK   Solo foto verificate
+OK   Menu negozi nascosto a campo vuoto
+OK   Menu con 4 negozi mentre scrivi
+OK   Primo negozio AgriEuro
+OK   Tocco su eBay apre la ricerca giusta, con campid
+OK   Invio apre AgriEuro
+OK   Solo spazi: menu chiuso
+OK   Solo spazi + Invio: non apre nulla
+OK   3 lavori del mese
+OK   Bottone del mese apre il pannello
+OK   Pannello: 4 negozi in ordine
+OK   Pannello: link sponsored in nuova scheda
+OK   Pannello: query del mese
+OK   Pannello si chiude con Esc
+OK   Pannello si chiude trascinandolo giù
+OK   Piccolo trascinamento non chiude
+OK   9 reparti con foto
+OK   Tutte le foto hanno testo alternativo
+OK   Nessuna icona disegnata nei reparti
+OK   Reparto robot: AgriEuro va alla categoria
+OK   Consiglio motozappa apre il pannello giusto
+OK   Nessuno scorrimento orizzontale (390 px)
+OK   Ricerca resta visibile in alto scorrendo
+OK   Elementi toccabili alti almeno 44 px
+OK   Tocco senza ritardo (touch-action)
+OK   Desktop: nessuno scorrimento orizzontale
+OK   Guida motozappa: 4 negozi in ordine
+OK   Guida motozappa: AgriEuro alla categoria
+OK   Guida motozappa: link sponsored
+OK   Guida motozappa: barra in basso verso AgriEuro
+OK   Guida motozappa: titolo e descrizione
+OK   Guida motozappa: nessuno scorrimento orizzontale
+OK   Guida motozappa: link toccabili alti almeno 44 px
+OK   Guida motozappa: link alle altre guide funzionano
+OK   Guida robot-tagliaerba: 4 negozi in ordine
+OK   Guida robot-tagliaerba: AgriEuro alla categoria
+OK   Guida robot-tagliaerba: link sponsored
+OK   Guida robot-tagliaerba: barra in basso verso AgriEuro
+OK   Guida robot-tagliaerba: titolo e descrizione
+OK   Guida robot-tagliaerba: nessuno scorrimento orizzontale
+OK   Guida robot-tagliaerba: link toccabili alti almeno 44 px
+OK   Guida robot-tagliaerba: link alle altre guide funzionano
+OK   Guida irrigazione-a-goccia: 4 negozi in ordine
+OK   Guida irrigazione-a-goccia: AgriEuro alla categoria
+OK   Guida irrigazione-a-goccia: link sponsored
+OK   Guida irrigazione-a-goccia: barra in basso verso AgriEuro
+OK   Guida irrigazione-a-goccia: titolo e descrizione
+OK   Guida irrigazione-a-goccia: nessuno scorrimento orizzontale
+OK   Guida irrigazione-a-goccia: link toccabili alti almeno 44 px
+OK   Guida irrigazione-a-goccia: link alle altre guide funzionano
+OK   Guida decespugliatore: 4 negozi in ordine
+OK   Guida decespugliatore: AgriEuro alla categoria
+OK   Guida decespugliatore: link sponsored
+OK   Guida decespugliatore: barra in basso verso AgriEuro
+OK   Guida decespugliatore: titolo e descrizione
+OK   Guida decespugliatore: nessuno scorrimento orizzontale
+OK   Guida decespugliatore: link toccabili alti almeno 44 px
+OK   Guida decespugliatore: link alle altre guide funzionano
+OK   Guida biotrituratore: 4 negozi in ordine
+OK   Guida biotrituratore: AgriEuro alla categoria
+OK   Guida biotrituratore: link sponsored
+OK   Guida biotrituratore: barra in basso verso AgriEuro
+OK   Guida biotrituratore: titolo e descrizione
+OK   Guida biotrituratore: nessuno scorrimento orizzontale
+OK   Guida biotrituratore: link toccabili alti almeno 44 px
+OK   Guida biotrituratore: link alle altre guide funzionano
+OK   Home: 3 link alle guide
+OK   Home: link alla privacy
+OK   Privacy: titolare e contatto presenti
+OK   Privacy: nessuno scorrimento orizzontale
+OK   Search Console: file di verifica Google presente e corretto
+OK   Pinterest: meta di verifica del sito nella home
+OK   Nessun errore JavaScript
+
+91/91 verifiche superate
