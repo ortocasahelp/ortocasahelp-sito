@@ -204,6 +204,53 @@ GUIDE = [
         ],
         "nota": "Il trito di potature è ottima pacciamatura per vialetti, siepi e piante perenni. Nell'orto non interrarlo fresco, perché toglie azoto agli ortaggi: mettilo nel compost o lascialo in superficie.",
     },
+    {
+        "slug": "serra-da-giardino",
+        "titolo": "Come scegliere la serra da giardino per l'orto di casa",
+        "titolo_breve": "Serra da giardino",
+        "descrizione": "Mini serra, tunnel o serra in policarbonato: come scegliere la serra da giardino per l'orto, dove metterla, cosa guardare e gli errori da evitare.",
+        "attacco": "La serra serve a partire prima in primavera e a chiudere più tardi in autunno. Prima delle misure, decidi cosa ci vuoi fare: far nascere le piantine, anticipare gli ortaggi o coltivare anche d'inverno.",
+        "foto": "photo-1516253593875-bd7ba052fbc5",
+        "alt": "Annaffiatoio verde dentro una serra",
+        "q": "serra da giardino",
+        "azione": "Vedi le serre",
+        "in_breve": [
+            "Semine e piantine di primavera: mini serra a scaffale o serra addossata al muro.",
+            "Ortaggi in terra da anticipare: tunnel con telo, semplice da montare sopra le aiuole.",
+            "Uso tutto l'anno in un posto fisso: struttura in alluminio e pannelli in policarbonato.",
+        ],
+        "sezioni": [
+            ("Quale tipo ti serve", "voci", [
+                ("Mini serra a scaffale", "Qualche ripiano coperto da una fodera in plastica, da mettere contro un muro al sole. Va bene per semenzai e piantine. È leggera: col vento si ribalta, quindi va fissata."),
+                ("Serra addossata al muro", "Si appoggia alla parete di casa, che di notte restituisce un po' del calore preso di giorno. È comoda perché sta vicino alla porta e al rubinetto."),
+                ("Tunnel con telo", "Archi in metallo coperti da un telo in plastica, piantati direttamente sopra le aiuole. Copre tanta terra con poca spesa, ma il telo invecchia al sole e dopo qualche stagione va cambiato."),
+                ("Serra in policarbonato", "Telaio in alluminio e pannelli rigidi. Isola meglio del telo, regge meglio vento e grandine e dura di più. Vuole una base in piano e ancorata bene."),
+            ]),
+            ("Dove metterla", "punti", [
+                "In pieno sole, con il lato lungo verso sud se puoi: d'inverno la luce è poca e non va sprecata.",
+                "Lontana dagli alberi: d'estate fanno ombra e in autunno riempiono il tetto di foglie.",
+                "Riparata dal vento forte, ma non chiusa in un angolo dove l'aria non gira.",
+                "Vicino al rubinetto: in serra si annaffia anche d'inverno, e la pioggia non arriva.",
+                "Su terreno in piano che non tiene l'acqua: con nebbie e piogge d'autunno, il ristagno porta muffe.",
+            ]),
+            ("Cosa guardare nella scheda", "punti", [
+                "Finestre sul tetto o sui lati e porta larga: da primavera, con il sole, dentro si cuoce se non arieggi.",
+                "Tipo di copertura: il policarbonato alveolare isola più di quello compatto, e il telo deve essere trattato contro i raggi UV.",
+                "Altezza alle pareti e al colmo: devi lavorarci in piedi, e pomodori e cetrioli crescono in alto.",
+                "Base e ancoraggi: picchetti, tasselli o un telaio da fissare a terra. Una serra leggera senza ancoraggi vola via col primo temporale.",
+                "Resistenza a neve e vento dichiarata, se la lasci montata tutto l'inverno.",
+                "Ricambi: un pannello rotto o un telo strappato si sostituiscono, senza cambiare la serra.",
+            ]),
+            ("Errori da evitare", "punti", [
+                "Tenerla chiusa nelle giornate di sole, anche d'inverno: la temperatura sale in fretta e le piantine si scottano. Apri al mattino e richiudi a metà pomeriggio.",
+                "Pensare che dentro non geli: senza riscaldamento, nelle notti più fredde si va comunque sotto zero. Per le piante delicate tieni pronto un telo di tessuto non tessuto.",
+                "Annaffiare la sera bagnando le foglie: con l'umidità della notte arrivano le muffe. Meglio al mattino, alla base delle piante.",
+                "Mettere ogni anno gli stessi ortaggi nella stessa terra: in serra le malattie del terreno si accumulano. Ruota le colture e aggiungi compost.",
+                "Lasciare la neve sul tetto: spazzala via, soprattutto dai teli e dai pannelli sottili.",
+            ]),
+        ],
+        "nota": "D'estate, in pianura, la serra chiusa diventa un forno: apri tutto o stendi sopra una rete ombreggiante. Non è obbligatorio usarla in luglio e agosto: lasciala aperta, coltiva fuori e riprendila a settembre per insalate e radicchi.",
+    },
 ]
 
 LOGO = ('<svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="33" r="18" stroke="#F07F1A" stroke-width="9"/>'

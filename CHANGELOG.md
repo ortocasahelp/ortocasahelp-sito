@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.4.8 — 26/10/2026
+
+- Nuova guida: serra da giardino (`/guide/serra-da-giardino/`), con la foto della serra già usata in home. Nessuna pagina categoria AgriEuro sicura: il pulsante AgriEuro apre la ricerca "serra da giardino". Aggiunta a sitemap, test e verifica online.
+
 ## 4.4.7 — 23/10/2026
 
 - eBay Partner Network attivo: i link eBay di home e guide portano il codice della campagna OrtoCasaHelp (campid `5339228940`, parametri EPN Italia). Test aggiornati: i casi "senza codici" azzerano il campid solo durante la prova.
