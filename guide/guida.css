@@ -17,6 +17,7 @@ a,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .logo svg{width:30px;height:30px}
 .marchio{font-family:'Comfortaa','Trebuchet MS',sans-serif;font-weight:700;font-size:18px;white-space:nowrap}
 .marchio .o{color:var(--zucca)}
+.marchio .o-logo{display:inline-block;height:1.18em;width:auto;vertical-align:-0.16em;margin-right:.03em;overflow:visible}
 
 .apertura{background:var(--melanzana);color:var(--bianco);border-radius:0 0 32px 32px;padding:10px 0 26px}
 .briciole{font-size:14px;color:var(--lilla)}

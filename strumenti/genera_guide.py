@@ -350,7 +350,7 @@ GUIDE = [
     },
 ]
 
-LOGO = ('<svg viewBox="118 70 276 380" fill="none" aria-hidden="true"><defs><linearGradient id="oc-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4B2A73"/><stop offset="1" stop-color="#22102F"/></linearGradient><linearGradient id="oc-or" x1="0.2" y1="0" x2="0.8" y2="1"><stop offset="0" stop-color="#FFB14A"/><stop offset=".55" stop-color="#F07F1A"/><stop offset="1" stop-color="#D9580B"/></linearGradient><linearGradient id="oc-lf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2F79A"/><stop offset="1" stop-color="#A9D63E"/></linearGradient><filter id="oc-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".35"/></filter></defs><g filter="url(#oc-sh)"><circle cx="256" cy="300" r="116" fill="none" stroke="url(#oc-or)" stroke-width="62"/><path d="M256 186 V138" stroke="url(#oc-lf)" stroke-width="16" stroke-linecap="round"/><path d="M252 152 C230 104 184 80 136 88 C142 138 190 168 252 152 Z" fill="url(#oc-lf)"/><path d="M260 152 C282 104 328 80 376 88 C370 138 322 168 260 152 Z" fill="url(#oc-lf)"/></g><path d="M178 236 A116 116 0 0 1 300 190" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".28"/></svg>')
+LOGO = ('<svg class="o-logo" aria-hidden="true" focusable="false" viewBox="108 74 296 376"><defs><linearGradient id="oct-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4B2A73"/><stop offset="1" stop-color="#22102F"/></linearGradient><linearGradient id="oct-or" x1="0.2" y1="0" x2="0.8" y2="1"><stop offset="0" stop-color="#FFB14A"/><stop offset=".55" stop-color="#F07F1A"/><stop offset="1" stop-color="#D9580B"/></linearGradient><linearGradient id="oct-lf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2F79A"/><stop offset="1" stop-color="#A9D63E"/></linearGradient><filter id="oct-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".35"/></filter></defs><g filter="url(#oct-sh)"><circle cx="256" cy="300" r="116" fill="none" stroke="url(#oct-or)" stroke-width="62"/><path d="M256 186 V138" stroke="url(#oct-lf)" stroke-width="16" stroke-linecap="round"/><path d="M252 152 C230 104 184 80 136 88 C142 138 190 168 252 152 Z" fill="url(#oct-lf)"/><path d="M260 152 C282 104 328 80 376 88 C370 138 322 168 260 152 Z" fill="url(#oct-lf)"/></g><path d="M178 236 A116 116 0 0 1 300 190" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".28"/></svg>')
 
 
 ORGANIZZAZIONE = {"@type": "Organization", "name": "OrtoCasa Help", "url": f"{SITO}/"}
@@ -432,7 +432,7 @@ def pagina(g, altre):
 </head>
 <body>
 <header class="testata"><div class="contenitore">
-  <a href="../../" class="logo" aria-label="OrtoCasa Help, torna alla home">{LOGO}<span class="marchio"><span class="o">O</span>rtoCasa Help</span></a>
+  <a href="../../" class="logo" aria-label="OrtoCasa Help, torna alla home"><span class="marchio">{LOGO}rtoCasa Help</span></a>
 </div></header>
 <main>
   <article>
@@ -509,7 +509,7 @@ def pagina_indice(guide):
 </head>
 <body class="senza-barra">
 <header class="testata"><div class="contenitore">
-  <a href="../" class="logo" aria-label="OrtoCasa Help, torna alla home">{LOGO}<span class="marchio"><span class="o">O</span>rtoCasa Help</span></a>
+  <a href="../" class="logo" aria-label="OrtoCasa Help, torna alla home"><span class="marchio">{LOGO}rtoCasa Help</span></a>
 </div></header>
 <main>
   <div class="apertura"><div class="contenitore">
