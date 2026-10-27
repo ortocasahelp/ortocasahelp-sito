@@ -3,7 +3,7 @@
 ## 4.7.0 — 27/10/2026
 
 - App installabile (web app): `manifest.webmanifest`, icone in `icone/` (192, 512, maskable, Apple 180, favicon), service worker `sw.js` (pagine prima dalla rete, copia salvata se manca la rete; CSS/JS/icone salvati e aggiornati in sottofondo; nessuna richiesta verso altri siti), registrato da `app.js` in tutte le pagine. Sul telefono: "Aggiungi a schermata Home".
-- Logo (indicazioni di Stefano): la O con i germogli è la prima lettera della scritta "OrtoCasa Help" in testata e nel piè di pagina (non più un'icona a parte). Icona dell'app: la stessa O, con il vuoto al centro a forma di casa, e sotto la scritta "Help". Generata da `strumenti/icone.py [forma]` (forme: classica, camino, baita, porta), che scrive `icone/logo.svg`, `logo-maskable.svg`, `favicon.svg` e i PNG.
+- Logo (scelto da Stefano, opzione C): la O arancione con i germogli ha il vuoto centrale a forma di casa con la porticina ad arco. È la prima lettera della scritta "OrtoCasa Help" (testata e piè di pagina) ed è l'icona dell'app, con sotto la scritta "Help" (favicon senza scritta). Generata da `strumenti/icone.py porta` (forme disponibili: classica, camino, baita, porta).
 - Social: interruttore `config.json` nel ramo `social` (`pubblica: false` = tutto pronto ma niente pubblicato); 17 test.
 - Test: `tests/test_app.py` (12 verifiche: manifest, icone, service worker vero su localhost, lettura senza rete), aggiunto alla CI; la verifica online controlla manifest, service worker e icone.
 
