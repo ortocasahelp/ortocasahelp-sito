@@ -52,9 +52,16 @@ File: `.github/workflows/controlli.yml`.
 - **Pinterest**: il sito pubblica `feed.xml` (RSS delle guide, generato da `strumenti/genera_guide.py`). Nelle impostazioni dell'account aziendale Pinterest → *Pubblicazione automatica / RSS* si aggiunge una volta `https://ortocasahelp.netlify.app/feed.xml`: da lì Pinterest crea da solo un pin per ogni guida nuova (fino a 200 al giorno, dentro 24-48 ore).
 - **Facebook e Instagram**: workflow `.github/workflows/social.yml`, martedì e sabato. Pubblica con le API ufficiali di Meta il primo post pronto della coda `coda.json` nel ramo `social` (un post per giro: Pagina Facebook, Instagram e storia) e scrive `stato.json` ed `esito.md` nello stesso ramo.
   - Segreti del repository da impostare una volta: `META_PAGE_ID`, `META_PAGE_TOKEN` (token di Pagina senza scadenza, permessi `pages_manage_posts`, `instagram_basic`, `instagram_content_publish`), `META_IG_ID`. Senza segreti non pubblica niente e lo scrive nell'esito.
+  - Interruttore: `config.json` nel ramo `social`. Con `{"pubblica": false}` (o senza file) non pubblica niente e i post restano in coda; si mette `true` quando si decide di rendere visibili i social.
   - Regole controllate dallo script: testo, link e foto obbligatori; link fuori dal sito solo con `#ADV`; massimo 2000 caratteri.
   - Test: `python3 tests/test_social.py` (le chiamate a Meta sono simulate).
 - I gruppi Facebook non si possono automatizzare: Meta ha tolto le API dei gruppi nell'aprile 2024.
+
+## App installabile
+
+- `manifest.webmanifest`, icone in `icone/` (sorgente del logo: `icone/logo.svg`), service worker `sw.js` registrato da `app.js`. Dal telefono: menu del browser → "Aggiungi a schermata Home".
+- Il service worker non salva le richieste verso altri siti (foto, negozi). Se si cambia la lista dei file di base in `sw.js`, aumentare `VERSIONE`.
+- Test: `python3 tests/test_app.py`.
 
 ## Pubblicazione
 

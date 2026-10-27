@@ -13,6 +13,9 @@ Variabili d'ambiente (segreti di GitHub, mai nel codice):
   META_GRAPH_VERSION  facoltativa, versione delle Graph API (predefinita v23.0)
 Se mancano, nessun post viene pubblicato: l'esito lo dice e il post resta in coda.
 
+Interruttore: config.json nella stessa cartella, {"pubblica": true} per pubblicare davvero.
+Se manca o vale false i social restano in pausa (nessuna chiamata a Meta) e i post restano in coda.
+
 Formato di coda.json: lista di post, ognuno così:
   {"id": "2026-10-28-pacciamatura", "data": "2026-10-28", "testo": "...", "link": "https://ortocasahelp.netlify.app/guide/...",
    "foto": "https://images.unsplash.com/photo-...&fm=jpg", "canali": ["facebook", "instagram", "storia"]}
@@ -142,7 +145,10 @@ def esegui(cartella, oggi, env, meta_factory=Meta):
         righe.append(f"- Post {pid} scartato: {', '.join(probl)}")
     errore = False
     post = scegli(coda, stato, oggi)
-    if post is None:
+    config = json.loads((cartella / "config.json").read_text(encoding="utf-8")) if (cartella / "config.json").exists() else {}
+    if post is not None and config.get("pubblica") is not True:
+        righe.append(f"- In pausa (config.json: pubblica non è true): il post {post['id']} resta in coda, nessuna pubblicazione.")
+    elif post is None:
         righe.append("- Nessun post pronto in coda.")
     elif not (env.get("META_PAGE_TOKEN") and env.get("META_PAGE_ID")):
         righe.append(f"- Post {post['id']} pronto ma non pubblicato: mancano i segreti META_PAGE_ID/META_PAGE_TOKEN.")

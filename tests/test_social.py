@@ -44,10 +44,12 @@ class FintoMeta:
         return {"status_code": self.stati.pop(0) if self.stati else "FINISHED"}
 
 
-def esegui(coda, stato=None, env=ENV, finto=None):
+def esegui(coda, stato=None, env=ENV, finto=None, pubblica=True):
     finto = finto or FintoMeta()
     with tempfile.TemporaryDirectory() as d:
         cart = pathlib.Path(d)
+        if pubblica is not None:
+            (cart / "config.json").write_text(json.dumps({"pubblica": pubblica}), encoding="utf-8")
         (cart / "coda.json").write_text(json.dumps(coda), encoding="utf-8")
         if stato is not None:
             (cart / "stato.json").write_text(json.dumps(stato), encoding="utf-8")
@@ -139,6 +141,12 @@ class TestEsegui(unittest.TestCase):
         self.assertEqual(codice, 1)
         self.assertIn("Post x scartato", esito)
         self.assertIn("y", stato)
+
+    def test_in_pausa_nessuna_chiamata(self):
+        for valore in (False, None):
+            codice, stato, esito, f = esegui([post()], pubblica=valore)
+            self.assertEqual((codice, stato, f.chiamate), (0, {}, []))
+            self.assertIn("In pausa", esito)
 
     def test_coda_assente(self):
         with tempfile.TemporaryDirectory() as d:

@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.7.0 — 27/10/2026
+
+- App installabile (web app): `manifest.webmanifest`, icone in `icone/` (192, 512, maskable, Apple 180, favicon), service worker `sw.js` (pagine prima dalla rete, copia salvata se manca la rete; CSS/JS/icone salvati e aggiornati in sottofondo; nessuna richiesta verso altri siti), registrato da `app.js` in tutte le pagine. Sul telefono: "Aggiungi a schermata Home".
+- Nuovo logo: casa arancione con germoglio verde (sorgente `icone/logo.svg`), nella testata di tutte le pagine e nelle icone dell'app.
+- Social: interruttore `config.json` nel ramo `social` (`pubblica: false` = tutto pronto ma niente pubblicato); 17 test.
+- Test: `tests/test_app.py` (12 verifiche: manifest, icone, service worker vero su localhost, lettura senza rete), aggiunto alla CI; la verifica online controlla manifest, service worker e icone.
+
 ## 4.6.0 — 26/10/2026
 
 - Nuove guide: microgreens in casa (`/guide/microgreens/`: semi, substrato, vaschette, luce, passo per passo) e aromatiche in casa d'inverno (`/guide/aromatiche-in-casa/`). Foto Unsplash di Artelle Creative ed Emma Miller. Titolo della sezione negozi personalizzabile per guida (`dove_titolo`).
