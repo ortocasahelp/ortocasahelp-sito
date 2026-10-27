@@ -37,7 +37,7 @@ jobs:
           pip install playwright==1.48.0
           python -m playwright install --with-deps chromium
       - name: Esegui i test
-        run: python tests/test_sito.py
+        run: python tests/test_sito.py && python tests/test_social.py
 
   online:
     name: Verifica del sito online

@@ -1,5 +1,16 @@
 # Changelog
 
+## 4.6.0 — 26/10/2026
+
+- Nuove guide: microgreens in casa (`/guide/microgreens/`: semi, substrato, vaschette, luce, passo per passo) e aromatiche in casa d'inverno (`/guide/aromatiche-in-casa/`). Foto Unsplash di Artelle Creative ed Emma Miller. Titolo della sezione negozi personalizzabile per guida (`dove_titolo`).
+- Visibilità su Google: nuova pagina indice `/guide/` con tutte le guide (foto, titolo, riassunto, dati strutturati CollectionPage + ItemList), generata da `strumenti/genera_guide.py`.
+- Nuova pagina `/chi-siamo/`: chi scrive, come nascono le guide, come si mantiene il sito (affiliazioni dichiarate), contatto. Dati strutturati AboutPage.
+- Guide: briciole con link all'indice e dati strutturati BreadcrumbList insieme ad Article; data di aggiornamento 26/10/2026; comprende anche la guida serra da giardino (4.4.8).
+- Home: dati strutturati WebSite + Organization (con il profilo Pinterest), pulsante "Tutte le guide" (prima la home collegava solo 3 guide su 5).
+- Piè di pagina di home, guide, indice, chi siamo e privacy: link a Tutte le guide, Chi siamo, Privacy.
+- Social senza computer: feed RSS `feed.xml` delle guide (per la pubblicazione automatica dei pin su Pinterest, con `<link rel="alternate">` nelle pagine) e workflow `Social` che pubblica su Pagina Facebook, Instagram e storie con le API ufficiali di Meta, leggendo la coda dal ramo `social`. Script `strumenti/social.py` con 16 test (`tests/test_social.py`).
+- Sitemap con `/guide/` e `/chi-siamo/`; test: 111 verifiche (indice, chi siamo, dati strutturati, ogni indirizzo della sitemap ha la sua pagina); la verifica online controlla anche le due pagine nuove.
+
 ## 4.4.8 — 26/10/2026
 
 - Nuova guida: serra da giardino (`/guide/serra-da-giardino/`), con la foto della serra già usata in home. Nessuna pagina categoria AgriEuro sicura: il pulsante AgriEuro apre la ricerca "serra da giardino". Aggiunta a sitemap, test e verifica online.

@@ -1,0 +1,61 @@
+# Pubblicazione automatica sui social di OrtoCasa Help (Pagina Facebook, Instagram e storie).
+# Gira nel cloud di GitHub: non serve nessun computer acceso.
+# - La coda dei post e lo stato stanno nel ramo "social" (social/coda.json, stato.json, esito.md).
+#   Claude aggiorna la coda; questo workflow pubblica un post per volta, martedì e sabato.
+# - I token stanno nei segreti del repository: META_PAGE_ID, META_PAGE_TOKEN, META_IG_ID.
+#   Senza segreti il workflow non pubblica niente e lo scrive nell'esito.
+name: Social
+
+on:
+  schedule:
+    - cron: "41 16 * * 2,6"   # martedì e sabato 16:41 UTC (17:41 ora italiana d'inverno)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: social
+  cancel-in-progress: false
+
+jobs:
+  pubblica:
+    name: Pubblica il prossimo post
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Scarica la coda (ramo social)
+        run: |
+          if git ls-remote --exit-code --heads origin social >/dev/null; then
+            git clone -q --depth 1 --branch social "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" dati
+          else
+            mkdir dati && echo "[]" > dati/coda.json
+          fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pubblica
+        id: pubblica
+        continue-on-error: true
+        env:
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          META_IG_ID: ${{ secrets.META_IG_ID }}
+        run: python strumenti/social.py dati
+      - name: Salva stato ed esito nel ramo social
+        if: always()
+        run: |
+          cat dati/esito.md >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+          cd dati
+          [ -d .git ] || { git init -q -b social; git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}"; }
+          git config user.name "social-automatico"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Social: esito $(date -u +%Y-%m-%d)"
+          git push -q origin HEAD:social
+      - name: Fallisci se qualcosa non va
+        if: steps.pubblica.outcome != 'success'
+        run: exit 1

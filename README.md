@@ -47,6 +47,15 @@ File: `.github/workflows/controlli.yml`.
 - **IndexNow**: dopo ogni pubblicazione verificata, `strumenti/indexnow.py` segnala le pagine della sitemap a Bing e agli altri motori aderenti. La chiave è il file `<32 caratteri>.txt` nella radice (pubblica per definizione).
 - Gli esiti (`esito.txt`, `verifica-online.md`, `test-online.txt`, `schermate/*.png`) vengono salvati nel ramo **`controlli`**, sovrascritto a ogni esecuzione.
 
+## Social automatici (senza computer acceso)
+
+- **Pinterest**: il sito pubblica `feed.xml` (RSS delle guide, generato da `strumenti/genera_guide.py`). Nelle impostazioni dell'account aziendale Pinterest → *Pubblicazione automatica / RSS* si aggiunge una volta `https://ortocasahelp.netlify.app/feed.xml`: da lì Pinterest crea da solo un pin per ogni guida nuova (fino a 200 al giorno, dentro 24-48 ore).
+- **Facebook e Instagram**: workflow `.github/workflows/social.yml`, martedì e sabato. Pubblica con le API ufficiali di Meta il primo post pronto della coda `coda.json` nel ramo `social` (un post per giro: Pagina Facebook, Instagram e storia) e scrive `stato.json` ed `esito.md` nello stesso ramo.
+  - Segreti del repository da impostare una volta: `META_PAGE_ID`, `META_PAGE_TOKEN` (token di Pagina senza scadenza, permessi `pages_manage_posts`, `instagram_basic`, `instagram_content_publish`), `META_IG_ID`. Senza segreti non pubblica niente e lo scrive nell'esito.
+  - Regole controllate dallo script: testo, link e foto obbligatori; link fuori dal sito solo con `#ADV`; massimo 2000 caratteri.
+  - Test: `python3 tests/test_social.py` (le chiamate a Meta sono simulate).
+- I gruppi Facebook non si possono automatizzare: Meta ha tolto le API dei gruppi nell'aprile 2024.
+
 ## Pubblicazione
 
 Netlify pubblica in automatico il ramo `main` del repository `ortocasahelp/ortocasahelp-sito`. Ogni pull request genera un'anteprima Netlify separata: si controlla lì prima di unire su `main`.

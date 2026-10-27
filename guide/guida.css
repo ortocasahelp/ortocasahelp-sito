@@ -76,3 +76,14 @@ footer a{color:var(--melanzana)}
   .voci{grid-template-columns:1fr 1fr}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* Indice delle guide e pagine senza barra d'acquisto (v4.6.0) */
+body.senza-barra{padding-bottom:0}
+.elenco-guide{list-style:none;display:grid;gap:12px}
+.elenco-guide a{display:block;background:var(--bianco);border-radius:24px;overflow:hidden;text-decoration:none;color:var(--testo);transition:transform .12s ease}
+.elenco-guide a:active{transform:scale(.99)}
+.elenco-guide img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;background:var(--melanzana-2)}
+.elenco-guide .nome{display:block;padding:16px 18px 0;font-weight:800;font-size:21px;line-height:1.15;letter-spacing:-.02em}
+.elenco-guide .riassunto{display:block;padding:6px 18px 18px;color:var(--grigio);font-size:16px}
+@media (min-width:700px){.elenco-guide{grid-template-columns:1fr 1fr}}
+.firma a{color:var(--melanzana)}
