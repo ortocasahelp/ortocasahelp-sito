@@ -2,6 +2,8 @@
 
 ## 4.7.0 — 27/10/2026
 
+- Home: nuova sezione "Si semina e si pianta a [mese]" con 4 colture del mese (pianura del Nord Italia), ognuna con "Dove comprare" (pannello negozi) e, dove c'è, "Come si fa" verso la guida (microgreens, aromatiche). Dati in `MESI[...].semina`; 5 nuove verifiche (149 in totale).
+- Motozappa: nuova foto di terra appena lavorata con le prime piantine (Hannes Knutsson, Unsplash) in home, reparti, guida e feed; crediti aggiornati.
 - App installabile (web app): `manifest.webmanifest`, icone in `icone/` (192, 512, maskable, Apple 180, favicon), service worker `sw.js` (pagine prima dalla rete, copia salvata se manca la rete; CSS/JS/icone salvati e aggiornati in sottofondo; nessuna richiesta verso altri siti), registrato da `app.js` in tutte le pagine. Sul telefono: "Aggiungi a schermata Home".
 - Logo (scelto da Stefano, opzione C): la O arancione con i germogli ha il vuoto centrale a forma di casa con la porticina ad arco. È la prima lettera della scritta "OrtoCasa Help" (testata e piè di pagina) ed è l'icona dell'app, con sotto la scritta "Help" (favicon senza scritta). Generata da `strumenti/icone.py porta` (forme disponibili: classica, camino, baita, porta).
 - Social: interruttore `config.json` nel ramo `social` (`pubblica: false` = tutto pronto ma niente pubblicato); 17 test.

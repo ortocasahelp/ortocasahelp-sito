@@ -84,6 +84,14 @@
   .azione:active{transform:translateY(3px);box-shadow:0 5px 0 -2px #B95C08}
   .azione .bollo{display:none}
 
+  .semina{list-style:none;margin-top:18px;display:grid;gap:10px}
+  .semina li{background:var(--bianco);border-radius:22px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:6px}
+  .semina b{font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--melanzana)}
+  .semina p{font-size:16px;line-height:1.4;color:#3B2E4A}
+  .semina .azioni{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .semina button,.semina a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;cursor:pointer;border:0}
+  .semina button{background:var(--zucca);color:var(--testo)}
+  .semina a{background:var(--fondo);color:var(--melanzana)}
   .altri{margin-top:28px}
   .altri h2{font-size:15px;font-weight:600;color:var(--lilla);margin-bottom:10px}
   .altri ul{list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding:0 0 4px;scrollbar-width:none}
@@ -172,6 +180,7 @@
     .mese .contenitore{grid-template-columns:1.1fr 1fr;align-items:center;gap:52px}
     .mese-foto{order:2;aspect-ratio:4/5}
     .mese-foto .cartellino{width:140px;height:140px;font-size:26px;right:-24px;bottom:22px}
+    .semina{grid-template-columns:repeat(2,1fr);gap:14px}
     .altri ul{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible;margin:0;padding:0}
     .reparti{grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:14px}
     .reparto:nth-child(4),.reparto:nth-child(7){grid-row:auto}
@@ -220,6 +229,12 @@
     </div>
   </div></section>
 
+  <section class="sezione" aria-labelledby="titolo-semina"><div class="contenitore">
+    <h2 class="grande titolo-stretto" id="titolo-semina">Si semina e si pianta</h2>
+    <p class="sotto" id="semina-sotto">Pianura del Nord Italia. Nelle zone più miti si anticipa di qualche settimana.</p>
+    <ul class="semina" id="semina"></ul>
+  </div></section>
+
   <section class="sezione" aria-labelledby="titolo-reparti"><div class="contenitore">
     <h2 class="grande titolo-stretto" id="titolo-reparti">Reparti</h2>
     <p class="sotto">Scegli il reparto, poi il negozio.</p>
@@ -255,7 +270,7 @@
   <span class="marchio"><svg class="o-logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="108 74 296 376"><defs><linearGradient id="ocp-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4B2A73"/><stop offset="1" stop-color="#22102F"/></linearGradient><linearGradient id="ocp-or" x1="0.2" y1="0" x2="0.8" y2="1"><stop offset="0" stop-color="#FFB14A"/><stop offset=".55" stop-color="#F07F1A"/><stop offset="1" stop-color="#D9580B"/></linearGradient><linearGradient id="ocp-lf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2F79A"/><stop offset="1" stop-color="#A9D63E"/></linearGradient><filter id="ocp-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".35"/></filter><mask id="ocp-buco" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512"><rect width="512" height="512" fill="#000"/><circle cx="256" cy="300" r="147" fill="#fff"/><path d="M256 226 L318 276 L318 352 Q318 362 308 362 L204 362 Q194 362 194 352 L194 276 Z" fill="#000" stroke="#000" stroke-width="14" stroke-linejoin="round"/><path d="M240 369 L240 330 A16 16 0 0 1 272 330 L272 369 Z" fill="#fff"/></mask></defs><g filter="url(#ocp-sh)"><rect x="100" y="140" width="312" height="320" fill="url(#ocp-or)" mask="url(#ocp-buco)"/><path d="M256 186 V138" stroke="url(#ocp-lf)" stroke-width="16" stroke-linecap="round"/><path d="M252 152 C230 104 184 80 136 88 C142 138 190 168 252 152 Z" fill="url(#ocp-lf)"/><path d="M260 152 C282 104 328 80 376 88 C370 138 322 168 260 152 Z" fill="url(#ocp-lf)"/></g><path d="M150 262 A116 116 0 0 1 220 186" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".28"/></svg>rtoCasa Help</span>
   <p>Consigli di un perito agrario per chi coltiva l'orto di casa.</p>
   <p>OrtoCasa Help partecipa a programmi di affiliazione: se acquisti dopo aver cliccato un nostro link, il negozio ci riconosce una commissione, senza costi aggiuntivi per te. In qualità di Affiliato Amazon, OrtoCasa Help riceve un guadagno dagli acquisti idonei.</p>
-  <p>Foto da <a href="https://unsplash.com/?utm_source=ortocasahelp&amp;utm_medium=referral" rel="noopener" target="_blank">Unsplash</a>: Colin Watts, Maddi Bazzocco, Annie Spratt, Jonathan Kemper, Avinash Kumar, Marc Pell, Yarbo Global, Takashi Sakamoto, zanda photography, Markus Spiske, Eco Warrior Princess, Nathalie Klippert, Zoe Richardson, Iftekhar Sourav, Declan Chidlow, Artelle Creative, Emma Miller.</p>
+  <p>Foto da <a href="https://unsplash.com/?utm_source=ortocasahelp&amp;utm_medium=referral" rel="noopener" target="_blank">Unsplash</a>: Colin Watts, Maddi Bazzocco, Annie Spratt, Jonathan Kemper, Avinash Kumar, Marc Pell, Yarbo Global, Takashi Sakamoto, zanda photography, Markus Spiske, Eco Warrior Princess, Nathalie Klippert, Zoe Richardson, Hannes Knutsson, Declan Chidlow, Artelle Creative, Emma Miller.</p>
   <p>© 2026 OrtoCasa Help · <a href="guide/">Tutte le guide</a> · <a href="chi-siamo/">Chi siamo</a> · <a href="privacy/">Privacy e cookie</a></p>
 </div></footer>
 
@@ -277,7 +292,7 @@
 /* Foto Unsplash verificate (licenza Unsplash, uso commerciale gratuito). */
 var F = {
   aglio:"photo-1685130064064-b77382b0dbe2", fagioli:"photo-1542990253-a781e04c0082", carriola:"photo-1621272156568-7306716648df",
-  aiuola:"photo-1621460248083-6271cc4437a8", terra:"photo-1679128719010-aaa99859ad97", goccia:"photo-1748432171507-c1d62fe2e859",
+  aiuola:"photo-1621460248083-6271cc4437a8", terra:"photo-1741027911956-db63415dcedf", goccia:"photo-1748432171507-c1d62fe2e859",
   robot:"photo-1741326757602-186060c5d5b5", decesp:"photo-1768268004427-6fb88cbd1605", serra:"photo-1516253593875-bd7ba052fbc5",
   germogli:"photo-1466692476868-aef1dfb1e735", forbici:"photo-1523301551780-cd17359a95d0", vasi:"photo-1620293106076-ad27d651efe3",
   raccolto:"photo-1624668430039-0175a0fbf006"
@@ -286,33 +301,45 @@ var F = {
 /* Calendario dell'orto (pianura del Nord Italia). 1 = gennaio. */
 var MESI = {
   1:{nome:"Gennaio", titolo:"Si sistemano gli attrezzi.", consiglio:"Affila le forbici e fai il tagliando alla motozappa adesso, non a marzo quando serve.", azione:"Trova forbici da potatura", q:"forbici da potatura", foto:F.forbici, alt:"Forbici da potatura e guanti",
-     altri:[["Potatura del frutteto","Nelle giornate senza gelo","svettatoio"],["Semenzaio riscaldato","Per peperoni e melanzane a fine mese","semenzaio riscaldato"],["Semi per la stagione","Scegli con calma","semi orto"]]},
+     altri:[["Potatura del frutteto","Nelle giornate senza gelo","svettatoio"],["Semenzaio riscaldato","Per peperoni e melanzane a fine mese","semenzaio riscaldato"],["Semi per la stagione","Scegli con calma","semi orto"]],
+     semina:[["Peperoni e peperoncini", "In semenzaio al caldo (20-25 °C), da fine mese", "semi peperone"], ["Melanzane", "In semenzaio al caldo, da fine mese: sono lente a nascere", "semi melanzana"], ["Lattuga da taglio", "In serra fredda o sotto tunnel", "semi lattuga da taglio"], ["Microgreens in casa", "Pronti in 7-14 giorni sul davanzale", "semi microgreens", "guide/microgreens/"]]},
   2:{nome:"Febbraio", titolo:"Si semina al caldo.", consiglio:"Peperoni, melanzane e pomodori in semenzaio, tra 20 e 25 °C e vicino alla luce.", azione:"Trova un semenzaio", q:"semenzaio riscaldato", foto:F.germogli, alt:"Germogli appena spuntati",
-     altri:[["Terriccio da semina","Fine e leggero, non quello da vaso","terriccio da semina"],["Semi di pomodoro","Da seminare entro il mese","semi pomodoro"],["Potatura della vite","Prima che si muovano le gemme","forbici da potatura"]]},
-  3:{nome:"Marzo", titolo:"Si prepara il terreno.", consiglio:"Lavora quando la terra non si attacca alla vanga. Se è bagnata la compatti e te la porti dietro tutto l'anno.", azione:"Trova una motozappa", q:"motozappa", foto:F.terra, alt:"Motozappa ferma su una strada di campagna", agrieuro:AE.motozappe,
-     altri:[["Concime organico","Letame pellettato prima di lavorare","letame pellettato"],["Patate da semina","Tuberi certificati, non quelli da cucina","patate da semina"],["Telo pacciamante","Meno erba, meno acqua","telo pacciamante"]]},
+     altri:[["Terriccio da semina","Fine e leggero, non quello da vaso","terriccio da semina"],["Semi di pomodoro","Da seminare entro il mese","semi pomodoro"],["Potatura della vite","Prima che si muovano le gemme","forbici da potatura"]],
+     semina:[["Pomodori", "In semenzaio al caldo, vicino alla luce", "semi pomodoro"], ["Peperoni e melanzane", "In semenzaio al caldo, se non l'hai fatto a gennaio", "semi peperone"], ["Piselli e fave", "A fine mese in campo, se la terra si lavora", "semi piselli"], ["Aglio e cipolle", "Bulbi e bulbilli, in terreno non gelato", "bulbilli cipolla"]]},
+  3:{nome:"Marzo", titolo:"Si prepara il terreno.", consiglio:"Lavora quando la terra non si attacca alla vanga. Se è bagnata la compatti e te la porti dietro tutto l'anno.", azione:"Trova una motozappa", q:"motozappa", foto:F.terra, alt:"Terra appena lavorata con le prime piantine", agrieuro:AE.motozappe,
+     altri:[["Concime organico","Letame pellettato prima di lavorare","letame pellettato"],["Patate da semina","Tuberi certificati, non quelli da cucina","patate da semina"],["Telo pacciamante","Meno erba, meno acqua","telo pacciamante"]],
+     semina:[["Patate", "Da fine mese, tuberi da semina certificati", "patate da semina"], ["Piselli", "In campo, file a 50-60 cm", "semi piselli"], ["Carote e prezzemolo", "Semina diretta, sono lenti a nascere", "semi carota"], ["Zucchine e cetrioli", "In semenzaio, per trapiantarli ad aprile-maggio", "semi zucchine"]]},
   4:{nome:"Aprile", titolo:"Si trapianta.", consiglio:"Pomodori fuori solo quando di notte si sta sopra i 10 °C. Prima, aspettano in serra.", azione:"Trova tutori per pomodori", q:"tutori per pomodori", foto:F.aiuola, alt:"Mani che mettono a dimora piantine in un'aiuola rialzata",
-     altri:[["Rete antinsetto","Sopra cavoli e insalate","rete antinsetto"],["Irrigazione a goccia","Montala adesso, a terra libera","kit irrigazione a goccia"],["Semi di zucchine","Semina diretta a fine mese","semi zucchine"]]},
+     altri:[["Rete antinsetto","Sopra cavoli e insalate","rete antinsetto"],["Irrigazione a goccia","Montala adesso, a terra libera","kit irrigazione a goccia"],["Semi di zucchine","Semina diretta a fine mese","semi zucchine"]],
+     semina:[["Fagiolini", "Da fine mese, quando la terra è calda", "semi fagiolini"], ["Lattughe e bietole", "Semina diretta o trapianto", "semi lattuga"], ["Pomodori, peperoni, melanzane", "Trapianto a fine mese se di notte si sta sopra i 10 °C", "piantine pomodoro"], ["Basilico", "In semenzaio o in vaso al sole", "semi basilico"]]},
   5:{nome:"Maggio", titolo:"Si porta l'acqua.", consiglio:"Ala gocciolante sotto la pacciamatura: meno acqua, foglie asciutte, meno malattie.", azione:"Trova un kit a goccia", q:"kit irrigazione a goccia", foto:F.goccia, alt:"Aiuola con impianto di irrigazione", agrieuro:AE.irrigazione,
-     altri:[["Programmatore","Bagna all'alba anche quando non ci sei","programmatore irrigazione"],["Legacci per piante","Lega i pomodori man mano che crescono","legacci per piante"],["Tutori","Per fagioli rampicanti e cetrioli","tutori orto"]]},
+     altri:[["Programmatore","Bagna all'alba anche quando non ci sei","programmatore irrigazione"],["Legacci per piante","Lega i pomodori man mano che crescono","legacci per piante"],["Tutori","Per fagioli rampicanti e cetrioli","tutori orto"]],
+     semina:[["Fagioli e fagiolini", "Semina diretta, anche scalare", "semi fagioli"], ["Zucchine e zucche", "Semina diretta o trapianto", "semi zucchine"], ["Cetrioli e mais dolce", "Semina diretta, terra calda", "semi cetriolo"], ["Pomodori e peperoni", "Ultimi trapianti, con i tutori già piantati", "tutori per pomodori"]]},
   6:{nome:"Giugno", titolo:"Si taglia l'erba ai bordi.", consiglio:"Tieni bassi i bordi dell'orto: meno rifugi per le lumache, che di notte entrano nelle insalate.", azione:"Trova un decespugliatore", q:"decespugliatore", foto:F.decesp, alt:"Uomo che taglia l'erba con un decespugliatore", agrieuro:AE.decespugliatori,
-     altri:[["Rete ombreggiante","Per insalate e semenzai al sole","rete ombreggiante"],["Programmatore","Con il caldo serve tutti i giorni","programmatore irrigazione"],["Trappole per lumache","Senza veleni","trappola lumache"]]},
+     altri:[["Rete ombreggiante","Per insalate e semenzai al sole","rete ombreggiante"],["Programmatore","Con il caldo serve tutti i giorni","programmatore irrigazione"],["Trappole per lumache","Senza veleni","trappola lumache"]],
+     semina:[["Fagiolini", "Seconda semina per raccolti fino a settembre", "semi fagiolini"], ["Carote e bietole", "Semina diretta, con acqua regolare", "semi carota"], ["Porri", "Trapianto delle piantine", "piantine porro"], ["Cavoli", "In semenzaio, per l'orto d'autunno", "semi cavolo"]]},
   7:{nome:"Luglio", titolo:"Si raccoglie ogni giorno.", consiglio:"Zucchine piccole e spesso: se lasci crescere le grandi, la pianta smette di produrre.", azione:"Trova cassette da raccolta", q:"cassette raccolta ortaggi", foto:F.raccolto, alt:"Cesta di legno piena di pomodori e verdure",
-     altri:[["Tubo gocciolante","Il caldo non perdona chi bagna a mano","tubo gocciolante"],["Rete ombreggiante","Sopra le insalate di luglio","rete ombreggiante"],["Semi di finocchio","Semina adesso per l'autunno","semi finocchio"]]},
+     altri:[["Tubo gocciolante","Il caldo non perdona chi bagna a mano","tubo gocciolante"],["Rete ombreggiante","Sopra le insalate di luglio","rete ombreggiante"],["Semi di finocchio","Semina adesso per l'autunno","semi finocchio"]],
+     semina:[["Cavoli e broccoli", "In semenzaio o trapianto a fine mese", "semi broccoli"], ["Finocchi", "Semina adesso per l'autunno", "semi finocchio"], ["Radicchi", "Semina diretta per l'inverno", "semi radicchio"], ["Fagiolini", "Ultima semina entro metà mese", "semi fagiolini"]]},
   8:{nome:"Agosto", titolo:"Si semina l'orto d'inverno.", consiglio:"Cavoli, radicchi e finocchi in semenzaio adesso: a settembre vanno nell'orto.", azione:"Trova semi di cavolo", q:"semi cavolo", foto:F.germogli, alt:"Germogli appena spuntati",
-     altri:[["Semi di radicchio","Per la raccolta d'inverno","semi radicchio"],["Cassette da raccolta","Pomodori e peperoni ogni giorno","cassette raccolta ortaggi"],["Programmatore","Per le settimane di ferie","programmatore irrigazione"]]},
+     altri:[["Semi di radicchio","Per la raccolta d'inverno","semi radicchio"],["Cassette da raccolta","Pomodori e peperoni ogni giorno","cassette raccolta ortaggi"],["Programmatore","Per le settimane di ferie","programmatore irrigazione"]],
+     semina:[["Radicchi e indivie", "Semina diretta o trapianto", "semi radicchio"], ["Finocchi", "Trapianto delle piantine", "piantine finocchio"], ["Rucola e ravanelli", "Nascono in pochi giorni", "semi rucola"], ["Spinaci", "Da fine mese", "semi spinacio"]]},
   9:{nome:"Settembre", titolo:"Si rinnova il prato.", consiglio:"Semina il prato adesso: terra ancora calda e piogge in arrivo. In primavera parte prima.", azione:"Trova semi per prato", q:"semi prato", foto:F.robot, alt:"Robot tagliaerba al lavoro su un prato",
-     altri:[["Robot tagliaerba","Chi lo compra non torna indietro","robot tagliaerba"],["Semi di spinacio","Semina fino a ottobre","semi spinacio"],["Cipolle da piantare","Bulbilli di cipolla bianca","bulbilli cipolla"]]},
+     altri:[["Robot tagliaerba","Chi lo compra non torna indietro","robot tagliaerba"],["Semi di spinacio","Semina fino a ottobre","semi spinacio"],["Cipolle da piantare","Bulbilli di cipolla bianca","bulbilli cipolla"]],
+     semina:[["Spinaci", "Semina diretta fino a inizio ottobre", "semi spinacio"], ["Songino", "Per le insalate d'inverno", "semi valerianella"], ["Cipolle bianche", "Bulbilli o piantine per la primavera", "bulbilli cipolla"], ["Lattughe invernali", "Trapianto, sotto tunnel nelle zone fredde", "semi lattuga invernale"]]},
   10:{nome:"Ottobre", titolo:"Si pianta l'aglio.", consiglio:"Spicchi grossi, punta in su, a 3–5 cm sotto terra e a 10–15 cm uno dall'altro. Prima che geli.", azione:"Trova aglio da piantare", q:"aglio da piantare", foto:F.aglio, alt:"Cesto di teste d'aglio",
-     altri:[["Semi di fave","Semina adesso, raccogli in primavera","semi fave"],["Tessuto non tessuto","Pronto per la prima brina","tessuto non tessuto"],["Biotrituratore","Potature e foglie diventano pacciamatura","biotrituratore"]]},
+     altri:[["Semi di fave","Semina adesso, raccogli in primavera","semi fave"],["Tessuto non tessuto","Pronto per la prima brina","tessuto non tessuto"],["Biotrituratore","Potature e foglie diventano pacciamatura","biotrituratore"]],
+     semina:[["Aglio", "Spicchi grossi, punta in su, 3-5 cm sotto terra", "aglio da piantare"], ["Fave", "Semina diretta, 5 cm di profondità", "semi fave"], ["Piselli rustici", "Varietà da semina autunnale", "semi piselli"], ["Cipolle bianche", "Bulbilli, prima del freddo", "bulbilli cipolla"]]},
   11:{nome:"Novembre", titolo:"Si copre.", consiglio:"Tessuto non tessuto su insalate e spinaci: guadagni qualche grado senza costruire una serra.", azione:"Trova tessuto non tessuto", q:"tessuto non tessuto", foto:F.serra, alt:"Annaffiatoio verde dentro una serra",
-     altri:[["Mini serra","Per le insalate d'inverno","mini serra"],["Soffiatore foglie","Prato pulito prima delle piogge","soffiatore foglie"],["Letame pellettato","Si sparge adesso, lavora l'inverno","letame pellettato"]]},
+     altri:[["Mini serra","Per le insalate d'inverno","mini serra"],["Soffiatore foglie","Prato pulito prima delle piogge","soffiatore foglie"],["Letame pellettato","Si sparge adesso, lavora l'inverno","letame pellettato"]],
+     semina:[["Aglio", "Entro metà mese, se non l'hai ancora piantato", "aglio da piantare"], ["Fave", "Prima del gelo, nei terreni che non ristagnano", "semi fave"], ["Songino e lattuga da taglio", "In serra fredda o sotto tunnel", "semi valerianella"], ["Microgreens in casa", "Pronti in 7-14 giorni sul davanzale", "semi microgreens", "guide/microgreens/"]]},
   12:{nome:"Dicembre", titolo:"Si prepara la prossima stagione.", consiglio:"Scegli i semi adesso, con calma. A febbraio si ha fretta e si compra quello che c'è.", azione:"Trova semi per l'orto", q:"semi orto", foto:F.fagioli, alt:"Fagioli secchi di varietà diverse",
-     altri:[["Mini serra","Per partire prima in primavera","mini serra"],["Forbici da potatura","Un buon regalo per chi ha l'orto","forbici da potatura"],["Carriola","Quella vecchia ha la ruota a terra?","carriola"]]}
+     altri:[["Mini serra","Per partire prima in primavera","mini serra"],["Forbici da potatura","Un buon regalo per chi ha l'orto","forbici da potatura"],["Carriola","Quella vecchia ha la ruota a terra?","carriola"]],
+     semina:[["Alberi da frutto", "A radice nuda, nei giorni senza gelo", "alberi da frutto radice nuda"], ["Lattuga da taglio", "In serra fredda", "semi lattuga da taglio"], ["Aromatiche in casa", "Prezzemolo, erba cipollina, menta alla finestra", "kit erbe aromatiche", "guide/aromatiche-in-casa/"], ["Microgreens in casa", "Pronti in 7-14 giorni sul davanzale", "semi microgreens", "guide/microgreens/"]]}
 };
 
 var REPARTI = [
-  {nome:"Motozappe", testo:"Lavorare la terra", q:"motozappa", foto:F.terra, alt:"Motozappa ferma su una strada di campagna", agrieuro:AE.motozappe},
+  {nome:"Motozappe", testo:"Lavorare la terra", q:"motozappa", foto:F.terra, alt:"Terra appena lavorata con le prime piantine", agrieuro:AE.motozappe},
   {nome:"Irrigazione", testo:"Goccia e programmatori", q:"irrigazione a goccia", foto:F.goccia, alt:"Aiuola con impianto di irrigazione", agrieuro:AE.irrigazione},
   {nome:"Robot tagliaerba", testo:"Il prato va da solo", q:"robot tagliaerba", foto:F.robot, alt:"Robot tagliaerba al lavoro su un prato", agrieuro:AE.robot},
   {nome:"Decespugliatori", testo:"Bordi ed erba alta", q:"decespugliatore", foto:F.decesp, alt:"Uomo che taglia l'erba con un decespugliatore", agrieuro:AE.decespugliatori, fuoco:"50% 85%"},
@@ -421,6 +448,19 @@ function meseCorrente(data){ return (data || new Date()).getMonth() + 1; }
     b.appendChild(t); b.appendChild(el("span", "cerca", "Cerca"));
     b.addEventListener("click", function(){ apriPannello({nome: a[0], q: a[2]}); });
     li.appendChild(b); lista.appendChild(li);
+  });
+
+  /* Si semina e si pianta questo mese */
+  document.getElementById("titolo-semina").textContent = "Si semina e si pianta a " + m.nome.toLowerCase();
+  var semina = document.getElementById("semina");
+  (m.semina || []).forEach(function(v){
+    var li = el("li"); li.appendChild(el("b", "", v[0])); li.appendChild(el("p", "", v[1]));
+    var az = el("div", "azioni");
+    var b = el("button", "", "Dove comprare"); b.type = "button";
+    b.addEventListener("click", function(){ apriPannello({nome: v[0], q: v[2]}); });
+    az.appendChild(b);
+    if (v[3]) { var a = el("a", "", "Come si fa"); a.href = v[3]; az.appendChild(a); }
+    li.appendChild(az); semina.appendChild(li);
   });
 
   /* Reparti */
