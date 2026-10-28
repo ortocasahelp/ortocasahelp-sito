@@ -20,8 +20,8 @@ GUIDE = [
         "titolo_breve": "Motozappa",
         "descrizione": "Elettrica, a batteria o a scoppio? Come scegliere la motozappa giusta per il tuo orto, cosa guardare nella scheda e gli errori da evitare.",
         "attacco": "Dipende da tre cose: quanta terra lavori, com'è il terreno e quanta fatica vuoi fare tu. Il resto viene dopo.",
-        "foto": "photo-1679128719010-aaa99859ad97",
-        "alt": "Motozappa ferma su una strada di campagna",
+        "foto": "photo-1741027911956-db63415dcedf",
+        "alt": "Terra appena lavorata con le prime piantine",
         "q": "motozappa",
         "agrieuro": "https://www.agrieuro.com/motozappe-c-22.html",
         "azione": "Vedi le motozappe",
@@ -350,10 +350,7 @@ GUIDE = [
     },
 ]
 
-LOGO = ('<svg viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="33" r="18" stroke="#F07F1A" stroke-width="9"/>'
-        '<g transform="translate(28,18)"><path d="M0 3 L0 -3" stroke="#C9E86A" stroke-width="2.6" stroke-linecap="round"/>'
-        '<path d="M0 -2 C-1.5 -9 -7 -13 -12.5 -12.5 C-11.5 -6 -5.5 -2 0 -2 Z" fill="#C9E86A"/>'
-        '<path d="M0 -2 C1.5 -9 7 -13 12.5 -12.5 C11.5 -6 5.5 -2 0 -2 Z" fill="#C9E86A"/></g></svg>')
+LOGO = ('<svg class="o-logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="108 74 296 376"><defs><linearGradient id="oct-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4B2A73"/><stop offset="1" stop-color="#22102F"/></linearGradient><linearGradient id="oct-or" x1="0.2" y1="0" x2="0.8" y2="1"><stop offset="0" stop-color="#FFB14A"/><stop offset=".55" stop-color="#F07F1A"/><stop offset="1" stop-color="#D9580B"/></linearGradient><linearGradient id="oct-lf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2F79A"/><stop offset="1" stop-color="#A9D63E"/></linearGradient><filter id="oct-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".35"/></filter><mask id="oct-buco" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512"><rect width="512" height="512" fill="#000"/><circle cx="256" cy="300" r="147" fill="#fff"/><path d="M256 226 L318 276 L318 352 Q318 362 308 362 L204 362 Q194 362 194 352 L194 276 Z" fill="#000" stroke="#000" stroke-width="14" stroke-linejoin="round"/><path d="M240 369 L240 330 A16 16 0 0 1 272 330 L272 369 Z" fill="#fff"/></mask></defs><g filter="url(#oct-sh)"><rect x="100" y="140" width="312" height="320" fill="url(#oct-or)" mask="url(#oct-buco)"/><path d="M256 186 V138" stroke="url(#oct-lf)" stroke-width="16" stroke-linecap="round"/><path d="M252 152 C230 104 184 80 136 88 C142 138 190 168 252 152 Z" fill="url(#oct-lf)"/><path d="M260 152 C282 104 328 80 376 88 C370 138 322 168 260 152 Z" fill="url(#oct-lf)"/></g><path d="M150 262 A116 116 0 0 1 220 186" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".28"/></svg>')
 
 
 ORGANIZZAZIONE = {"@type": "Organization", "name": "OrtoCasa Help", "url": f"{SITO}/"}
@@ -422,6 +419,11 @@ def pagina(g, altre):
 <meta property="og:url" content="{url}">
 <meta property="og:locale" content="it_IT">
 <meta name="theme-color" content="#2D1846">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="48x48" href="/icone/favicon-48.png">
+<link rel="apple-touch-icon" href="/icone/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="OrtoCasa">
+<script src="/app.js" defer></script>
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="stylesheet" href="../../fonts.css">
 <link rel="stylesheet" href="../guida.css">
@@ -430,7 +432,7 @@ def pagina(g, altre):
 </head>
 <body>
 <header class="testata"><div class="contenitore">
-  <a href="../../" class="logo" aria-label="OrtoCasa Help, torna alla home">{LOGO}<span class="marchio"><span class="o">O</span>rtoCasa Help</span></a>
+  <a href="../../" class="logo" aria-label="OrtoCasa Help, torna alla home"><span class="marchio">{LOGO}rtoCasa Help</span></a>
 </div></header>
 <main>
   <article>
@@ -494,6 +496,11 @@ def pagina_indice(guide):
 <meta property="og:url" content="{url}">
 <meta property="og:locale" content="it_IT">
 <meta name="theme-color" content="#2D1846">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="48x48" href="/icone/favicon-48.png">
+<link rel="apple-touch-icon" href="/icone/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="OrtoCasa">
+<script src="/app.js" defer></script>
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="stylesheet" href="../fonts.css">
 <link rel="stylesheet" href="guida.css">
@@ -502,7 +509,7 @@ def pagina_indice(guide):
 </head>
 <body class="senza-barra">
 <header class="testata"><div class="contenitore">
-  <a href="../" class="logo" aria-label="OrtoCasa Help, torna alla home">{LOGO}<span class="marchio"><span class="o">O</span>rtoCasa Help</span></a>
+  <a href="../" class="logo" aria-label="OrtoCasa Help, torna alla home"><span class="marchio">{LOGO}rtoCasa Help</span></a>
 </div></header>
 <main>
   <div class="apertura"><div class="contenitore">

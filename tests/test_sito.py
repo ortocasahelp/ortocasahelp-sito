@@ -188,6 +188,17 @@ with sync_playwright() as p:
     verifica("Piccolo trascinamento non chiude", pagina.is_visible("#pannello"))
     pagina.keyboard.press("Escape")
 
+    # 5b. Si semina e si pianta questo mese
+    verifica("Semina del mese: 4 schede con pulsante", pagina.locator("#semina li").count() == 4 and pagina.locator("#semina button").count() == 4)
+    verifica("Semina del mese: titolo con il mese", pagina.inner_text("#titolo-semina").startswith("Si semina e si pianta a "))
+    pagina.locator("#semina button").first.click()
+    verifica("Semina del mese: il pulsante apre i negozi", pagina.is_visible("#pannello") and pagina.locator("#pannello-link a").count() == 4)
+    pagina.keyboard.press("Escape")
+    tutti = pagina.evaluate("() => Object.values(MESI).every(m => m.semina && m.semina.length === 4 && m.semina.every(v => v[0] && v[1] && v[2]))")
+    verifica("Semina: 4 voci complete per ognuno dei 12 mesi", tutti)
+    guide_link = pagina.evaluate("() => Object.values(MESI).flatMap(m => m.semina).filter(v => v[3]).map(v => v[3])")
+    verifica("Semina: i link alle guide esistono", all((RADICE / g / "index.html").exists() for g in guide_link), str(guide_link))
+
     # 6. Reparti e consigli
     verifica("9 reparti con foto", pagina.locator(".reparto").count() == 9 and pagina.locator(".reparto img").count() == 9)
     verifica("Tutte le foto hanno testo alternativo", pagina.evaluate("() => [...document.querySelectorAll('main img')].every(i => i.alt)"))
