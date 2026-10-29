@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.7.1 — 29/10/2026
+
+- Nuova guida: tessuto non tessuto (`/guide/tessuto-non-tessuto/`): leggero o pesante, quando serve nell'orto, come si stende, errori da evitare. Foto di piante coperte di brina (Annie Spratt, Unsplash, già nei crediti). Nessuna pagina categoria AgriEuro sicura: il pulsante AgriEuro apre la ricerca "tessuto non tessuto orto". Aggiunta a indice, sitemap, feed, test e verifica online.
+
 ## 4.7.0 — 27/10/2026
 
 - Home: nuova sezione "Si semina e si pianta a [mese]" con 4 colture del mese (pianura del Nord Italia), ognuna con "Dove comprare" (pannello negozi) e, dove c'è, "Come si fa" verso la guida (microgreens, aromatiche). Dati in `MESI[...].semina`; 5 nuove verifiche (149 in totale).

@@ -348,6 +348,53 @@ GUIDE = [
         ],
         "nota": "Vuoi qualcosa di pronto in pochi giorni? Sullo stesso davanzale puoi coltivare i microgreens di rucola, senape o basilico: si tagliano in una-due settimane.",
     },
+    {
+        "slug": "tessuto-non-tessuto",
+        "titolo": "Tessuto non tessuto per l'orto: quale scegliere e come usarlo",
+        "titolo_breve": "Tessuto non tessuto",
+        "descrizione": "Leggero o pesante, steso sulle piante o sugli archetti: come scegliere e usare il tessuto non tessuto per proteggere l'orto dal freddo, e gli errori da evitare.",
+        "attacco": "Il tessuto non tessuto è il telo bianco e leggero che lascia passare aria, acqua e luce ma tiene un po' di caldo sulle piante. Costa poco e allunga la stagione dell'orto di qualche settimana, all'inizio e alla fine.",
+        "foto": "photo-1673620068891-91cda56d854f",
+        "alt": "Piante coperte di brina in un campo",
+        "q": "tessuto non tessuto orto",
+        "agrieuro": "",
+        "dove_titolo": "Dove comprarlo",
+        "azione": "Vedi i teli in TNT",
+        "in_breve": [
+            "Semine e trapianti di primavera: telo leggero, steso direttamente sulle piante.",
+            "Insalate, radicchi e piante in vaso d'inverno: telo più pesante, meglio sopra gli archetti.",
+            "Bordi sempre fissati a terra, e telo lasciato morbido perché le piante crescano.",
+        ],
+        "sezioni": [
+            ("Quale ti serve", "voci", [
+                ("Leggero", "Si appoggia direttamente sulle piante senza schiacciarle e lascia passare molta luce. Va bene per anticipare le semine di primavera e per i trapianti, quando di notte fa ancora fresco."),
+                ("Pesante", "Tiene più caldo ma lascia passare meno luce. Serve per le gelate dell'autunno e dell'inverno, sopra insalate, radicchi e ortaggi a foglia. Meglio sostenerlo con gli archetti."),
+                ("Cappucci e sacchi", "Teli già cuciti, con il laccio in fondo, per coprire d'inverno agrumi, aromatiche e piante delicate in vaso. Si infilano e si tolgono in un minuto."),
+            ]),
+            ("Quando serve nell'orto", "punti", [
+                "A fine inverno, sopra le prime semine di carote, ravanelli, spinaci e insalate: la terra si scalda prima e i semi nascono più in fretta.",
+                "Dopo i trapianti di aprile, nelle notti fredde: le piantine appena messe a dimora soffrono il primo sbalzo.",
+                "In autunno e d'inverno, sopra insalate, radicchi, bietole e cavoli quando arrivano le gelate.",
+                "Contro alcuni insetti, come le altiche che bucherellano le foglie di rucola e ravanelli: se il telo è chiuso bene sui bordi, non entrano.",
+                "Dentro la serra, nelle notti più fredde: un telo in più sopra le piantine delicate.",
+            ]),
+            ("Come si stende", "sequenza", [
+                ("Misura con abbondanza", "Prendi il telo più largo dell'aiuola: deve coprire le piante e avanzare sui lati per essere fissato."),
+                ("Archetti, se servono", "Per il telo pesante e per le piante alte, pianta degli archetti lungo la fila: il telo non tocca le foglie e la neve non le schiaccia."),
+                ("Lascialo morbido", "Non tirarlo: le piante crescono e devono sollevarlo senza sforzo."),
+                ("Fissa i bordi", "Con picchetti, sassi, sacchetti di sabbia o un po' di terra sopra il bordo. Il vento lo solleva subito se resta libero."),
+                ("Controlla ogni tanto", "Dopo vento e temporali, e quando le piante crescono: sistema i bordi e allenta dove tira."),
+            ]),
+            ("Errori da evitare", "punti", [
+                "Usare la plastica al posto del tessuto non tessuto: non respira, sotto si forma condensa e dove tocca le foglie il gelo passa lo stesso.",
+                "Lasciarlo sopra nelle giornate calde di primavera: sotto si scalda troppo e le piante si allungano deboli. Toglilo o aprilo di giorno, rimettilo la sera.",
+                "Tenerlo sopra fragole, zucchine e piselli in fiore: api e insetti non arrivano ai fiori e la frutta non si forma.",
+                "Lasciarlo per mesi sempre chiuso: sotto l'aria è umida e arrivano lumache e muffe. Alza il telo ogni tanto e controlla.",
+                "Riporlo bagnato e sporco di terra: si rovina e ammuffisce. Fallo asciugare, scuotilo e arrotolalo; dura più stagioni.",
+            ]),
+        ],
+        "nota": "Il tessuto non tessuto protegge da qualche grado di freddo, non da tutto: nelle notti di gelo forte, metti un secondo strato o un telo più pesante, e annaffia di giorno, non la sera.",
+    },
 ]
 
 LOGO = ('<svg class="o-logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="108 74 296 376"><defs><linearGradient id="oct-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4B2A73"/><stop offset="1" stop-color="#22102F"/></linearGradient><linearGradient id="oct-or" x1="0.2" y1="0" x2="0.8" y2="1"><stop offset="0" stop-color="#FFB14A"/><stop offset=".55" stop-color="#F07F1A"/><stop offset="1" stop-color="#D9580B"/></linearGradient><linearGradient id="oct-lf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2F79A"/><stop offset="1" stop-color="#A9D63E"/></linearGradient><filter id="oct-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".35"/></filter><mask id="oct-buco" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512"><rect width="512" height="512" fill="#000"/><circle cx="256" cy="300" r="147" fill="#fff"/><path d="M256 226 L318 276 L318 352 Q318 362 308 362 L204 362 Q194 362 194 352 L194 276 Z" fill="#000" stroke="#000" stroke-width="14" stroke-linejoin="round"/><path d="M240 369 L240 330 A16 16 0 0 1 272 330 L272 369 Z" fill="#fff"/></mask></defs><g filter="url(#oct-sh)"><rect x="100" y="140" width="312" height="320" fill="url(#oct-or)" mask="url(#oct-buco)"/><path d="M256 186 V138" stroke="url(#oct-lf)" stroke-width="16" stroke-linecap="round"/><path d="M252 152 C230 104 184 80 136 88 C142 138 190 168 252 152 Z" fill="url(#oct-lf)"/><path d="M260 152 C282 104 328 80 376 88 C370 138 322 168 260 152 Z" fill="url(#oct-lf)"/></g><path d="M150 262 A116 116 0 0 1 220 186" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".28"/></svg>')
