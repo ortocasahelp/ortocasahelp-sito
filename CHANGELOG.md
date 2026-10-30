@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.9.1 — da pubblicare all'approvazione di ManoMano
+
+- ManoMano tramite Awin (inserzionista ManoMano IT 17962, publisher OrtoCasaHelp 3130993): i link verso ManoMano passano da `awin1.com/cread.php` con il link al negozio in `ued`. Riallineata il 30/10/2026 sopra la 4.9.0 (prima era la 4.8.0 sopra la 4.7.1).
+
 ## 4.9.0 — 30/10/2026
 
 - Tre guide nuove di stagione: aglio e fave in autunno (`/guide/aglio-e-fave/`), orto d'inverno (`/guide/orto-invernale/`), compostiera e compost (`/guide/compostiera/`). Foto Unsplash di Joe Green, Ch Photography e Frank Thiemonge (crediti in home). Nessuna pagina categoria AgriEuro sicura: il pulsante AgriEuro apre la ricerca. Aggiunte a indice, sitemap (16 indirizzi), feed, test e verifica online.
