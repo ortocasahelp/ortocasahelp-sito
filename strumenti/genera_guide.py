@@ -11,7 +11,7 @@ import pathlib
 
 RADICE = pathlib.Path(__file__).resolve().parent.parent
 SITO = "https://ortocasahelp.netlify.app"
-AGGIORNATA = "2026-10-26"
+AGGIORNATA = "2026-10-30"
 
 GUIDE = [
     {
@@ -395,7 +395,206 @@ GUIDE = [
         ],
         "nota": "Il tessuto non tessuto protegge da qualche grado di freddo, non da tutto: nelle notti di gelo forte, metti un secondo strato o un telo più pesante, e annaffia di giorno, non la sera.",
     },
+    {
+        "slug": "aglio-e-fave",
+        "titolo": "Aglio e fave in autunno: quando e come seminarli",
+        "titolo_breve": "Aglio e fave",
+        "descrizione": "Aglio e fave si seminano in autunno e si raccolgono tra primavera ed estate: quando piantarli, a che profondità e distanza, le cure d'inverno e gli errori da evitare.",
+        "attacco": "Sono le due semine d'autunno più facili: si mettono in terra adesso, passano l'inverno quasi senza cure e ripartono da sole a primavera.",
+        "foto": "photo-1612823711171-e296662098fa",
+        "alt": "Teste di aglio viola e bianco",
+        "q": "aglio da piantare",
+        "agrieuro": "",
+        "dove_titolo": "Dove comprare aglio e fave da semina",
+        "azione": "Vedi aglio e fave",
+        "in_breve": [
+            "Aglio: spicchi di aglio da semina, da ottobre a dicembre dove il terreno non gela a lungo; altrimenti a fine inverno.",
+            "Fave: da ottobre a novembre al Centro-Sud e nelle zone miti; al Nord è più sicuro seminarle a fine inverno.",
+            "Per entrambi: terra sciolta che non trattiene l'acqua, e niente letame fresco.",
+        ],
+        "sezioni": [
+            ("Aglio, passo per passo", "sequenza", [
+                ("Scegli gli spicchi", "Compra aglio da semina e usa gli spicchi esterni, i più grossi. Quelli piccoli del centro vanno in cucina."),
+                ("Prepara la terra", "Vangata e sbriciolata, in un punto dove l'acqua non ristagna. Se è pesante, alza un po' l'aiuola."),
+                ("Pianta", "Punta in su, a 3-5 cm di profondità, a 10-15 cm uno dall'altro e a 30-40 cm tra le file."),
+                ("Copri e aspetta", "Uno strato leggero di foglie o paglia. Annaffia solo se l'autunno è molto asciutto."),
+            ]),
+            ("Fave, passo per passo", "sequenza", [
+                ("Ammolla i semi", "Mettili a bagno 12-24 ore prima della semina: nascono prima e tutti insieme."),
+                ("Semina", "Due o tre semi per buca, a 5 cm di profondità, con 20-25 cm tra le buche e 50-60 cm tra le file."),
+                ("Rincalza", "Quando le piantine sono alte 15-20 cm, porta un po' di terra alla base: reggono meglio vento e freddo."),
+                ("Cima a primavera", "Quando la pianta ha fiorito bene, taglia la punta: le fave si riempiono meglio e l'afide nero, che attacca proprio le punte tenere, trova meno da mangiare."),
+            ]),
+            ("Cure durante l'inverno", "punti", [
+                "Togli le erbacce a mano: le radici di aglio e fave sono superficiali e si rovinano con la zappa.",
+                "Nelle notti di gelo forte, copri le fave appena nate con il tessuto non tessuto.",
+                "Non concimare con letame fresco né dare troppo azoto: l'aglio marcisce e le fave fanno tante foglie e pochi baccelli.",
+                "Nelle zone ventose, a primavera dai alle fave un sostegno: due canne e uno spago lungo la fila.",
+            ]),
+            ("Errori da evitare", "punti", [
+                "Piantare l'aglio del supermercato: spesso è trattato perché non germogli, o è di varietà adatte ad altri climi.",
+                "Seminare in terra pesante e fradicia: aglio e fave marciscono prima di nascere.",
+                "Seminare le fave troppo fitte: l'aria non gira e arrivano malattie e afidi.",
+                "Rimettere l'aglio dove l'anno prima c'erano aglio, cipolle o porri: aspetta almeno 3 anni.",
+            ]),
+        ],
+        "nota": "Le fave arricchiscono il terreno di azoto: dopo il raccolto lascia le radici nella terra, e l'anno dopo in quel posto metti cavoli, zucchine o pomodori.",
+    },
+    {
+        "slug": "orto-invernale",
+        "titolo": "Orto d'inverno: cosa coltivare e come proteggerlo",
+        "titolo_breve": "Orto d'inverno",
+        "descrizione": "Cavoli, porri, radicchi, spinaci e songino: cosa c'è nell'orto d'inverno, cosa si semina a novembre al Nord e al Centro-Sud, come proteggerlo dal gelo e gli errori da evitare.",
+        "attacco": "D'inverno l'orto rallenta ma non si ferma: si raccoglie quello che hai trapiantato a fine estate, si semina poco e si protegge il resto dal gelo.",
+        "foto": "photo-1689666190477-259395cd4f21",
+        "alt": "Pianta di broccolo con le foglie nell'orto",
+        "q": "semi ortaggi invernali",
+        "agrieuro": "",
+        "dove_titolo": "Dove comprare semi e protezioni",
+        "azione": "Vedi semi e protezioni",
+        "in_breve": [
+            "Si raccolgono: cavoli, broccoli, porri, radicchi, bietole, spinaci e songino.",
+            "Si semina ancora: aglio e fave; al Centro-Sud anche piselli; spinaci e songino sotto tunnel.",
+            "Si protegge: pacciamatura sulla terra, tessuto non tessuto o tunnel nelle notti di gelo.",
+        ],
+        "sezioni": [
+            ("Cosa c'è nell'orto d'inverno", "voci", [
+                ("Cavoli e broccoli", "Si trapiantano tra fine estate e inizio autunno; d'inverno si raccolgono. Il cavolo nero e il verza reggono bene il gelo."),
+                ("Porri", "Restano in terra tutto l'inverno e si raccolgono man mano. Rincalzali: il fusto resta bianco e tenero."),
+                ("Radicchi e cicorie", "Sono gli ortaggi più rustici: il freddo li rende croccanti e meno amari."),
+                ("Spinaci e songino", "Seminati a fine estate o inizio autunno, si tagliano per tutto l'inverno, meglio sotto tunnel o tessuto non tessuto."),
+                ("Bietole", "Si raccolgono le foglie esterne e la pianta continua a produrne fino a primavera."),
+                ("Aglio, cipolle e fave", "Si piantano in autunno, passano l'inverno quasi fermi e ripartono a primavera."),
+            ]),
+            ("Cosa seminare a novembre", "voci", [
+                ("Al Nord", "Aglio, se non l'hai ancora fatto e la terra non è gelata. Spinaci e songino solo in serra fredda o sotto tunnel. Fave e piselli meglio a fine inverno."),
+                ("Al Centro-Sud e nelle zone miti", "Aglio, fave, piselli rustici, cipolle da bulbilli, spinaci e rucola anche in piena terra."),
+            ]),
+            ("Come proteggere l'orto dal freddo", "punti", [
+                "Pacciamatura di paglia o foglie secche tra le piante: la terra gela meno e le radici restano al riparo.",
+                "Tessuto non tessuto sopra insalate, spinaci e piantine nelle notti di gelo; meglio sugli archetti se il telo è pesante.",
+                "Un tunnel con telo sopra le aiuole di spinaci, songino e lattughe: si raccoglie anche a gennaio.",
+                "Non lavorare la terra bagnata o gelata: si compatta e la rovini fino a primavera.",
+            ]),
+            ("Errori da evitare", "punti", [
+                "Annaffiare la sera: l'acqua gela di notte sulle radici. Se serve, bagna nelle ore centrali di una giornata di sole.",
+                "Lasciare la terra nuda nelle aiuole vuote: coprila con foglie, paglia o compost, o semina un sovescio.",
+                "Raccogliere le foglie ancora gelate: si rompono. Aspetta che sgelino sulla pianta.",
+                "Trapiantare cavoli e porri a novembre al Nord: è tardi, non radicano prima del freddo. Si fanno tra agosto e ottobre.",
+            ]),
+        ],
+        "nota": "Usa l'inverno per preparare la stagione: spargi il compost maturo sulle aiuole vuote, ripara attrezzi e tunnel, e scegli con calma i semi per la primavera.",
+    },
+    {
+        "slug": "compostiera",
+        "titolo": "Come scegliere la compostiera e fare il compost in giardino",
+        "titolo_breve": "Compostiera",
+        "descrizione": "Compostiera chiusa, in legno o rotante: come scegliere quella giusta, cosa metterci e cosa no, come fare il compost passo per passo e gli errori che lo fanno puzzare.",
+        "attacco": "Con la compostiera gli scarti di cucina, le foglie e l'erba tagliata tornano terra buona per l'orto. Basta scegliere quella adatta allo spazio e alternare bene umido e secco.",
+        "foto": "photo-1716903282677-3a1b5c936b41",
+        "alt": "Compostiere in legno piene di scarti vegetali",
+        "q": "compostiera da giardino",
+        "agrieuro": "",
+        "dove_titolo": "Dove comprare la compostiera",
+        "azione": "Vedi le compostiere",
+        "in_breve": [
+            "Giardino piccolo e scarti di cucina: compostiera chiusa in plastica da 300-400 litri.",
+            "Tante foglie, erba tagliata e potature: compostiera aperta in legno o in rete, meglio a due scomparti.",
+            "Il compost viene bene se alterni scarti umidi e secchi, tieni il cumulo umido come una spugna strizzata e lo rivolti ogni tanto.",
+        ],
+        "sezioni": [
+            ("Quale compostiera ti serve", "voci", [
+                ("Chiusa in plastica", "Con coperchio e sportello in basso per prendere il compost pronto. Ordinata, tiene lontani gli animali e trattiene l'umidità: la più adatta a scarti di cucina e giardini piccoli."),
+                ("In legno a doghe", "Si arieggia bene e regge grandi quantità di foglie e sfalci. Con due scomparti, uno si riempie mentre l'altro matura."),
+                ("In rete o a cumulo", "La soluzione più economica per chi ha tanto spazio e tanto verde. Va coperta con un telo traspirante perché la pioggia non la inzuppi."),
+                ("Rotante", "Un cilindro sollevato da terra che si gira con la manovella: mescolare è facile e il compost è pronto prima. Contiene meno ed è più cara."),
+            ]),
+            ("Cosa ci va e cosa no", "voci", [
+                ("Sì", "Scarti di frutta e verdura, fondi di caffè e filtri del tè, gusci d'uovo sbriciolati, erba tagliata in strati sottili, foglie, rametti triturati, cartone e carta non stampati."),
+                ("No", "Carne, pesce, ossa, latticini e oli, che attirano animali e fanno odore; piante malate; erbacce con i semi o con le radici che ributtano; cenere di carbone; lettiere e feci di cani e gatti."),
+            ]),
+            ("Come si fa, passo per passo", "sequenza", [
+                ("Scegli il posto", "Mezz'ombra, sulla terra nuda e non sul cemento: dal terreno salgono lombrichi e microrganismi che fanno il lavoro."),
+                ("Fai la base", "Uno strato di rametti o paglia sul fondo: l'aria passa e l'acqua in eccesso scola."),
+                ("Alterna umido e secco", "A ogni strato di scarti verdi e umidi aggiungi materiale secco e marrone, come foglie, cartone o trucioli. Più o meno metà e metà."),
+                ("Controlla l'umidità", "Deve essere come una spugna strizzata. Se è secco bagna, se è fradicio aggiungi secco."),
+                ("Rivolta", "Ogni tre-quattro settimane mescola con il forcone: l'aria accelera tutto ed evita i cattivi odori."),
+                ("Raccogli", "Dopo 6-12 mesi in basso trovi il compost maturo: scuro, sbriciolato, profumato di bosco. Setaccialo e usalo nell'orto e nei vasi."),
+            ]),
+            ("Errori da evitare", "punti", [
+                "Mettere solo erba tagliata: si compatta, manca l'aria e marcisce con cattivo odore. Mescolala con foglie secche o cartone.",
+                "Lasciarlo asciugare d'estate: il compost si ferma. Bagnalo come annaffi l'orto.",
+                "Buttare dentro pezzi interi: rami, torsoli e bucce grosse ci mettono mesi. Sminuzza tutto.",
+                "Usare compost non maturo sulle piantine appena trapiantate: può bruciare le radici. Se si riconoscono ancora gli scarti, aspetta.",
+            ]),
+        ],
+        "nota": "Con il biotrituratore le potature diventano trucioli che nel compost si decompongono in pochi mesi, e fanno da materiale secco da alternare agli scarti di cucina.",
+    },
 ]
+
+# Domande frequenti per guida: sezione "Domande frequenti" in pagina e dati strutturati FAQPage.
+FAQ = {
+    "motozappa": [
+        ("Meglio una motozappa o un motocoltivatore?", "La motozappa ha le frese che fanno anche da ruote: basta per un orto di casa. Il motocoltivatore ha le ruote motrici e accetta altri attrezzi, come aratro, trincia o rimorchio: serve per superfici grandi e lavori diversi."),
+        ("Quando si lavora la terra con la motozappa?", "Quando la terra è in tempra: umida ma non bagnata, si sbriciola in mano senza appiccicare. Di solito a fine inverno, prima delle semine, e in autunno dopo i raccolti."),
+        ("Quanto deve essere larga una motozappa per l'orto di casa?", "Per un orto familiare bastano 40-60 cm di larghezza di lavoro: passa tra le file e si gira facilmente a fine aiuola."),
+    ],
+    "robot-tagliaerba": [
+        ("Il robot tagliaerba può lavorare quando piove?", "Molti modelli sì, ma l'erba bagnata si strappa invece di tagliarsi e sporca le lame. Se il robot ha il sensore pioggia, attivalo: torna alla base e riparte quando smette."),
+        ("Cosa si fa con il robot d'inverno?", "Quando l'erba smette di crescere, puliscilo, ricarica la batteria e riponilo con la base in un posto asciutto e al riparo dal gelo, seguendo le istruzioni del produttore."),
+        ("Con il robot serve ancora il tosaerba?", "Per il prato no. I bordi e gli angoli che il robot non raggiunge vanno rifiniti ogni tanto con un tagliabordi o un decespugliatore a batteria."),
+    ],
+    "irrigazione-a-goccia": [
+        ("Per quanto tempo si accende l'irrigazione a goccia?", "Dipende da terreno, stagione e portata dei gocciolatori. Per partire, d'estate 30-60 minuti al mattino presto; poi controlla con una paletta che la terra sia umida a 10-15 cm e regola il programmatore."),
+        ("Si può collegare al rubinetto di casa?", "Sì: programmatore, filtro e riduttore di pressione si avvitano direttamente al rubinetto del giardino, e da lì parte il tubo verso l'orto."),
+        ("Meglio ala gocciolante o tubo poroso?", "L'ala gocciolante ha gocciolatori a distanza fissa e dà la stessa acqua per tutta la fila. Il tubo poroso trasuda lungo tutta la lunghezza: costa poco, ma bagna in modo meno uniforme e si intasa prima."),
+    ],
+    "decespugliatore": [
+        ("Che filo si usa nel decespugliatore?", "Lo spessore indicato nel manuale. Il filo tondo dura di più, quello a sezione quadrata o a stella taglia meglio l'erba fitta e dura. Un filo più spesso del previsto affatica il motore."),
+        ("Meglio decespugliatore o tagliabordi?", "Il tagliabordi è piccolo e leggero, solo per rifinire i bordi del prato. Il decespugliatore taglia anche l'erba alta e, con la lama, rovi e steli legnosi."),
+        ("Come si prepara la miscela per il decespugliatore a due tempi?", "Benzina e olio per motori a due tempi, nella percentuale scritta sul manuale. Preparane poca alla volta: dopo qualche settimana si altera e il motore parte male."),
+    ],
+    "biotrituratore": [
+        ("Che diametro di rami serve per un giardino di casa?", "Per siepi e piccoli alberi da frutto bastano modelli da 35-40 mm. Per potature più grosse guarda i modelli a rullo o a scoppio con diametri maggiori."),
+        ("Si possono triturare le foglie secche?", "Sì, con i modelli a lame o con la bocca dedicata alle foglie. Sminuzzate, nel compost si decompongono molto più in fretta."),
+        ("Il trito si può usare subito come pacciamatura?", "Sì, intorno a siepi, alberi e vialetti. Nell'orto lascialo in superficie o compostalo prima: interrato fresco toglie azoto agli ortaggi."),
+    ],
+    "serra-da-giardino": [
+        ("Cosa si coltiva in serra d'inverno?", "Insalate da taglio, songino, spinaci, rucola, ravanelli e prezzemolo. A fine inverno ci si fanno nascere le piantine per l'orto."),
+        ("Bisogna riscaldare la serra?", "Per l'orto di casa no: la serra fredda anticipa la primavera e allunga l'autunno. Nelle notti di gelo copri le piante più delicate con il tessuto non tessuto."),
+        ("Quanto deve essere grande una serra per l'orto di casa?", "Per piantine e insalate bastano pochi metri quadri. Se d'estate ci vuoi coltivare pomodori e cetrioli, scegli un'altezza al colmo che ti permetta di lavorare in piedi, intorno ai 2 metri."),
+    ],
+    "microgreens": [
+        ("Microgreens e germogli sono la stessa cosa?", "No. I germogli si mangiano interi, seme compreso, pochi giorni dopo la germinazione in acqua. I microgreens crescono su substrato e alla luce, e si taglia solo la parte verde dopo 7-14 giorni."),
+        ("I microgreens ricrescono dopo il taglio?", "Quasi tutti no: si tagliano una volta e si risemina. Il pisello a volte dà un secondo taglio, più scarso, se lo tagli sopra le prime foglie."),
+        ("Servono le lampade?", "Da primavera ad autunno basta una finestra luminosa. D'inverno, o con le finestre a nord, una lampada LED evita germogli lunghi e pallidi."),
+    ],
+    "aromatiche-in-casa": [
+        ("Come si fa durare il basilico del supermercato?", "Dividi il vasetto in 2-3 ciuffi e rinvasali in vasi più grandi con terriccio nuovo. Tienili al caldo e alla luce; d'inverno serve anche una lampada."),
+        ("Ogni quanto si annaffiano le aromatiche in casa d'inverno?", "Non c'è un giorno fisso: tocca la terra e bagna solo quando è asciutta in superficie. Per rosmarino e timo può passare anche una settimana."),
+        ("Quali aromatiche restano fuori d'inverno?", "Rosmarino, salvia, timo e alloro reggono il freddo in gran parte d'Italia, meglio in un angolo riparato. Prezzemolo ed erba cipollina rallentano ma ripartono a primavera. Il basilico no."),
+    ],
+    "tessuto-non-tessuto": [
+        ("Che grammatura di tessuto non tessuto scegliere?", "Quello leggero, intorno ai 17-20 g/m², per la primavera e da stendere direttamente sulle piante. Da 30 g/m² in su per l'inverno e le gelate, meglio sopra gli archetti."),
+        ("Si annaffia attraverso il telo?", "Sì, l'acqua passa. Con il telo pesante o doppio controlla ogni tanto che la terra sotto non resti asciutta."),
+        ("Di quanti gradi protegge dal freddo?", "Di pochi gradi, indicativamente 2-4 °C secondo lo spessore e il numero di strati. Nelle gelate forti aggiungi un secondo telo."),
+    ],
+    "aglio-e-fave": [
+        ("Quando si raccoglie l'aglio piantato in autunno?", "Tra giugno e luglio, quando due terzi delle foglie sono ingiallite. Fallo asciugare qualche giorno all'ombra, in un posto arieggiato, prima di conservarlo."),
+        ("Le fave si possono seminare a febbraio?", "Sì, al Nord è spesso la scelta più sicura: si seminano appena la terra è lavorabile, tra febbraio e marzo, e si raccolgono tra fine primavera e inizio estate."),
+        ("Si può piantare l'aglio del supermercato?", "Meglio di no: spesso è trattato perché non germogli, o è di varietà adatte ad altri climi. L'aglio da semina è selezionato e controllato."),
+    ],
+    "orto-invernale": [
+        ("Si può seminare a novembre?", "Sì, ma poco: aglio ovunque la terra non sia gelata, fave e piselli dove l'inverno è mite, e spinaci, songino e rucola sotto tunnel o in serra fredda."),
+        ("Come si annaffia l'orto d'inverno?", "Poco, e solo se non piove da tempo e il terreno non è gelato: nelle ore centrali di una giornata di sole, mai la sera."),
+        ("Le verdure toccate dal gelo si possono raccogliere?", "Sì, ma aspetta che sgelino sulla pianta. Cavoli, porri e radicchi dopo il freddo diventano anzi più dolci."),
+    ],
+    "compostiera": [
+        ("Quanto tempo serve per avere il compost?", "Di solito dai 6 ai 12 mesi. Se sminuzzi gli scarti e rivolti spesso, anche meno."),
+        ("La compostiera attira topi e insetti?", "Se ci metti solo scarti vegetali e copri ogni volta l'umido con uno strato di materiale secco, di solito no. Carne, pesce e formaggi invece li attirano."),
+        ("Dove si mette la compostiera?", "In un angolo in mezz'ombra, sulla terra nuda, lontano dalle finestre dei vicini e facile da raggiungere anche d'inverno."),
+    ],
+}
 
 LOGO = ('<svg class="o-logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="108 74 296 376"><defs><linearGradient id="oct-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4B2A73"/><stop offset="1" stop-color="#22102F"/></linearGradient><linearGradient id="oct-or" x1="0.2" y1="0" x2="0.8" y2="1"><stop offset="0" stop-color="#FFB14A"/><stop offset=".55" stop-color="#F07F1A"/><stop offset="1" stop-color="#D9580B"/></linearGradient><linearGradient id="oct-lf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2F79A"/><stop offset="1" stop-color="#A9D63E"/></linearGradient><filter id="oct-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".35"/></filter><mask id="oct-buco" maskUnits="userSpaceOnUse" x="0" y="0" width="512" height="512"><rect width="512" height="512" fill="#000"/><circle cx="256" cy="300" r="147" fill="#fff"/><path d="M256 226 L318 276 L318 352 Q318 362 308 362 L204 362 Q194 362 194 352 L194 276 Z" fill="#000" stroke="#000" stroke-width="14" stroke-linejoin="round"/><path d="M240 369 L240 330 A16 16 0 0 1 272 330 L272 369 Z" fill="#fff"/></mask></defs><g filter="url(#oct-sh)"><rect x="100" y="140" width="312" height="320" fill="url(#oct-or)" mask="url(#oct-buco)"/><path d="M256 186 V138" stroke="url(#oct-lf)" stroke-width="16" stroke-linecap="round"/><path d="M252 152 C230 104 184 80 136 88 C142 138 190 168 252 152 Z" fill="url(#oct-lf)"/><path d="M260 152 C282 104 328 80 376 88 C370 138 322 168 260 152 Z" fill="url(#oct-lf)"/></g><path d="M150 262 A116 116 0 0 1 220 186" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".28"/></svg>')
 
@@ -450,6 +649,12 @@ def pagina(g, altre):
     ]}
     corpo = "".join(sezione(*s) for s in g["sezioni"])
     nota = f'<p class="nota">{e(g["nota"])}</p>' if g.get("nota") else ""
+    domande = FAQ.get(g["slug"], [])
+    faq = (f'<section class="parte faq"><h2>Domande frequenti</h2>' + "".join(
+        f"<details><summary>{e(d)}</summary><p>{e(r)}</p></details>" for d, r in domande) + "</section>") if domande else ""
+    if domande:
+        dati["@graph"].append({"@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": d, "acceptedAnswer": {"@type": "Answer", "text": r}} for d, r in domande]})
     link_altre = "".join(f'<li><a href="../{a["slug"]}/">{e(a["titolo_breve"])}</a></li>' for a in altre)
     return f"""<!DOCTYPE html>
 <html lang="it">
@@ -493,6 +698,7 @@ def pagina(g, altre):
       <section class="in-breve"><h2>In breve</h2><ul>{"".join(f"<li>{e(v)}</li>" for v in g["in_breve"])}</ul></section>
       {corpo}
       {nota}
+      {faq}
       <section class="parte" id="dove"><h2>{e(g.get("dove_titolo", "Dove comprarla"))}</h2><p class="sotto">Si apre la pagina del negozio, con i suoi prezzi, spedizioni e garanzie.</p>{blocco_negozi(g)}</section>
       <section class="parte altre"><h2>Altre guide</h2><ul>{link_altre}</ul></section>
       <p class="firma">Guida di OrtoCasa Help, a cura di un perito agrario. Aggiornata il {AGGIORNATA[8:10]}/{AGGIORNATA[5:7]}/{AGGIORNATA[:4]}.</p>
@@ -515,7 +721,8 @@ def pagina_indice(guide):
     url = f"{SITO}/guide/"
     titolo = "Guide per l'orto e il giardino"
     descrizione = ("Le guide di OrtoCasa Help, scritte da un perito agrario: come scegliere motozappa, robot tagliaerba, "
-                   "irrigazione a goccia, decespugliatore, biotrituratore e gli altri attrezzi per l'orto di casa.")
+                   "irrigazione a goccia, decespugliatore, biotrituratore, serra e compostiera, e cosa seminare e coltivare "
+                   "nell'orto di casa in ogni stagione.")
     dati = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage", "name": titolo, "description": descrizione, "url": url, "inLanguage": "it-IT",
          "publisher": ORGANIZZAZIONE,
@@ -562,7 +769,7 @@ def pagina_indice(guide):
   <div class="apertura"><div class="contenitore">
     <p class="briciole"><a href="../">Home</a> / Guide</p>
     <h1>{e(titolo)}</h1>
-    <p class="attacco">Come scegliere l'attrezzo giusto per il tuo orto, spiegato da un perito agrario. Niente classifiche pagate.</p>
+    <p class="attacco">Come scegliere l'attrezzo giusto e cosa coltivare nell'orto di casa, spiegato da un perito agrario. Niente classifiche pagate.</p>
   </div></div>
   <div class="contenitore testo">
     <ul class="elenco-guide">{schede}</ul>

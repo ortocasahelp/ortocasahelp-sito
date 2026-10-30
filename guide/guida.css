@@ -48,6 +48,12 @@ a,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .sequenza li::before{content:counter(pezzo);position:absolute;left:14px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--melanzana);color:var(--lattuga);font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center}
 .sequenza b{display:block;font-size:18px}
 .sequenza span{color:#3B2E4A;font-size:16px}
+.faq details{margin-top:12px;background:var(--bianco);border-radius:20px;padding:0 18px}
+.faq summary{cursor:pointer;font-weight:800;font-size:18px;padding:16px 28px 16px 0;min-height:44px;list-style:none;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:12px;font-size:26px;color:var(--zucca)}
+.faq details[open] summary::after{content:"\2212"}
+.faq details p{padding:0 0 16px;color:#3B2E4A}
 .nota{margin-top:26px;background:var(--bianco);border-left:6px solid var(--zucca);border-radius:6px 20px 20px 6px;padding:16px 18px;font-weight:600}
 
 .dove{display:grid;gap:8px;margin-top:14px}

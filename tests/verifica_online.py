@@ -54,7 +54,7 @@ def esito(nome, ok, dettaglio="", bloccante=True):
 locale = (RADICE / "index.html").read_bytes()
 chiave_indexnow = [p.name for p in RADICE.glob("*.txt") if re.fullmatch(r"[0-9a-f]{32}\.txt", p.name)]
 verifica_google = [p.name for p in RADICE.glob("google*.html")]
-PERCORSI = chiave_indexnow + verifica_google + ["privacy/", "chi-siamo/", "guide/", "guide/motozappa/", "guide/robot-tagliaerba/", "guide/irrigazione-a-goccia/", "guide/decespugliatore/", "guide/biotrituratore/", "guide/serra-da-giardino/", "guide/microgreens/", "guide/aromatiche-in-casa/", "guide/tessuto-non-tessuto/", "guide/guida.css", "guide/guida.js", "negozi.js", "sitemap.xml", "robots.txt", "feed.xml", "manifest.webmanifest", "sw.js", "app.js", "icone/icona-192.png", "icone/icona-512.png"]
+PERCORSI = chiave_indexnow + verifica_google + ["privacy/", "chi-siamo/", "guide/", "guide/motozappa/", "guide/robot-tagliaerba/", "guide/irrigazione-a-goccia/", "guide/decespugliatore/", "guide/biotrituratore/", "guide/serra-da-giardino/", "guide/microgreens/", "guide/aromatiche-in-casa/", "guide/tessuto-non-tessuto/", "guide/aglio-e-fave/", "guide/orto-invernale/", "guide/compostiera/", "guide/guida.css", "guide/guida.js", "negozi.js", "sitemap.xml", "robots.txt", "feed.xml", "manifest.webmanifest", "sw.js", "app.js", "icone/icona-192.png", "icone/icona-512.png"]
 
 
 def file_locale(percorso):

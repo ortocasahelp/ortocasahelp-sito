@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.9.0 — 30/10/2026
+
+- Tre guide nuove di stagione: aglio e fave in autunno (`/guide/aglio-e-fave/`), orto d'inverno (`/guide/orto-invernale/`), compostiera e compost (`/guide/compostiera/`). Foto Unsplash di Joe Green, Ch Photography e Frank Thiemonge (crediti in home). Nessuna pagina categoria AgriEuro sicura: il pulsante AgriEuro apre la ricerca. Aggiunte a indice, sitemap (16 indirizzi), feed, test e verifica online.
+- Domande frequenti in tutte le 12 guide: 3 domande e risposte per guida, a scomparsa (`<details>`, alte almeno 44 px), con dati strutturati FAQPage coerenti con il testo in pagina (dati in `FAQ` di `strumenti/genera_guide.py`).
+- Home: nel calendario di ottobre e novembre, aglio e fave hanno il link "Come si fa" verso la guida nuova.
+- Indice delle guide: descrizione e frase d'apertura estese a coltivazione e stagioni. Data di aggiornamento delle guide 30/10/2026.
+- Test: 213 verifiche (dati strutturati Article + BreadcrumbList + FAQPage, domande in pagina uguali ai dati strutturati, altezza dei titoli delle domande).
+
 ## 4.7.1 — 29/10/2026
 
 - Nuova guida: tessuto non tessuto (`/guide/tessuto-non-tessuto/`): leggero o pesante, quando serve nell'orto, come si stende, errori da evitare. Foto di piante coperte di brina (Annie Spratt, Unsplash, già nei crediti). Nessuna pagina categoria AgriEuro sicura: il pulsante AgriEuro apre la ricerca "tessuto non tessuto orto". Aggiunta a indice, sitemap, feed, test e verifica online.

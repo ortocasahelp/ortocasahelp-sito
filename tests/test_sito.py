@@ -237,7 +237,10 @@ with sync_playwright() as p:
              "serra-da-giardino": "https://www.agrieuro.com/search/serra%20da%20giardino",
              "microgreens": "https://www.agrieuro.com/search/semi%20microgreens",
              "aromatiche-in-casa": "https://www.agrieuro.com/search/kit%20erbe%20aromatiche",
-             "tessuto-non-tessuto": "https://www.agrieuro.com/search/tessuto%20non%20tessuto%20orto"}
+             "tessuto-non-tessuto": "https://www.agrieuro.com/search/tessuto%20non%20tessuto%20orto",
+             "aglio-e-fave": "https://www.agrieuro.com/search/aglio%20da%20piantare",
+             "orto-invernale": "https://www.agrieuro.com/search/semi%20ortaggi%20invernali",
+             "compostiera": "https://www.agrieuro.com/search/compostiera%20da%20giardino"}
     pg = ctx.new_page()
     pg.on("pageerror", lambda e: errori_js.append(str(e)))
     for slug, cat in GUIDE.items():
@@ -258,7 +261,11 @@ with sync_playwright() as p:
             pg.screenshot(path=str(SCHERMATE / "5-guida-telefono.png"), full_page=True)
         dati = json.loads(pg.inner_text('script[type="application/ld+json"]'))
         tipi = [n["@type"] for n in dati.get("@graph", [])]
-        verifica(f"Guida {slug}: dati strutturati Article + BreadcrumbList", tipi == ["Article", "BreadcrumbList"], str(tipi))
+        verifica(f"Guida {slug}: dati strutturati Article + BreadcrumbList + FAQPage", tipi == ["Article", "BreadcrumbList", "FAQPage"], str(tipi))
+        faq_dati = next(n for n in dati["@graph"] if n["@type"] == "FAQPage")["mainEntity"]
+        domande_pagina = pg.eval_on_selector_all(".faq summary", "els => els.map(s => s.textContent)")
+        verifica(f"Guida {slug}: domande frequenti in pagina uguali ai dati strutturati", len(faq_dati) >= 3 and [q["name"] for q in faq_dati] == domande_pagina, str(domande_pagina))
+        verifica(f"Guida {slug}: domande frequenti toccabili alte almeno 44 px", pg.evaluate("() => [...document.querySelectorAll('.faq summary')].every(s => s.getBoundingClientRect().height >= 44)"))
         verifica(f"Guida {slug}: briciole con link all'indice", pg.eval_on_selector(".briciole a >> nth=1", "a => a.href").endswith("/guide/"))
     # 8b. Indice delle guide
     url_i = f"{SITO_URL}/guide/" if SITO_URL else (RADICE / "guide" / "index.html").as_uri()
