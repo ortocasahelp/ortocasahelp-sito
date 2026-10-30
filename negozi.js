@@ -4,7 +4,7 @@
 var AFFILIATI = {
   agrieuro: { nome: "AgriEuro", nota: "Specialista orto e giardino", codice: "", parametro: "" },
   amazon:   { nome: "Amazon",   nota: "Consegna veloce",             tag: "" },
-  manomano: { nome: "ManoMano", nota: "Fai da te e giardino",        awinMid: "", awinAffId: "" },
+  manomano: { nome: "ManoMano", nota: "Fai da te e giardino",        awinMid: "17962", awinAffId: "3130993" },
   ebay:     { nome: "eBay",     nota: "Usato e ricambi",             campid: "5339228940" }
 };
 var ORDINE_NEGOZI = ["agrieuro", "amazon", "manomano", "ebay"];
