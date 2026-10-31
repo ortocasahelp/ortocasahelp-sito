@@ -1,4 +1,4 @@
-# Social: esito del 2026-10-27
+# Social: esito del 2026-10-31
 
-- Post 2026-10-27-biotrituratore-foglie pronto ma non pubblicato: mancano i segreti META_PAGE_ID/META_PAGE_TOKEN.
+- In pausa (config.json: pubblica non è true): il post 2026-10-27-biotrituratore-foglie resta in coda, nessuna pubblicazione.
 - Post ancora da pubblicare in coda: 10.
