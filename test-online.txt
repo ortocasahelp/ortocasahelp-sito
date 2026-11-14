@@ -1,0 +1,215 @@
+OK   eBay: campid della campagna EPN impostato
+OK   eBay: link reale con campid e parametri Italia
+OK   AgriEuro: ricerca senza codice
+OK   Amazon: nessun tag finto
+OK   ManoMano: formato /cat/a+b
+OK   eBay: ricerca senza parametri EPN
+OK   Testo vuoto -> nessun link
+OK   Negozio sconosciuto -> nessun link
+OK   Caratteri speciali codificati
+OK   Testo troncato a 80 caratteri
+OK   Amazon: tag aggiunto
+OK   eBay: parametri EPN Italia
+OK   ManoMano: avvolto da Awin
+OK   AgriEuro categoria con codice
+OK   Reparto senza pagina AgriEuro -> ricerca
+OK   Calendario: 12 mesi
+OK   Calendario: campi completi
+OK   Mese corrente mostrato
+OK   Solo foto verificate
+OK   Menu negozi nascosto a campo vuoto
+OK   Menu con 4 negozi mentre scrivi
+OK   Primo negozio AgriEuro
+OK   Tocco su eBay apre la ricerca giusta, con campid
+OK   Invio apre AgriEuro
+OK   Solo spazi: menu chiuso
+OK   Solo spazi + Invio: non apre nulla
+OK   3 lavori del mese
+OK   Bottone del mese apre il pannello
+OK   Pannello: 4 negozi in ordine
+OK   Pannello: link sponsored in nuova scheda
+OK   Pannello: query del mese
+OK   Pannello si chiude con Esc
+OK   Pannello si chiude trascinandolo giù
+OK   Piccolo trascinamento non chiude
+OK   Semina del mese: 4 schede con pulsante
+OK   Semina del mese: titolo con il mese
+OK   Semina del mese: il pulsante apre i negozi
+OK   Semina: 4 voci complete per ognuno dei 12 mesi
+OK   Semina: i link alle guide esistono
+OK   9 reparti con foto
+OK   Tutte le foto hanno testo alternativo
+OK   Nessuna icona disegnata nei reparti
+OK   Reparto robot: AgriEuro va alla categoria
+OK   Consiglio motozappa apre il pannello giusto
+OK   Nessuno scorrimento orizzontale (390 px)
+OK   Ricerca resta visibile in alto scorrendo
+OK   Elementi toccabili alti almeno 44 px
+OK   Tocco senza ritardo (touch-action)
+OK   Desktop: nessuno scorrimento orizzontale
+OK   Guida motozappa: 4 negozi in ordine
+OK   Guida motozappa: AgriEuro alla categoria
+OK   Guida motozappa: link sponsored
+OK   Guida motozappa: barra in basso verso AgriEuro
+OK   Guida motozappa: titolo e descrizione
+OK   Guida motozappa: nessuno scorrimento orizzontale
+OK   Guida motozappa: link toccabili alti almeno 44 px
+OK   Guida motozappa: link alle altre guide funzionano
+OK   Guida motozappa: dati strutturati Article + BreadcrumbList + FAQPage
+OK   Guida motozappa: domande frequenti in pagina uguali ai dati strutturati
+OK   Guida motozappa: domande frequenti toccabili alte almeno 44 px
+OK   Guida motozappa: briciole con link all'indice
+OK   Guida robot-tagliaerba: 4 negozi in ordine
+OK   Guida robot-tagliaerba: AgriEuro alla categoria
+OK   Guida robot-tagliaerba: link sponsored
+OK   Guida robot-tagliaerba: barra in basso verso AgriEuro
+OK   Guida robot-tagliaerba: titolo e descrizione
+OK   Guida robot-tagliaerba: nessuno scorrimento orizzontale
+OK   Guida robot-tagliaerba: link toccabili alti almeno 44 px
+OK   Guida robot-tagliaerba: link alle altre guide funzionano
+OK   Guida robot-tagliaerba: dati strutturati Article + BreadcrumbList + FAQPage
+OK   Guida robot-tagliaerba: domande frequenti in pagina uguali ai dati strutturati
+OK   Guida robot-tagliaerba: domande frequenti toccabili alte almeno 44 px
+OK   Guida robot-tagliaerba: briciole con link all'indice
+OK   Guida irrigazione-a-goccia: 4 negozi in ordine
+OK   Guida irrigazione-a-goccia: AgriEuro alla categoria
+OK   Guida irrigazione-a-goccia: link sponsored
+OK   Guida irrigazione-a-goccia: barra in basso verso AgriEuro
+OK   Guida irrigazione-a-goccia: titolo e descrizione
+OK   Guida irrigazione-a-goccia: nessuno scorrimento orizzontale
+OK   Guida irrigazione-a-goccia: link toccabili alti almeno 44 px
+OK   Guida irrigazione-a-goccia: link alle altre guide funzionano
+OK   Guida irrigazione-a-goccia: dati strutturati Article + BreadcrumbList + FAQPage
+OK   Guida irrigazione-a-goccia: domande frequenti in pagina uguali ai dati strutturati
+OK   Guida irrigazione-a-goccia: domande frequenti toccabili alte almeno 44 px
+OK   Guida irrigazione-a-goccia: briciole con link all'indice
+OK   Guida decespugliatore: 4 negozi in ordine
+OK   Guida decespugliatore: AgriEuro alla categoria
+OK   Guida decespugliatore: link sponsored
+OK   Guida decespugliatore: barra in basso verso AgriEuro
+OK   Guida decespugliatore: titolo e descrizione
+OK   Guida decespugliatore: nessuno scorrimento orizzontale
+OK   Guida decespugliatore: link toccabili alti almeno 44 px
+OK   Guida decespugliatore: link alle altre guide funzionano
+OK   Guida decespugliatore: dati strutturati Article + BreadcrumbList + FAQPage
+OK   Guida decespugliatore: domande frequenti in pagina uguali ai dati strutturati
+OK   Guida decespugliatore: domande frequenti toccabili alte almeno 44 px
+OK   Guida decespugliatore: briciole con link all'indice
+OK   Guida biotrituratore: 4 negozi in ordine
+OK   Guida biotrituratore: AgriEuro alla categoria
+OK   Guida biotrituratore: link sponsored
+OK   Guida biotrituratore: barra in basso verso AgriEuro
+OK   Guida biotrituratore: titolo e descrizione
+OK   Guida biotrituratore: nessuno scorrimento orizzontale
+OK   Guida biotrituratore: link toccabili alti almeno 44 px
+OK   Guida biotrituratore: link alle altre guide funzionano
+OK   Guida biotrituratore: dati strutturati Article + BreadcrumbList + FAQPage
+OK   Guida biotrituratore: domande frequenti in pagina uguali ai dati strutturati
+OK   Guida biotrituratore: domande frequenti toccabili alte almeno 44 px
+OK   Guida biotrituratore: briciole con link all'indice
+OK   Guida serra-da-giardino: 4 negozi in ordine
+OK   Guida serra-da-giardino: AgriEuro alla categoria
+OK   Guida serra-da-giardino: link sponsored
+OK   Guida serra-da-giardino: barra in basso verso AgriEuro
+OK   Guida serra-da-giardino: titolo e descrizione
+OK   Guida serra-da-giardino: nessuno scorrimento orizzontale
+OK   Guida serra-da-giardino: link toccabili alti almeno 44 px
+OK   Guida serra-da-giardino: link alle altre guide funzionano
+OK   Guida serra-da-giardino: dati strutturati Article + BreadcrumbList + FAQPage
+OK   Guida serra-da-giardino: domande frequenti in pagina uguali ai dati strutturati
+OK   Guida serra-da-giardino: domande frequenti toccabili alte almeno 44 px
+OK   Guida serra-da-giardino: briciole con link all'indice
+OK   Guida microgreens: 4 negozi in ordine
+OK   Guida microgreens: AgriEuro alla categoria
+OK   Guida microgreens: link sponsored
+OK   Guida microgreens: barra in basso verso AgriEuro
+OK   Guida microgreens: titolo e descrizione
+OK   Guida microgreens: nessuno scorrimento orizzontale
+OK   Guida microgreens: link toccabili alti almeno 44 px
+OK   Guida microgreens: link alle altre guide funzionano
+OK   Guida microgreens: dati strutturati Article + BreadcrumbList + FAQPage
+OK   Guida microgreens: domande frequenti in pagina uguali ai dati strutturati
+OK   Guida microgreens: domande frequenti toccabili alte almeno 44 px
+OK   Guida microgreens: briciole con link all'indice
+OK   Guida aromatiche-in-casa: 4 negozi in ordine
+OK   Guida aromatiche-in-casa: AgriEuro alla categoria
+OK   Guida aromatiche-in-casa: link sponsored
+OK   Guida aromatiche-in-casa: barra in basso verso AgriEuro
+OK   Guida aromatiche-in-casa: titolo e descrizione
+OK   Guida aromatiche-in-casa: nessuno scorrimento orizzontale
+OK   Guida aromatiche-in-casa: link toccabili alti almeno 44 px
+OK   Guida aromatiche-in-casa: link alle altre guide funzionano
+OK   Guida aromatiche-in-casa: dati strutturati Article + BreadcrumbList + FAQPage
+OK   Guida aromatiche-in-casa: domande frequenti in pagina uguali ai dati strutturati
+OK   Guida aromatiche-in-casa: domande frequenti toccabili alte almeno 44 px
+OK   Guida aromatiche-in-casa: briciole con link all'indice
+OK   Guida tessuto-non-tessuto: 4 negozi in ordine
+OK   Guida tessuto-non-tessuto: AgriEuro alla categoria
+OK   Guida tessuto-non-tessuto: link sponsored
+OK   Guida tessuto-non-tessuto: barra in basso verso AgriEuro
+OK   Guida tessuto-non-tessuto: titolo e descrizione
+OK   Guida tessuto-non-tessuto: nessuno scorrimento orizzontale
+OK   Guida tessuto-non-tessuto: link toccabili alti almeno 44 px
+OK   Guida tessuto-non-tessuto: link alle altre guide funzionano
+OK   Guida tessuto-non-tessuto: dati strutturati Article + BreadcrumbList + FAQPage
+OK   Guida tessuto-non-tessuto: domande frequenti in pagina uguali ai dati strutturati
+OK   Guida tessuto-non-tessuto: domande frequenti toccabili alte almeno 44 px
+OK   Guida tessuto-non-tessuto: briciole con link all'indice
+OK   Guida aglio-e-fave: 4 negozi in ordine
+OK   Guida aglio-e-fave: AgriEuro alla categoria
+OK   Guida aglio-e-fave: link sponsored
+OK   Guida aglio-e-fave: barra in basso verso AgriEuro
+OK   Guida aglio-e-fave: titolo e descrizione
+OK   Guida aglio-e-fave: nessuno scorrimento orizzontale
+OK   Guida aglio-e-fave: link toccabili alti almeno 44 px
+OK   Guida aglio-e-fave: link alle altre guide funzionano
+OK   Guida aglio-e-fave: dati strutturati Article + BreadcrumbList + FAQPage
+OK   Guida aglio-e-fave: domande frequenti in pagina uguali ai dati strutturati
+OK   Guida aglio-e-fave: domande frequenti toccabili alte almeno 44 px
+OK   Guida aglio-e-fave: briciole con link all'indice
+OK   Guida orto-invernale: 4 negozi in ordine
+OK   Guida orto-invernale: AgriEuro alla categoria
+OK   Guida orto-invernale: link sponsored
+OK   Guida orto-invernale: barra in basso verso AgriEuro
+OK   Guida orto-invernale: titolo e descrizione
+OK   Guida orto-invernale: nessuno scorrimento orizzontale
+OK   Guida orto-invernale: link toccabili alti almeno 44 px
+OK   Guida orto-invernale: link alle altre guide funzionano
+OK   Guida orto-invernale: dati strutturati Article + BreadcrumbList + FAQPage
+OK   Guida orto-invernale: domande frequenti in pagina uguali ai dati strutturati
+OK   Guida orto-invernale: domande frequenti toccabili alte almeno 44 px
+OK   Guida orto-invernale: briciole con link all'indice
+OK   Guida compostiera: 4 negozi in ordine
+OK   Guida compostiera: AgriEuro alla categoria
+OK   Guida compostiera: link sponsored
+OK   Guida compostiera: barra in basso verso AgriEuro
+OK   Guida compostiera: titolo e descrizione
+OK   Guida compostiera: nessuno scorrimento orizzontale
+OK   Guida compostiera: link toccabili alti almeno 44 px
+OK   Guida compostiera: link alle altre guide funzionano
+OK   Guida compostiera: dati strutturati Article + BreadcrumbList + FAQPage
+OK   Guida compostiera: domande frequenti in pagina uguali ai dati strutturati
+OK   Guida compostiera: domande frequenti toccabili alte almeno 44 px
+OK   Guida compostiera: briciole con link all'indice
+OK   Indice guide: tutte le guide elencate
+OK   Indice guide: foto con testo alternativo
+OK   Indice guide: ItemList con tutte le guide
+OK   Indice guide: nessuno scorrimento orizzontale
+OK   Chi siamo: affiliazioni dichiarate e contatto
+OK   Chi siamo: dati strutturati validi
+OK   Chi siamo: nessuno scorrimento orizzontale
+OK   Home: 3 link alle guide
+OK   Home: link a tutte le guide
+OK   Home: piè di pagina con guide e chi siamo
+OK   Home: dati strutturati WebSite
+OK   Home: link alla privacy
+OK   Privacy: titolare e contatto presenti
+OK   Privacy: nessuno scorrimento orizzontale
+OK   Sitemap: ogni indirizzo ha la sua pagina
+OK   Sitemap: indice guide e chi siamo presenti
+OK   Feed RSS: una voce con foto per ogni guida
+OK   Search Console: file di verifica Google presente e corretto
+OK   Pinterest: meta di verifica del sito nella home
+OK   Nessun errore JavaScript
+
+213/213 verifiche superate
